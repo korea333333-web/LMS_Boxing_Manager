@@ -1,0 +1,391 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e43f3f",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211111",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-bg {
+            background-color: rgba(228, 63, 63, 0.1);
+            border-right: 3px solid #e43f3f;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-primary/20 flex flex-col bg-background-light dark:bg-background-dark">
+<div class="p-6">
+<h1 class="text-xl font-bold text-primary tracking-tight">Body Boxing Gym</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-widest">Admin System</p>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">대시보드</span>
+</a>
+<div class="space-y-1">
+<button class="w-full flex items-center justify-between px-4 py-3 rounded-lg text-primary bg-primary/10 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">분석</span>
+</div>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="pl-11 pr-4 space-y-1">
+<a class="block py-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="#">연령별 현황</a>
+<a class="block py-2 text-sm font-bold text-primary" href="#">출석 분석</a>
+</div>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">회원 관리</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-primary/20">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-slate-100 dark:bg-primary/10">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold overflow-hidden">
+<img alt="Admin" data-alt="Female gym manager profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh1p5neDWhzOe88yaNYeDw30dTr0fkrfK0JXf3iV9I7C4bY4XSrZHq3DddcssiPPmSkR9K5zgCg1390oyr387c3xh4aF8jE9_x5KBisIioPCsjb32QHU1n240j2rDDmdvi-TjLWgSp-tNbCa5qxsIJ08WEzKmVpUX2f6WoAJ3S8jieX-kwED4zj03kTjt5XruLh73KEKiUVc9vFiTlXj6lwdTSBt2c7Gt0_xcuo7XHVk7T3CmDBs1tpJYNDx5rl3vqdBTWCj9iGA"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">관리자</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">master@bodybox.com</p>
+</div>
+<button class="material-symbols-outlined text-slate-400 text-lg">settings</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-8 bg-slate-50 dark:bg-background-dark/50">
+<!-- Header -->
+<header class="flex items-center justify-between mb-8">
+<div>
+<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+<span>분석</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-medium">출석 분석</span>
+</div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">
+                        전체 및 개인별 출석율 분석
+                    </h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">체육관 운영 효율을 위한 데이터 기반 출석 통계</p>
+</div>
+<div class="flex gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_month</span>
+<select class="pl-10 pr-8 py-2 bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-lg appearance-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/50">
+<option>지난 30일</option>
+<option>이번 달</option>
+<option>지난 분기</option>
+</select>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                        보고서 다운로드
+                    </button>
+</div>
+</header>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-8xl text-primary">analytics</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">이번 주 평균 출석율</p>
+<div class="flex items-end gap-2">
+<span class="text-4xl font-black text-slate-900 dark:text-white">82.5%</span>
+<span class="text-emerald-500 text-sm font-bold flex items-center mb-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>4.2%
+                        </span>
+</div>
+<div class="mt-4 h-1.5 w-full bg-slate-100 dark:bg-primary/10 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 82.5%"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-8xl text-primary">event_available</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">최고 출석 요일</p>
+<div class="flex items-end gap-2">
+<span class="text-4xl font-black text-slate-900 dark:text-white uppercase italic">월요일</span>
+<span class="text-slate-400 text-sm font-medium mb-1">(평균 94명)</span>
+</div>
+<p class="text-xs text-slate-400 dark:text-slate-500 mt-4 leading-relaxed">지난 4주간 통계 데이터 기준</p>
+</div>
+<div class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-8xl text-primary">person_off</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">장기 미출석자 수</p>
+<div class="flex items-end gap-2">
+<span class="text-4xl font-black text-slate-900 dark:text-white">14명</span>
+<span class="text-rose-500 text-sm font-bold flex items-center mb-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>2명
+                        </span>
+</div>
+<button class="mt-4 text-xs font-bold text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary">대상자 목록 확인하기</button>
+</div>
+</div>
+<!-- Main Analytics Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Chart 1: Heatmap Style Distribution -->
+<div class="lg:col-span-2 space-y-8">
+<section class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 p-6 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-2">
+<span class="w-1 h-5 bg-primary rounded-full"></span>
+<h3 class="font-bold text-lg">요일별/시간대별 출석 분포</h3>
+</div>
+<div class="flex gap-2 text-[10px] font-bold uppercase tracking-wider">
+<span class="flex items-center gap-1 text-slate-400"><span class="w-2 h-2 rounded-full bg-primary/20"></span> 낮음</span>
+<span class="flex items-center gap-1 text-slate-400"><span class="w-2 h-2 rounded-full bg-primary"></span> 높음</span>
+</div>
+</div>
+<!-- Heatmap Mockup -->
+<div class="grid grid-cols-8 gap-2">
+<div class="text-[10px] text-slate-400 pt-8 space-y-6 text-right pr-2 uppercase">
+<div>06:00</div>
+<div>10:00</div>
+<div>14:00</div>
+<div>18:00</div>
+<div>21:00</div>
+</div>
+<!-- Days Columns -->
+<div class="flex flex-col gap-2">
+<div class="text-[10px] text-center font-bold text-slate-400 mb-2 uppercase">MON</div>
+<div class="h-10 rounded bg-primary/40"></div>
+<div class="h-10 rounded bg-primary/60"></div>
+<div class="h-10 rounded bg-primary/20"></div>
+<div class="h-10 rounded bg-primary"></div>
+<div class="h-10 rounded bg-primary/80"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="text-[10px] text-center font-bold text-slate-400 mb-2 uppercase">TUE</div>
+<div class="h-10 rounded bg-primary/30"></div>
+<div class="h-10 rounded bg-primary/50"></div>
+<div class="h-10 rounded bg-primary/10"></div>
+<div class="h-10 rounded bg-primary/90"></div>
+<div class="h-10 rounded bg-primary/70"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="text-[10px] text-center font-bold text-slate-400 mb-2 uppercase">WED</div>
+<div class="h-10 rounded bg-primary/50"></div>
+<div class="h-10 rounded bg-primary/40"></div>
+<div class="h-10 rounded bg-primary/30"></div>
+<div class="h-10 rounded bg-primary/80"></div>
+<div class="h-10 rounded bg-primary/90"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="text-[10px] text-center font-bold text-slate-400 mb-2 uppercase">THU</div>
+<div class="h-10 rounded bg-primary/40"></div>
+<div class="h-10 rounded bg-primary/50"></div>
+<div class="h-10 rounded bg-primary/20"></div>
+<div class="h-10 rounded bg-primary/70"></div>
+<div class="h-10 rounded bg-primary/60"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="text-[10px] text-center font-bold text-slate-400 mb-2 uppercase">FRI</div>
+<div class="h-10 rounded bg-primary/60"></div>
+<div class="h-10 rounded bg-primary/70"></div>
+<div class="h-10 rounded bg-primary/40"></div>
+<div class="h-10 rounded bg-primary"></div>
+<div class="h-10 rounded bg-primary/80"></div>
+</div>
+<div class="flex flex-col gap-2 opacity-60">
+<div class="text-[10px] text-center font-bold text-slate-400 mb-2 uppercase">SAT</div>
+<div class="h-10 rounded bg-primary/10"></div>
+<div class="h-10 rounded bg-primary/20"></div>
+<div class="h-10 rounded bg-primary/40"></div>
+<div class="h-10 rounded bg-primary/30"></div>
+<div class="h-10 rounded bg-primary/10"></div>
+</div>
+<div class="flex flex-col gap-2 opacity-30">
+<div class="text-[10px] text-center font-bold text-slate-400 mb-2 uppercase">SUN</div>
+<div class="h-10 rounded bg-primary/5"></div>
+<div class="h-10 rounded bg-primary/5"></div>
+<div class="h-10 rounded bg-primary/10"></div>
+<div class="h-10 rounded bg-primary/5"></div>
+<div class="h-10 rounded bg-primary/5"></div>
+</div>
+</div>
+</section>
+<!-- Chart 2: Goal vs Actual -->
+<section class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 p-6 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-2">
+<span class="w-1 h-5 bg-primary rounded-full"></span>
+<h3 class="font-bold text-lg">월간 출석율 달성 추이</h3>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-1 bg-slate-400 rounded"></div>
+<span class="text-xs text-slate-500">목표치</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary/30 border border-primary rounded-sm"></div>
+<span class="text-xs text-slate-500">실제 출석</span>
+</div>
+</div>
+</div>
+<div class="relative h-48 w-full flex items-end justify-between px-2">
+<!-- Visual Chart Mockup -->
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="relative w-full px-2">
+<div class="absolute bottom-[70%] w-full border-t border-dashed border-slate-300 dark:border-primary/30"></div>
+<div class="h-32 w-full bg-gradient-to-t from-primary/10 to-primary/40 rounded-t-lg border-x border-t border-primary/20"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">05월</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="relative w-full px-2">
+<div class="absolute bottom-[70%] w-full border-t border-dashed border-slate-300 dark:border-primary/30"></div>
+<div class="h-28 w-full bg-gradient-to-t from-primary/10 to-primary/40 rounded-t-lg border-x border-t border-primary/20"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">06월</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="relative w-full px-2">
+<div class="absolute bottom-[70%] w-full border-t border-dashed border-slate-300 dark:border-primary/30"></div>
+<div class="h-36 w-full bg-gradient-to-t from-primary/10 to-primary/40 rounded-t-lg border-x border-t border-primary/20"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">07월</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="relative w-full px-2">
+<div class="absolute bottom-[75%] w-full border-t border-dashed border-slate-300 dark:border-primary/30"></div>
+<div class="h-40 w-full bg-gradient-to-t from-primary/20 to-primary rounded-t-lg border-x border-t border-primary/20 relative">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-2 py-1 rounded text-[10px] font-bold">85%</div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-primary">08월</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Ranking: This Month's King -->
+<div class="lg:col-span-1">
+<section class="bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 p-6 rounded-xl h-full">
+<div class="flex items-center gap-2 mb-8">
+<span class="w-1 h-5 bg-primary rounded-full"></span>
+<h3 class="font-bold text-lg italic uppercase">이달의 출석왕 TOP 5</h3>
+</div>
+<div class="space-y-6">
+<!-- Rank 1 -->
+<div class="flex items-center gap-4 group">
+<div class="relative">
+<div class="w-12 h-12 rounded-full ring-2 ring-primary ring-offset-2 dark:ring-offset-background-dark overflow-hidden">
+<img alt="Rank 1" class="w-full h-full object-cover" data-alt="Strong fitness man portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChYkHGEuZPrOOe90JPdWGJIV5g5VcDOspS0_GNWjrKN2rmYDqNXrQQbDejTP6OrYznaedywgVlX59NL1fyo7H4rP2IGv2hN8TTLqhzWe5Ph_TCnQ2jnR_oPsMDntpsV-I_uO7q5n820oDTBC7fzE0R4mEbxodmiktB8WqkQywKt7ERIWcpaHZFuKhOL22tauyZ1nPI4usNnyY8O1td5KCIkIPdLDn7mV9bnBXMb_IU4y2gPlFuXlFUHcOThJjW36QuZKxzT3_trQ"/>
+</div>
+<div class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">1</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-1">
+<span class="font-bold text-sm">김태풍 회장님</span>
+<span class="text-primary font-black text-lg tracking-tighter italic">98%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-primary/10 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 98%"></div>
+</div>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center gap-4 group">
+<div class="relative">
+<div class="w-12 h-12 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img alt="Rank 2" class="w-full h-full object-cover" data-alt="Athletic woman posing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE_jg5hK91dw0SYHDWHSmNW5-GQHJbA93qOlqEZP849fhDjaf72xv3O5eKSSRosZ_QPaZkSot3v8v2dA9U2S3TSUuVZw5uiT7wZo1POSO2XoO1tOZkZ4RCL_UBWc8XolnXUHnSRbBBixF87apoSxHRqn2jAEwEyqK3DzGlkmlj24zJLHzmf_7laMMnTrhMqHRVz8udk6jlLtMZHeXCPdtfeZhG6UPVN8ShHHPgGpPI_bC9KxyC-33GGcBZHzTbVDagji6ppqqpMA"/>
+</div>
+<div class="absolute -top-1 -right-1 bg-slate-400 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">2</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-1">
+<span class="font-bold text-sm">이수지 회원</span>
+<span class="text-slate-600 dark:text-slate-400 font-bold text-base italic">92%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-primary/10 rounded-full">
+<div class="h-full bg-slate-400 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="flex items-center gap-4 group">
+<div class="relative">
+<div class="w-12 h-12 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img alt="Rank 3" class="w-full h-full object-cover" data-alt="Portrait of young athletic male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBItFI4P71KVIu3tfBLUxJvAkfLj_x2hHkNCWAkI_fT5d_bRSGOOXBx8Kjf3G5YHqBTKuOoxNExHMAdM6Xq1g_7KL9UBzlPDp1k2dfqNj3hICBySxBP4_mItnsvgmxW2oBKyQ4sbidacZycAzXmpVKrvoUEJoWy5fVx85mG0JXf3xV-1GV2Ob_e_gdBndOA755cCA2QDNk1umYstEtbSqOSaufiTlTogR9jkg-AL0HK1dnpLHKOgU6EQMHqsZx-HY71K7k5cTHcYw"/>
+</div>
+<div class="absolute -top-1 -right-1 bg-amber-600/70 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">3</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-1">
+<span class="font-bold text-sm">박진우 회원</span>
+<span class="text-slate-600 dark:text-slate-400 font-bold text-base italic">89%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-primary/10 rounded-full">
+<div class="h-full bg-amber-600/50 rounded-full" style="width: 89%"></div>
+</div>
+</div>
+</div>
+<!-- Rank 4 -->
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img alt="Rank 4" class="w-full h-full object-cover" data-alt="Portrait of female fitness enthusiast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1C_WJMjOs7I8xpTjTykgUuXJ9Nx5nDobNJC94G00CUUoVUndyIMljYbSDc9PS7j-jZyzLtkViwBEgogpARBoGaWo1U6d2bA7eawl-7rNoXkUC52DuN6We6hHwNWIkjaD41zz4m-nnsXByDYtg7P3CHkZgYVpWH1zhCmUPVgtC6BDK6f_WnwRGIa-w_IiySCa8GH42x1jgOhZaKTOcI6vImJzob_IFV0xE5UbO3fxFSqHL6--Wka089LBglyBgAS4AfWCb9cGmLQ"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-1">
+<span class="font-bold text-sm">최유나 회원</span>
+<span class="text-slate-600 dark:text-slate-400 font-bold text-base italic">85%</span>
+</div>
+<div class="h-1 w-full bg-slate-100 dark:bg-primary/10 rounded-full">
+<div class="h-full bg-slate-400/50 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Rank 5 -->
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img alt="Rank 5" class="w-full h-full object-cover" data-alt="Close up of a muscular male" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs8NkPRWPssAimUwsojgNjmtCy6CjhCfMqOD4RaqhCxa989gydqpeyaJAGncfIX172k8eV954tBtlbl1kCrlOMPNxGGFyX5p2vDNW60H7R-kUvy7HKfmkY11TLJWgRurT3EpBXq-dQF7ZVQkKaeQdh0GO70qVUq0APeSflf3KzdH7JzeD-DlymCCCSRqTEjQ4NQu2HF3TRrskw9k9RzzwL7ktzmw3oMyNOPTLaool_cOoQpEXTpCBqYj9VLSLdsWYTuCaQW6anIA"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-1">
+<span class="font-bold text-sm">정동현 회원</span>
+<span class="text-slate-600 dark:text-slate-400 font-bold text-base italic">84%</span>
+</div>
+<div class="h-1 w-full bg-slate-100 dark:bg-primary/10 rounded-full">
+<div class="h-full bg-slate-400/50 rounded-full" style="width: 84%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-200 dark:border-primary/20">
+<button class="w-full py-3 bg-slate-100 dark:bg-primary/10 rounded-lg text-sm font-bold text-slate-600 dark:text-primary hover:bg-primary hover:text-white transition-all">전체 랭킹 확인하기</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</body></html>

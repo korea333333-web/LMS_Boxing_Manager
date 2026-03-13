@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e43f3f",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211111",
+                        "surface": "#2d1a1a",
+                        "surface-light": "#462525",
+                        "border-muted": "#633636",
+                        "text-muted": "#c69595"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<title>Body Boxing Gym Admin - 분석</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-border-muted bg-background-dark flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">sports_martial_arts</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-white uppercase">Body Boxing</h1>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 text-text-muted hover:text-white hover:bg-surface-light rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">대시보드</span>
+</a>
+<div class="space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-white bg-primary rounded-lg">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">분석</span>
+</div>
+<div class="pl-10 space-y-1 mt-1">
+<a class="block px-3 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg" href="#">연령별 현황</a>
+<a class="block px-3 py-2 text-sm font-medium text-text-muted hover:text-white rounded-lg" href="#">출석 분석</a>
+</div>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 text-text-muted hover:text-white hover:bg-surface-light rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">회원 관리</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-muted">
+<button class="flex w-full items-center gap-3 px-3 py-2 text-text-muted hover:text-white rounded-lg transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">로그아웃</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Bar -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-border-muted bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center flex-1 max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-xl">search</span>
+<input class="w-full bg-surface-light border-none rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder:text-text-muted focus:ring-1 focus:ring-primary" placeholder="회원 검색..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-lg bg-surface-light text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-lg bg-surface-light text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-border-muted">
+<div class="text-right">
+<p class="text-xs font-bold text-white leading-none">김관리 관장님</p>
+<p class="text-[10px] text-text-muted mt-1 uppercase">Administrator</p>
+</div>
+<div class="size-9 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary overflow-hidden">
+<img alt="Admin Profile" class="size-full object-cover" data-alt="Admin profile avatar of a gym coach" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHPOoCgZE9ITZLeyjDaxRGw0RR0T9lXwhjzeycvVQkpy8tL_11BkqtUTkdPnIbxnG5XD73pPHt-OozqrivYnOfu03LI92sPpkLr4M0bERckghwzZ5AOBgyo034SJIcl10TrPQ8aRnGLkqQG-LvNLKmGSB1A-dO2rNl8sybFAGOKMlbJkZL650-IPllAYFMr8BX7HKvN3DUDzVEEFMbACjP2dGL6csq9dtGi20dKyXj2Fsay0JHSDSOIml_zWjfBK7bYONaVEvPEQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto p-8 space-y-8 bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">연령별 인원 및 참석율 추이</h2>
+<p class="text-slate-500 dark:text-text-muted">체육관 연령대별 실시간 데이터 및 성장 지표 분석</p>
+</div>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface dark:bg-surface p-6 rounded-xl border border-border-muted shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<p class="text-sm font-semibold text-text-muted">초등부 인원</p>
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-white">42명</h3>
+<span class="text-emerald-500 text-xs font-bold flex items-center">+5.2% <span class="material-symbols-outlined text-xs">trending_up</span></span>
+</div>
+</div>
+<div class="bg-surface dark:bg-surface p-6 rounded-xl border border-border-muted shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<p class="text-sm font-semibold text-text-muted">중등부 인원</p>
+<span class="material-symbols-outlined text-primary">child_care</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-white">38명</h3>
+<span class="text-rose-500 text-xs font-bold flex items-center">-2.1% <span class="material-symbols-outlined text-xs">trending_down</span></span>
+</div>
+</div>
+<div class="bg-surface dark:bg-surface p-6 rounded-xl border border-border-muted shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<p class="text-sm font-semibold text-text-muted">고등부 인원</p>
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-white">25명</h3>
+<span class="text-emerald-500 text-xs font-bold flex items-center">+12.4% <span class="material-symbols-outlined text-xs">trending_up</span></span>
+</div>
+</div>
+<div class="bg-surface dark:bg-surface p-6 rounded-xl border border-border-muted shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<p class="text-sm font-semibold text-text-muted">성인부 인원</p>
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-white">56명</h3>
+<span class="text-emerald-500 text-xs font-bold flex items-center">+8.7% <span class="material-symbols-outlined text-xs">trending_up</span></span>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Line Chart Placeholder -->
+<div class="lg:col-span-2 bg-surface p-6 rounded-xl border border-border-muted">
+<div class="flex items-center justify-between mb-8">
+<h4 class="text-lg font-bold text-white">연령대별 인원 변동 추이 (6개월)</h4>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[10px] text-text-muted"><div class="size-2 rounded-full bg-primary"></div> 초등부</span>
+<span class="flex items-center gap-1 text-[10px] text-text-muted"><div class="size-2 rounded-full bg-blue-500"></div> 중등부</span>
+<span class="flex items-center gap-1 text-[10px] text-text-muted"><div class="size-2 rounded-full bg-emerald-500"></div> 성인부</span>
+</div>
+</div>
+<div class="h-[300px] w-full relative flex items-end justify-between px-2">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between py-2 border-b border-border-muted">
+<div class="w-full border-t border-border-muted/30"></div>
+<div class="w-full border-t border-border-muted/30"></div>
+<div class="w-full border-t border-border-muted/30"></div>
+<div class="w-full border-t border-border-muted/30"></div>
+<div class="w-full border-t border-border-muted/30"></div>
+</div>
+<!-- Mock Visualization -->
+<div class="w-full h-full relative z-10 flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent"></div>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 300">
+<path d="M0,200 Q150,150 300,180 T600,100 T800,50" fill="none" stroke="#e43f3f" stroke-width="3"></path>
+<path d="M0,220 Q150,210 300,230 T600,180 T800,160" fill="none" stroke="#3b82f6" stroke-width="3"></path>
+<path d="M0,250 Q150,240 300,200 T600,220 T800,180" fill="none" stroke="#10b981" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[11px] text-text-muted font-medium">
+<span>1월</span><span>2월</span><span>3월</span><span>4월</span><span>5월</span><span>6월</span>
+</div>
+</div>
+<!-- Bar Chart Placeholder -->
+<div class="bg-surface p-6 rounded-xl border border-border-muted">
+<h4 class="text-lg font-bold text-white mb-8">연령대별 평균 참석율 (%)</h4>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium text-text-muted">
+<span>초등부</span>
+<span class="text-white">88%</span>
+</div>
+<div class="h-2 w-full bg-surface-light rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium text-text-muted">
+<span>중등부</span>
+<span class="text-white">74%</span>
+</div>
+<div class="h-2 w-full bg-surface-light rounded-full overflow-hidden">
+<div class="h-full bg-primary/70 rounded-full" style="width: 74%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium text-text-muted">
+<span>고등부</span>
+<span class="text-white">62%</span>
+</div>
+<div class="h-2 w-full bg-surface-light rounded-full overflow-hidden">
+<div class="h-full bg-primary/50 rounded-full" style="width: 62%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium text-text-muted">
+<span>성인부</span>
+<span class="text-white">81%</span>
+</div>
+<div class="h-2 w-full bg-surface-light rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 81%"></div>
+</div>
+</div>
+</div>
+<div class="mt-10 p-4 rounded-lg bg-surface-light/30 border border-border-muted/50">
+<p class="text-xs text-text-muted leading-relaxed">
+<span class="text-primary font-bold">인사이트:</span> 초등부의 참석율이 가장 높으며, 고등부는 시험 기간 영향으로 전월 대비 10% 감소했습니다.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface rounded-xl border border-border-muted overflow-hidden">
+<div class="p-6 border-b border-border-muted flex items-center justify-between">
+<h4 class="text-lg font-bold text-white">이번 달 연령별 상세 데이터 분석</h4>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-surface-light text-xs font-bold text-white rounded hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-sm">download</span> CSV 내보내기
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-light/30 text-text-muted text-[11px] uppercase tracking-wider">
+<th class="px-6 py-4 font-bold">연령대</th>
+<th class="px-6 py-4 font-bold">총 인원</th>
+<th class="px-6 py-4 font-bold">신규 등록</th>
+<th class="px-6 py-4 font-bold">평균 주간 참석</th>
+<th class="px-6 py-4 font-bold">참석율 (MoM)</th>
+<th class="px-6 py-4 font-bold">상태</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-muted/30">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">school</span>
+</div>
+<span class="text-sm font-semibold text-white">초등부</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-white font-medium">42</td>
+<td class="px-6 py-4 text-sm text-emerald-500 font-bold">+5</td>
+<td class="px-6 py-4 text-sm text-white">4.2회</td>
+<td class="px-6 py-4 text-sm text-white">88% <span class="text-[10px] text-emerald-500 ml-1">▲ 2%</span></td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-full border border-emerald-500/20">안정</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">child_care</span>
+</div>
+<span class="text-sm font-semibold text-white">중등부</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-white font-medium">38</td>
+<td class="px-6 py-4 text-sm text-rose-500 font-bold">-1</td>
+<td class="px-6 py-4 text-sm text-white">3.5회</td>
+<td class="px-6 py-4 text-sm text-white">74% <span class="text-[10px] text-rose-500 ml-1">▼ 5%</span></td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-bold rounded-full border border-amber-500/20">주의</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">fitness_center</span>
+</div>
+<span class="text-sm font-semibold text-white">고등부</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-white font-medium">25</td>
+<td class="px-6 py-4 text-sm text-emerald-500 font-bold">+3</td>
+<td class="px-6 py-4 text-sm text-white">2.8회</td>
+<td class="px-6 py-4 text-sm text-white">62% <span class="text-[10px] text-rose-500 ml-1">▼ 12%</span></td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-rose-500/10 text-rose-500 text-[10px] font-bold rounded-full border border-rose-500/20">위험</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="text-sm font-semibold text-white">성인부</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-white font-medium">56</td>
+<td class="px-6 py-4 text-sm text-emerald-500 font-bold">+7</td>
+<td class="px-6 py-4 text-sm text-white">3.9회</td>
+<td class="px-6 py-4 text-sm text-white">81% <span class="text-[10px] text-emerald-500 ml-1">▲ 4%</span></td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-full border border-emerald-500/20">안정</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e43f3f",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0A0A0A",
+                        "card-dark": "#141414",
+                        "border-dark": "#2A2A2A",
+                        "input-bg": "#1A1A1A",
+                        "input-border": "#333333",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-diagonal-gradient {
+            background: linear-gradient(135deg, #0A0A0A 0%, #150a0a 100%);
+        }
+        .btn-gradient {
+            background: linear-gradient(to right, #E53E3E, #C53030);
+        }
+        .focus-glow:focus {
+            box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+            border-color: #E53E3E !important;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col items-center justify-center p-4 bg-diagonal-gradient">
+<!-- Login Container -->
+<div class="w-full max-w-[480px] flex flex-col items-center">
+<!-- Login Card -->
+<div class="w-full bg-card-dark border border-border-dark rounded-2xl p-8 md:p-10 shadow-2xl">
+<!-- Header Section -->
+<div class="flex flex-col items-center mb-10">
+<div class="text-[48px] mb-4">🥊</div>
+<h1 class="text-white text-[28px] font-bold tracking-tight mb-1">바디복싱짐</h1>
+<p class="text-[#888888] text-sm font-normal">관리자</p>
+</div>
+<!-- Form Section -->
+<form class="space-y-6">
+<!-- Username Input -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1" for="username">아이디</label>
+<div class="relative">
+<input class="w-full h-12 px-4 bg-input-bg border border-input-border rounded-lg text-white placeholder-[#555555] focus:outline-none focus-glow transition-all duration-200" id="username" placeholder="아이디를 입력하세요" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1" for="password">비밀번호</label>
+<div class="relative">
+<input class="w-full h-12 px-4 bg-input-bg border border-input-border rounded-lg text-white placeholder-[#555555] focus:outline-none focus-glow transition-all duration-200" id="password" placeholder="비밀번호를 입력하세요" type="password"/>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-3 px-1">
+<label class="flex items-center cursor-pointer group">
+<input class="w-5 h-5 rounded border-input-border bg-input-bg text-primary focus:ring-primary focus:ring-offset-background-dark transition-all" type="checkbox"/>
+<span class="ml-3 text-slate-300 text-sm font-normal group-hover:text-white transition-colors">로그인 상태 유지</span>
+</label>
+</div>
+<!-- Login Button -->
+<button class="w-full h-12 btn-gradient text-white font-bold text-base rounded-lg shadow-lg hover:opacity-90 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 mt-4" type="submit">
+<span>로그인</span>
+<span class="material-symbols-outlined text-[20px]">login</span>
+</button>
+</form>
+<!-- Links -->
+<div class="mt-8 flex justify-center gap-4 text-xs text-[#555555]">
+<a class="hover:text-primary transition-colors" href="#">비밀번호 찾기</a>
+<span class="text-border-dark">|</span>
+<a class="hover:text-primary transition-colors" href="#">계정 생성 요청</a>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-8 text-[#555555] text-[12px] font-normal tracking-wide">
+            © 2026 바디복싱짐
+        </footer>
+</div>
+<!-- Decorative Background Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden -z-10 opacity-20">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
+</div>
+</body></html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Body Boxing Gym - Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e43f3f",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211111",
+                        "accent-muted": "#462525",
+                        "text-muted": "#c69595",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        }
+        .chart-gradient-primary {
+            background: linear-gradient(180deg, rgba(228, 63, 63, 0.2) 0%, rgba(228, 63, 63, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="w-64 flex-shrink-0 bg-background-light dark:bg-background-dark border-r border-accent-muted flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-xl font-black leading-normal tracking-tight">Body Boxing Gym</h1>
+<p class="text-text-muted text-xs font-medium uppercase tracking-widest">관리자 패널</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">대시보드</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-semibold">회원 관리</span>
+</a>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-semibold">분석</span>
+</a>
+<div class="ml-9 flex flex-col gap-1 border-l border-accent-muted pl-4 mt-1">
+<a class="text-xs py-1.5 text-primary font-bold" href="#">연령 및 출석</a>
+<a class="text-xs py-1.5 text-text-muted hover:text-slate-100 transition-colors" href="#">수익 보고서</a>
+<a class="text-xs py-1.5 text-text-muted hover:text-slate-100 transition-colors" href="#">기기 사용률</a>
+</div>
+</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-sm font-semibold">수업 일정</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-semibold">설정</span>
+</a>
+</nav>
+</div>
+<button class="flex items-center justify-center gap-2 w-full bg-accent-muted hover:bg-primary text-white py-2.5 rounded-lg transition-all font-bold text-sm">
+<span class="material-symbols-outlined text-sm">logout</span>
+                로그아웃
+            </button>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark scroll-smooth">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-6 border-b border-accent-muted flex justify-between items-center">
+<div>
+<h2 class="text-2xl font-black text-slate-900 dark:text-white">연령대 및 출석 분석</h2>
+<p class="text-text-muted text-sm mt-1 font-normal">체육관 연령별 인구 통계 및 출석 트렌드 심층 데이터</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-accent-muted rounded-lg text-sm font-bold text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                        최근 30일
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">download</span>
+                        보고서 내보내기
+                    </button>
+</div>
+</header>
+<div class="p-8 flex flex-col gap-8">
+<!-- Section 1: Distribution and Patterns -->
+<section>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="w-1.5 h-6 bg-primary rounded-full"></span>
+                        연령대별 분포 및 참석 패턴
+                    </h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Age Distribution (Pie Chart Style) -->
+<div class="bg-accent-muted/20 border border-accent-muted p-6 rounded-xl">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-1">회원 분포</p>
+<p class="text-3xl font-black text-white">450 <span class="text-sm font-normal text-text-muted">명</span></p>
+</div>
+<div class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded">
+                                    +5.2% 상향
+                                </div>
+</div>
+<div class="flex items-center justify-center py-4 relative">
+<!-- Mockup Pie Chart -->
+<div class="w-48 h-48 rounded-full border-[16px] border-primary/20 relative flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-[16px] border-primary border-r-transparent border-b-transparent rotate-45"></div>
+<div class="absolute inset-0 rounded-full border-[16px] border-slate-500/50 border-t-transparent border-l-transparent -rotate-12"></div>
+<div class="text-center">
+<p class="text-2xl font-black text-white">20-30대</p>
+<p class="text-xs text-text-muted">주요 타겟층</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-sm text-text-muted">20대 (42%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-slate-500"></div>
+<span class="text-sm text-text-muted">30대 (28%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+<span class="text-sm text-text-muted">10대 (15%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-slate-700"></div>
+<span class="text-sm text-text-muted">40대 이상 (15%)</span>
+</div>
+</div>
+</div>
+<!-- Attendance Pattern (Line Chart Style) -->
+<div class="bg-accent-muted/20 border border-accent-muted p-6 rounded-xl">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-1">출석 트렌드</p>
+<p class="text-3xl font-black text-white">82.4 <span class="text-sm font-normal text-text-muted">%</span></p>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[10px] text-primary font-bold"><span class="w-2 h-2 rounded-full bg-primary"></span> 실시간</span>
+</div>
+</div>
+<div class="h-48 w-full mt-4 relative">
+<!-- Mockup Line Chart -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 400 150">
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#e43f3f" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#e43f3f" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,120 Q50,110 80,40 T160,80 T240,30 T320,60 T400,20" fill="none" stroke="#e43f3f" stroke-width="3"></path>
+<path d="M0,120 Q50,110 80,40 T160,80 T240,30 T320,60 T400,20 L400,150 L0,150 Z" fill="url(#areaGradient)"></path>
+<!-- Points -->
+<circle cx="80" cy="40" fill="#e43f3f" r="4"></circle>
+<circle cx="240" cy="30" fill="#e43f3f" r="4"></circle>
+<circle cx="400" cy="20" fill="#e43f3f" r="4"></circle>
+</svg>
+<div class="flex justify-between mt-4">
+<span class="text-[10px] text-text-muted font-bold">MON</span>
+<span class="text-[10px] text-text-muted font-bold">TUE</span>
+<span class="text-[10px] text-text-muted font-bold">WED</span>
+<span class="text-[10px] text-text-muted font-bold">THU</span>
+<span class="text-[10px] text-text-muted font-bold">FRI</span>
+<span class="text-[10px] text-text-muted font-bold">SAT</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Inflow & Churn Rate -->
+<section>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="w-1.5 h-6 bg-primary rounded-full"></span>
+                        신규 회원 유입 및 이탈율 분석
+                    </h3>
+<div class="bg-accent-muted/20 border border-accent-muted rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-accent-muted/30">
+<th class="px-6 py-4 text-xs font-bold text-text-muted uppercase tracking-wider">연령대</th>
+<th class="px-6 py-4 text-xs font-bold text-text-muted uppercase tracking-wider">신규 등록</th>
+<th class="px-6 py-4 text-xs font-bold text-text-muted uppercase tracking-wider">이탈율 (Churn)</th>
+<th class="px-6 py-4 text-xs font-bold text-text-muted uppercase tracking-wider">순증가</th>
+<th class="px-6 py-4 text-xs font-bold text-text-muted uppercase tracking-wider">추세</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-accent-muted">
+<tr>
+<td class="px-6 py-4 font-bold text-white">10대 (Teenagers)</td>
+<td class="px-6 py-4">42명</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-accent-muted rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 12%"></div>
+</div>
+<span class="text-xs font-bold">12%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary font-bold">+34</td>
+<td class="px-6 py-4"><span class="material-symbols-outlined text-primary">trending_up</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-bold text-white">20대 (Young Adults)</td>
+<td class="px-6 py-4">128명</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-accent-muted rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 8%"></div>
+</div>
+<span class="text-xs font-bold">8%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary font-bold">+118</td>
+<td class="px-6 py-4"><span class="material-symbols-outlined text-primary">trending_up</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-bold text-white">30대 (Professionals)</td>
+<td class="px-6 py-4">85명</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-accent-muted rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 15%"></div>
+</div>
+<span class="text-xs font-bold">15%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-primary font-bold">+72</td>
+<td class="px-6 py-4"><span class="material-symbols-outlined text-primary">trending_up</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-bold text-white">40대+ (Seniors/Vets)</td>
+<td class="px-6 py-4">31명</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-accent-muted rounded-full overflow-hidden">
+<div class="h-full bg-slate-500" style="width: 28%"></div>
+</div>
+<span class="text-xs font-bold">28%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-400 font-bold">+22</td>
+<td class="px-6 py-4"><span class="material-symbols-outlined text-slate-500">trending_flat</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 3: Popular Times -->
+<section>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+<span class="w-1.5 h-6 bg-primary rounded-full"></span>
+                        요일별 인기 수업 시간대 분석
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-7 gap-4">
+<!-- Heatmap Columns -->
+<div class="flex flex-col gap-2">
+<span class="text-xs text-text-muted font-bold text-center mb-2">월요일</span>
+<div class="h-20 bg-primary rounded-lg flex items-center justify-center text-xs font-black shadow-inner">19:00</div>
+<div class="h-20 bg-primary/80 rounded-lg flex items-center justify-center text-xs font-bold">20:30</div>
+<div class="h-20 bg-primary/40 rounded-lg flex items-center justify-center text-xs">07:00</div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs text-text-muted font-bold text-center mb-2">화요일</span>
+<div class="h-20 bg-primary rounded-lg flex items-center justify-center text-xs font-black shadow-inner">18:30</div>
+<div class="h-20 bg-primary/60 rounded-lg flex items-center justify-center text-xs font-bold">20:00</div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs text-text-muted font-bold text-center mb-2">수요일</span>
+<div class="h-20 bg-primary rounded-lg flex items-center justify-center text-xs font-black shadow-inner">19:00</div>
+<div class="h-20 bg-primary/90 rounded-lg flex items-center justify-center text-xs font-bold">07:30</div>
+<div class="h-20 bg-primary/30 rounded-lg"></div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs text-text-muted font-bold text-center mb-2">목요일</span>
+<div class="h-20 bg-primary/80 rounded-lg flex items-center justify-center text-xs font-bold">19:30</div>
+<div class="h-20 bg-primary/50 rounded-lg flex items-center justify-center text-xs">21:00</div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs text-text-muted font-bold text-center mb-2">금요일</span>
+<div class="h-20 bg-primary rounded-lg flex items-center justify-center text-xs font-black shadow-inner">20:00</div>
+<div class="h-20 bg-primary/40 rounded-lg flex items-center justify-center text-xs">18:00</div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs text-text-muted font-bold text-center mb-2">토요일</span>
+<div class="h-20 bg-primary/60 rounded-lg flex items-center justify-center text-xs font-bold">11:00</div>
+<div class="h-20 bg-primary/90 rounded-lg flex items-center justify-center text-xs font-black shadow-inner">13:30</div>
+<div class="h-20 bg-primary/20 rounded-lg"></div>
+<div class="h-20 bg-accent-muted/20 rounded-lg"></div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-xs text-text-muted font-bold text-center mb-2">일요일</span>
+<div class="h-20 bg-accent-muted/30 border border-dashed border-accent-muted rounded-lg flex items-center justify-center text-[10px] text-text-muted">휴관</div>
+<div class="h-20 bg-accent-muted/30 border border-dashed border-accent-muted rounded-lg flex items-center justify-center text-[10px] text-text-muted">휴관</div>
+<div class="h-20 bg-accent-muted/30 border border-dashed border-accent-muted rounded-lg flex items-center justify-center text-[10px] text-text-muted">휴관</div>
+<div class="h-20 bg-accent-muted/30 border border-dashed border-accent-muted rounded-lg flex items-center justify-center text-[10px] text-text-muted">휴관</div>
+</div>
+</div>
+<div class="mt-6 flex items-center justify-end gap-6">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded bg-primary"></div>
+<span class="text-xs text-text-muted">매우 혼잡 (80% 이상)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded bg-primary/50"></div>
+<span class="text-xs text-text-muted">보통 (50% 내외)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded bg-accent-muted/20"></div>
+<span class="text-xs text-text-muted">여유 (20% 이하)</span>
+</div>
+</div>
+</section>
+</div>
+<footer class="p-8 border-t border-accent-muted text-center">
+<p class="text-text-muted text-xs">© 2024 Body Boxing Gym Analytics Service. All rights reserved.</p>
+</footer>
+</main>
+</div>
+</body></html>

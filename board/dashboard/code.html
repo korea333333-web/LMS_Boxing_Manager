@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>바디복싱짐 관리자</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e43f3f",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#111111",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-bar { transition: height 0.3s ease; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-10">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">sports_martial_arts</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">바디복싱짐 관리자</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden">
+<div class="text-slate-400 flex items-center justify-center pl-4 bg-slate-100 dark:bg-slate-800">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-500 text-sm" placeholder="통합 검색..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-full border-2 border-primary bg-cover bg-center" data-alt="Admin user profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTwGHa7vWN-x8ojaCFcShknXG9AYyl3owT_N_SGLFlcFfYUEvumQ12MTo-UM-ztoYKGW58Mi23W6sm8A9JM1ZORSQ_ls4OoW8mjQTo2Yx9Cm1EZAzRM5qkzUTQxd48kcjwn-fXX2qObPAND0MM88xPh6FkORw_jm3XFLNNQV3SB5pQO2dTDhxSQiPtKVMhhCP8ms-AaT85jBkypwQcSi_NBbf8dtlrz0b9_1isPat2SH85DvnsZMhpOKlyXvhvR8yuUfWoBgN9lA')"></div>
+</div>
+</header>
+<main class="flex flex-col flex-1 p-6 lg:p-10 max-w-[1440px] mx-auto w-full gap-8">
+<!-- Row 1: Summary Statistics -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">전체 회원수</p>
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-4xl font-extrabold leading-tight">1,284</p>
+<div class="flex items-center gap-1 text-emerald-500 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.4%</span>
+<span class="text-slate-400 font-normal ml-1">지난달 대비</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">현재 운동 중</p>
+<span class="material-symbols-outlined text-primary">podium</span>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-4xl font-extrabold leading-tight">42</p>
+<div class="flex items-center gap-1 text-emerald-500 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+5.2%</span>
+<span class="text-slate-400 font-normal ml-1">최대 동시 접속</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">체육관 전체 칼로리 소모량</p>
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-4xl font-extrabold leading-tight">142,500 <span class="text-xl font-bold">kcal</span></p>
+<div class="flex items-center gap-1 text-slate-400 text-sm font-normal">
+<span>오늘의 총 칼로리 소모</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">평균 운동 시간</p>
+<span class="material-symbols-outlined text-primary">timer</span>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-4xl font-extrabold leading-tight">54<span class="text-xl font-bold ml-1">m</span></p>
+<div class="flex items-center gap-1 text-emerald-500 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+8.7%</span>
+<span class="text-slate-400 font-normal ml-1">고강도 운동</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Charts & Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Hourly Attendance Vertical Bar Chart -->
+<div class="lg:col-span-1 flex flex-col gap-6 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex flex-col gap-1">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">시간대별 출석 현황</h3>
+<p class="text-slate-500 text-sm">최근 24시간 실시간 체육관 트래픽</p>
+</div>
+<div class="flex items-end justify-between h-64 gap-2 pt-4">
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="bg-primary chart-bar w-full rounded-t-lg" style="height: 20%;"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase">6am</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="bg-primary chart-bar w-full rounded-t-lg" style="height: 85%;"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase">9am</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="bg-primary chart-bar w-full rounded-t-lg" style="height: 45%;"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase">12pm</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="bg-primary chart-bar w-full rounded-t-lg" style="height: 70%;"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase">3pm</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="bg-primary chart-bar w-full rounded-t-lg" style="height: 95%;"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase">6pm</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="bg-primary chart-bar w-full rounded-t-lg" style="height: 60%;"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase">9pm</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="bg-primary chart-bar w-full rounded-t-lg" style="height: 15%;"></div>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase">12am</span>
+</div>
+</div>
+<div class="flex items-center justify-center p-3 rounded-lg bg-primary/10 text-primary text-sm font-bold"><span class="material-symbols-outlined text-sm mr-2">analytics</span>예상 혼잡 시간: 오후 5:00 - 오후 8:00</div>
+</div>
+<!-- Entry/Exit Feed -->
+<div class="lg:col-span-2 flex flex-col rounded-xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">입퇴장 피드</h3>
+<button class="text-primary text-sm font-bold hover:underline">전체 로그 보기</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">회원명</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">활동</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">시간</th>
+<th class="px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">상태</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover" data-alt="Alex Johnson profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZbegZlf2w5F9xbyn_zi7PxvsvsZCV_D5PPW-AkafRzZ4jzpnd63-hkP_8nsa2WrQmGZ_fiXY7XWcWc_BKaumzE-9UH8tJpUfhjqy16gufCmUpIK5Jwh-T0l2Ld9pjSqkirr15RPQBct4Nzxq6-zxxXxHtScC3KK10NWMv1-pd56KKjcp9mwjYb7eyOY9-OIaJOTSZwquTdx4DxI43jSjL9glp2y7XN_K6K4gQeRuz329ClBUjBWBXbGPplh97Ft3Bnz5YTG4a8g')"></div>
+<span class="text-sm font-medium">Alex Johnson</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400">입장</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">08:14 AM</td>
+<td class="px-6 py-4 text-right">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">운동 중</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover" data-alt="Sarah Miller profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClAKqmjspY1WRS_Xrk-Ds-3mFZQsh4L1by_7jGCpCdT9re2iM-3c_2t-_GQCzfG6qJU8j10Z9TyE1C9Sb0hizH3gd3YP_pJ1Kr1R8482rfTq1Rv6tITejWb-p7wkXWOzXhk78ESOPZIvy0SZJ85oqKUTB-4ghc7k5Ziflsmx4QyaVrvu1Cmq3yQIco2CjnzhwwHL0OzkQGMYhJfwhy-38_jCv76q6fif-5JjwkAp_L9xNBQdEiBkCiZCal7rU_Gew6NizyGYHmdg')"></div>
+<span class="text-sm font-medium">Sarah Miller</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-400">퇴장</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">08:12 AM</td>
+<td class="px-6 py-4 text-right">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">완료</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover" data-alt="Mike Ross profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtimnjnoeGl6PDhfLr6sEzNCT3Nt5f2sxO_jkT3-sCyCAPKgvG2VbnftVBDlaX35z5re3P7ymYzW0YrKykXMywq74MDbWX8JMAWvjylmks9lWtwI-2z-yeyID51gZOMO7FR-EHgdzwd0zEeskhQahb2omgVEiyN2pHSZ-ABsibG6fBpJl5A-LirbedOL5P8RsHit7yxCmcvTFSZM3He9OgCwYgOZpegqLnqzz8sfuvi-1NpUosLnw7dC1XcjCe2Ky1FVfLdwwM9A')"></div>
+<span class="text-sm font-medium">Mike Ross</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400">입장</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">08:05 AM</td>
+<td class="px-6 py-4 text-right">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">운동 중</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover" data-alt="Emma Wilson profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuASBqY34B-ft4rByPbiTZDYK8y1KSSvodnk9HEY0pSU7ALwA-MiEGEFu7MY-oq3yeoJxIakspZ4ht17UFt119MBN8Bw4a-rxhTMMHb8kbeokuUJ8fc6PLLFTMhUxsRJ-ri3O2jxY8s-4r3M1ZFN0kLY6MJj933smM0em-tR4BSb6xoRmLBTActRy8gvnzk8s7ZH_8Ed0Vv4skNHa4waF8MH4RfXJLBMMN5EaqjEVmuhZZ4faOVsV2fhzI8wc97fZFU5MmmwQ-kAzw')"></div>
+<span class="text-sm font-medium">Emma Wilson</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400">입장</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">07:58 AM</td>
+<td class="px-6 py-4 text-right">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">운동 중</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Row 3: Intensity & Top Performance -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Workout Intensity Distribution -->
+<div class="lg:col-span-2 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">운동 강도 분포</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<div class="h-2 w-2 rounded-full bg-primary"></div>
+<span class="text-[10px] uppercase font-bold text-slate-500">고강도</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+<span class="text-[10px] uppercase font-bold text-slate-500">Strength</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="h-2 w-2 rounded-full bg-slate-500"></div>
+<span class="text-[10px] uppercase font-bold text-slate-500">Cardio</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="w-full h-10 flex rounded-lg overflow-hidden">
+<div class="bg-primary flex items-center justify-center text-[10px] text-white font-bold" style="width: 45%;">45%</div>
+<div class="bg-slate-300 dark:bg-slate-600 flex items-center justify-center text-[10px] text-slate-800 dark:text-slate-200 font-bold" style="width: 35%;">35%</div>
+<div class="bg-slate-500 flex items-center justify-center text-[10px] text-white font-bold" style="width: 20%;">20%</div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="flex flex-col border-r border-slate-100 dark:border-slate-800">
+<p class="text-xs text-slate-500 font-medium">평균 심박수</p>
+<p class="text-xl font-bold">148</p>
+</div>
+<div class="flex flex-col border-r border-slate-100 dark:border-slate-800">
+<p class="text-xs text-slate-500 font-medium">총 운동량</p>
+<p class="text-xl font-bold">12.4k kg</p>
+</div>
+<div class="flex flex-col">
+<p class="text-xs text-slate-500 font-medium">연소율</p>
+<p class="text-xl font-bold">640 cal/h</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Calorie Burner -->
+<div class="rounded-xl p-6 bg-primary dark:bg-primary/90 text-white shadow-lg flex flex-col gap-4 relative overflow-hidden"><div class="relative z-10 flex justify-between items-start">
+<div>
+<h3 class="text-white text-lg font-bold">오늘의 칼로리 왕</h3>
+<p class="text-white/80 text-sm">최근 24시간 동안 가장 많은 칼로리를 소모한 회원</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-yellow-400">emoji_events</span>
+</div>
+<div class="relative z-10 flex items-center gap-4 py-2">
+<div class="h-16 w-16 rounded-full border-4 border-white/30 bg-cover bg-center" data-alt="Top athlete profile photo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDlKqNjyhWKzdRdtPpmX_Zodxm3ITEATQbXJN4qy480rpeGYvkPw_6mTpqBZMTT_--3ptm840w51y9TStni8eGvSyYZ-k6_-NRXWO5aOWxssGK_-5kmlCxMohJkIZac0_nz4raRcaumQ77nxRiFF07IIEjXCeGDw-HQpufAHDxvkvktbUoFMgh2ploF6dn_7FXi8rtab6-M6hJdKL4x2T5Hyen9l3WHLRT-9X4CdaVt8J4fW6SJyRA2otrWSHkRXoRvXF7TOFL82A')"></div>
+<div>
+<p class="text-xl font-extrabold">김복서 (Marcus Thorne)</p>
+<p class="text-white/90 text-sm font-medium">2022년부터 회원</p>
+</div>
+</div>
+<div class="relative z-10 flex justify-between items-end mt-auto">
+<div>
+<p class="text-[10px] uppercase font-bold tracking-widest text-white/70">CALORIES BURNED</p>
+<div class="flex items-center gap-2">
+<p class="text-3xl font-black">1,142 <span class="text-sm font-bold opacity-80 uppercase">kcal</span></p>
+<span class="material-symbols-outlined text-2xl text-orange-400 animate-pulse">local_fire_department</span>
+</div>
+</div>
+</div>
+<!-- Abstract Background Decoration -->
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[160px] leading-none">fitness_center</span>
+</div></div>
+</div>
+</main>
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-6 px-10 text-center">
+<p class="text-slate-500 text-xs font-medium">© 2024 PunchTrack Systems. 바디복싱짐 관리자 대시보드 v3.2.1-Alpha</p>
+</footer>
+</div>
+</div>
+</body></html>
