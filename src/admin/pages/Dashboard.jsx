@@ -36,10 +36,16 @@ export default function Dashboard() {
 
     useEffect(() => {
         fetchDashboardData()
-        // 실시간 구독 — attendance 테이블 변화 감지
+        // 실시간 구독 — attendance, workout_records, payments 테이블 변화 감지
         const channel = supabase
             .channel('admin-dashboard')
-            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'attendance' }, () => {
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'attendance' }, () => {
+                fetchDashboardData()
+            })
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'workout_records' }, () => {
+                fetchDashboardData()
+            })
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'payments' }, () => {
                 fetchDashboardData()
             })
             .subscribe()

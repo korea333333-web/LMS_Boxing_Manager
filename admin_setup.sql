@@ -9,6 +9,7 @@
 -- ============================================
 ALTER TABLE members ADD COLUMN IF NOT EXISTS age INTEGER;
 ALTER TABLE members ADD COLUMN IF NOT EXISTS gender TEXT CHECK (gender IN ('male', 'female'));
+ALTER TABLE members ADD COLUMN IF NOT EXISTS locker_number TEXT;
 
 -- ============================================
 -- 1. admin_users 테이블 (관리자 계정)

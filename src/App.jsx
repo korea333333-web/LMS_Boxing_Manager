@@ -6,6 +6,10 @@ import Dashboard from './admin/pages/Dashboard'
 import MemberManagement from './admin/pages/MemberManagement'
 import Statistics from './admin/pages/Statistics'
 import MemberRegister from './admin/pages/MemberRegister'
+import AnalysisAgeStats from './admin/pages/AnalysisAgeStats'
+import AnalysisAttendance from './admin/pages/AnalysisAttendance'
+import AnalysisDemographics from './admin/pages/AnalysisDemographics'
+import PaymentManagement from './admin/pages/PaymentManagement'
 
 export default function App() {
     return (
@@ -17,7 +21,11 @@ export default function App() {
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="members" element={<MemberManagement />} />
                 <Route path="members/register" element={<MemberRegister />} />
+                <Route path="payments" element={<PaymentManagement />} />
                 <Route path="stats" element={<Statistics />} />
+                <Route path="analysis/age-stats" element={<AnalysisAgeStats />} />
+                <Route path="analysis/attendance" element={<AnalysisAttendance />} />
+                <Route path="analysis/demographics" element={<AnalysisDemographics />} />
             </Route>
             {/* 루트 접속 시 관리자 로그인으로 리다이렉트 */}
             <Route path="*" element={<Navigate to="/admin/login" replace />} />
