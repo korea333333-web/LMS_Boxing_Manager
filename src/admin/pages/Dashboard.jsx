@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../../lib/supabase'
+import { Users, Dumbbell, Flame, Clock, Trophy } from 'lucide-react'
 import {
     AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
@@ -226,7 +227,7 @@ export default function Dashboard() {
                             ↗ +{stats.memberGrowth}% 지난달 대비
                         </div>
                     </div>
-                    <div className="dash-summary-icon red">👥</div>
+                    <div className="dash-summary-icon red"><Users size={24} /></div>
                 </div>
 
                 <div className="dash-summary-card">
@@ -239,7 +240,7 @@ export default function Dashboard() {
                             ↗ +{stats.maxConcurrent}% 최대 동시 접속
                         </div>
                     </div>
-                    <div className="dash-summary-icon blue">🏋️</div>
+                    <div className="dash-summary-icon blue"><Dumbbell size={24} /></div>
                 </div>
 
                 <div className="dash-summary-card">
@@ -253,7 +254,7 @@ export default function Dashboard() {
                             오늘의 총 칼로리 소모
                         </div>
                     </div>
-                    <div className="dash-summary-icon green">🔥</div>
+                    <div className="dash-summary-icon green"><Flame size={24} /></div>
                 </div>
 
                 <div className="dash-summary-card">
@@ -267,7 +268,7 @@ export default function Dashboard() {
                             ↗ +{stats.highIntensity}% 고강도 운동
                         </div>
                     </div>
-                    <div className="dash-summary-icon orange">⏱️</div>
+                    <div className="dash-summary-icon orange"><Clock size={24} /></div>
                 </div>
             </div>
 
@@ -301,7 +302,7 @@ export default function Dashboard() {
                         </ResponsiveContainer>
                     </div>
                     <div className="dash-busy-banner">
-                        🏋️ 예상 혼잡 시간: 오후 5:00 - 오후 8:00
+                        <Dumbbell size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 예상 혼잡 시간: 오후 5:00 - 오후 8:00
                     </div>
                 </div>
 
@@ -405,7 +406,7 @@ export default function Dashboard() {
                 <div className="dash-section dash-calorie-king">
                     <div className="dash-king-header">
                         <span className="dash-king-title">오늘의 칼로리 왕</span>
-                        <span style={{ fontSize: 22 }}>🏆</span>
+                        <Trophy size={22} />
                     </div>
                     <div className="dash-king-subtitle">최근 24시간 동안 가장 많은 칼로리를 소모한 회원</div>
 
@@ -426,12 +427,12 @@ export default function Dashboard() {
                             <div className="dash-king-calorie-value">
                                 {formatNumber(calorieKing.totalCal)}
                                 <span className="dash-king-calorie-unit">KCAL</span>
-                                <span style={{ fontSize: 22 }}>🔥</span>
+                                <Flame size={22} />
                             </div>
                         </>
                     ) : (
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-                            <span style={{ fontSize: 48 }}>🏆</span>
+                            <Trophy size={48} style={{color:'#E53E3E'}} />
                             <span style={{ color: '#888', fontSize: 14 }}>아직 오늘의 운동 기록이 없습니다</span>
                         </div>
                     )}

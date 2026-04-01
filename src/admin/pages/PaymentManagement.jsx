@@ -3,6 +3,7 @@ import { supabase } from '../../lib/supabase'
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
+import { Search, Plus, TrendingUp, AlertTriangle, CheckCircle } from 'lucide-react'
 
 const AVATAR_COLORS = ['#E53E3E', '#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899']
 function getAvatarColor(name) {
@@ -277,7 +278,7 @@ export default function PaymentManagement() {
                     <p className="pm-subtitle">체육관의 전체 매출 현황과 결제 내역을 실시간으로 확인합니다.</p>
                 </div>
                 <button className="pm-add-btn" onClick={() => setShowModal(true)}>
-                    + 결제 등록
+                    <><Plus size={16} style={{display:'inline',verticalAlign:'middle',marginRight:4}} /> 결제 등록</>
                 </button>
             </div>
 
@@ -318,7 +319,7 @@ export default function PaymentManagement() {
                 <div className="pm-summary-card">
                     <div className="pm-card-top">
                         <span className="pm-card-label">평균 결제액</span>
-                        <span className="pm-card-icon-trend">📈</span>
+                        <span className="pm-card-icon-trend"><TrendingUp size={16} /></span>
                     </div>
                     <p className="pm-card-value">{formatCurrency(stats.avgAmount)}</p>
                     <p className="pm-card-sub">건당 평균 결제 금액</p>
@@ -327,7 +328,7 @@ export default function PaymentManagement() {
                 <div className="pm-summary-card">
                     <div className="pm-card-top">
                         <span className="pm-card-label">만료 예정</span>
-                        <span className="pm-card-icon-warning">⚠️</span>
+                        <span className="pm-card-icon-warning"><AlertTriangle size={16} /></span>
                     </div>
                     <p className="pm-card-value">{stats.expiringCount}명</p>
                     <p className="pm-card-sub">향후 7일 이내 만료 예정 회원</p>
@@ -339,7 +340,7 @@ export default function PaymentManagement() {
                 {/* 월별 매출 차트 */}
                 <div className="pm-section pm-chart-section">
                     <div className="pm-section-header">
-                        <h3 className="pm-section-title">📊 월별 매출 추이</h3>
+                        <h3 className="pm-section-title">월별 매출 추이</h3>
                         <span className="pm-legend"><span className="pm-legend-dot" /> 이번 해</span>
                     </div>
                     <div className="pm-chart-area">
@@ -364,7 +365,7 @@ export default function PaymentManagement() {
                             </ResponsiveContainer>
                         ) : (
                             <div className="pm-empty-chart">
-                                <span style={{ fontSize: 48 }}>📊</span>
+                                <TrendingUp size={48} style={{color:'#666'}} />
                                 <span style={{ color: '#666', fontSize: 14 }}>결제 데이터가 쌓이면 차트가 표시됩니다</span>
                             </div>
                         )}
@@ -374,7 +375,7 @@ export default function PaymentManagement() {
                 {/* 만료 임박 알림 */}
                 <div className="pm-section pm-alert-section">
                     <div className="pm-section-header">
-                        <h3 className="pm-section-title">⚠️ 만료 임박 알림</h3>
+                        <h3 className="pm-section-title">만료 임박 알림</h3>
                         <span className="pm-section-link">전체보기</span>
                     </div>
                     <div className="pm-alert-list">
@@ -404,7 +405,7 @@ export default function PaymentManagement() {
                             )
                         }) : (
                             <div className="pm-alert-empty">
-                                <span style={{ fontSize: 36 }}>✅</span>
+                                <CheckCircle size={36} style={{color:'#10B981'}} />
                                 <span style={{ color: '#666', fontSize: 13 }}>7일 이내 만료 예정 회원이 없습니다</span>
                             </div>
                         )}
@@ -418,7 +419,7 @@ export default function PaymentManagement() {
                     <h3 className="pm-section-title">결제 내역</h3>
                     <div className="pm-filters">
                         <div className="pm-search-wrap">
-                            <span className="pm-search-icon">🔍</span>
+                            <span className="pm-search-icon"><Search size={16} /></span>
                             <input
                                 type="text"
                                 className="pm-search-input"

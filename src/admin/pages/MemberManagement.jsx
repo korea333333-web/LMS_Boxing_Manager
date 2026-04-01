@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
+import { Search, UserPlus, ChevronLeft, ChevronRight, Calendar, Clock, Edit, Trash2, Save, X, Key, StickyNote, CreditCard, Star, Smartphone, User } from 'lucide-react'
 
 const AVATAR_COLORS = ['#E53E3E', '#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899']
 function getAvatarColor(name) {
@@ -427,7 +428,7 @@ export default function MemberManagement() {
                 <div className="mm-left-top">
                     {/* 검색바 */}
                     <div className="mm-search-bar">
-                        <span className="mm-search-icon">🔍</span>
+                        <span className="mm-search-icon"><Search size={16} /></span>
                         <input
                             type="text"
                             placeholder="회원명 또는 연락처 검색..."
@@ -522,7 +523,7 @@ export default function MemberManagement() {
                     })}
                     {filtered.length === 0 && (
                         <div className="mm-empty-list">
-                            <span>👤</span>
+                            <span><User size={32} style={{color:'#666'}} /></span>
                             <p>{search ? '검색 결과가 없습니다' : '해당 조건의 회원이 없습니다'}</p>
                         </div>
                     )}
@@ -534,7 +535,7 @@ export default function MemberManagement() {
                         className="mm-register-btn"
                         onClick={() => navigate('/admin/members/register')}
                     >
-                        👤+ 신규 회원 등록
+                        <><UserPlus size={18} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 신규 회원 등록</>
                     </button>
                 </div>
             </div>
@@ -543,7 +544,7 @@ export default function MemberManagement() {
             <div className="mm-right-panel">
                 {!selectedMember ? (
                     <div className="mm-no-selection">
-                        <span className="mm-no-icon">👈</span>
+                        <span className="mm-no-icon"><ChevronLeft size={32} /></span>
                         <h3>회원을 선택해주세요</h3>
                         <p>왼쪽 목록에서 회원을 클릭하면 상세 정보가 표시됩니다</p>
                     </div>
@@ -587,7 +588,7 @@ export default function MemberManagement() {
                                                 />
                                             ) : (
                                                 <>
-                                                    <span className="mm-profile-detail">📱 {selectedMember.phone || '-'}</span>
+                                                    <span className="mm-profile-detail"><Smartphone size={14} style={{display:'inline',verticalAlign:'middle',marginRight:4}} /> {selectedMember.phone || '-'}</span>
                                                 </>
                                             )}
                                         </div>
@@ -618,7 +619,7 @@ export default function MemberManagement() {
                                     {editMode ? (
                                         <>
                                             <button className="mm-action-btn save" onClick={handleSave} disabled={saving}>
-                                                {saving ? '...' : '💾'}
+                                                {saving ? '...' : <Save size={16} />}
                                             </button>
                                             <button className="mm-action-btn cancel" onClick={() => setEditMode(false)}>✕</button>
                                         </>
@@ -632,7 +633,7 @@ export default function MemberManagement() {
                                                     gender: selectedMember.gender || '',
                                                 })
                                                 setEditMode(true)
-                                            }}>✏️</button>
+                                            }}><Edit size={16} /></button>
                                             {deleteConfirm ? (
                                                 <>
                                                     <button className="mm-action-btn delete-confirm" onClick={handleDelete} disabled={saving}>
@@ -641,7 +642,7 @@ export default function MemberManagement() {
                                                     <button className="mm-action-btn cancel" onClick={() => setDeleteConfirm(false)}>취소</button>
                                                 </>
                                             ) : (
-                                                <button className="mm-action-btn delete" onClick={() => setDeleteConfirm(true)}>🗑️</button>
+                                                <button className="mm-action-btn delete" onClick={() => setDeleteConfirm(true)}><Trash2 size={16} /></button>
                                             )}
                                         </>
                                     )}
@@ -678,10 +679,10 @@ export default function MemberManagement() {
                                     {/* 출석 캘린더 */}
                                     <div className="mm-calendar-card">
                                         <div className="mm-calendar-header">
-                                            <h4>📅 출석 현황 - {calendarMonthLabel}</h4>
+                                            <h4><><Calendar size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 출석 현황 - {calendarMonthLabel}</></h4>
                                             <div className="mm-calendar-nav">
-                                                <button onClick={() => setCalendarMonth(new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() - 1))}>◀</button>
-                                                <button onClick={() => setCalendarMonth(new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1))}>▶</button>
+                                                <button onClick={() => setCalendarMonth(new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() - 1))}><ChevronLeft size={16} /></button>
+                                                <button onClick={() => setCalendarMonth(new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1))}><ChevronRight size={16} /></button>
                                             </div>
                                         </div>
                                         <div className="mm-calendar-legend">
@@ -710,7 +711,7 @@ export default function MemberManagement() {
 
                                     {/* 활동 로그 */}
                                     <div className="mm-activity-log">
-                                        <h4>⏱️ 활동 로그</h4>
+                                        <h4><><Clock size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 활동 로그</></h4>
                                         <div className="mm-timeline">
                                             {activityLog.length > 0 ? activityLog.map((log, i) => (
                                                 <div key={i} className="mm-timeline-item">
@@ -734,7 +735,7 @@ export default function MemberManagement() {
                                 <div className="mm-main-right">
                                     {/* 회원권 카드 */}
                                     <div className={`mm-membership-card ${selectedMember.membershipStatus}`}>
-                                        <div className="mm-membership-bg-icon">⭐</div>
+                                        <div className="mm-membership-bg-icon"><Star size={48} /></div>
                                         <span className="mm-membership-label">회원 등급</span>
                                         <h3 className="mm-membership-type">
                                             {selectedMember.membership ? selectedMember.membership.type : '미등록'}
@@ -756,7 +757,7 @@ export default function MemberManagement() {
 
                                     {/* 라커 배정 */}
                                     <div className="mm-locker-card">
-                                        <h4>🔑 라커 배정</h4>
+                                        <h4><><Key size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 라커 배정</></h4>
                                         <div className="mm-locker-content">
                                             {lockerEdit ? (
                                                 <div className="mm-locker-edit">
@@ -785,7 +786,7 @@ export default function MemberManagement() {
 
                                     {/* 코치 노트 */}
                                     <div className="mm-coach-notes">
-                                        <h4>📝 코치 노트</h4>
+                                        <h4><><StickyNote size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 코치 노트</></h4>
                                         <div className="mm-notes-list">
                                             {memberDetail?.notes?.length > 0 ? memberDetail.notes.map((n, i) => (
                                                 <div key={i} className="mm-note-item">
@@ -802,13 +803,13 @@ export default function MemberManagement() {
                                     {/* 결제 내역 요약 */}
                                     {memberDetail?.payments?.length > 0 && (
                                         <div className="mm-payment-summary">
-                                            <h4>💰 최근 결제</h4>
+                                            <h4><><CreditCard size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 최근 결제</></h4>
                                             {memberDetail.payments.slice(0, 3).map((p, i) => (
                                                 <div key={i} className="mm-payment-item">
                                                     <div className="mm-payment-info">
                                                         <span className="mm-payment-type">{p.item}</span>
                                                         <span className="mm-payment-method">
-                                                            {p.method === 'card' ? '💳' : p.method === 'cash' ? '💵' : '🏦'}
+                                                            <CreditCard size={14} />
                                                         </span>
                                                     </div>
                                                     <div className="mm-payment-right">

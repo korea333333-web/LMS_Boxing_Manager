@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 import bcrypt from 'bcryptjs'
+import { Dumbbell, LogIn } from 'lucide-react'
 
 export default function AdminLogin() {
     const navigate = useNavigate()
@@ -68,7 +69,7 @@ export default function AdminLogin() {
             <div className="admin-login-card">
                 {/* 아이콘 */}
                 <div className="admin-login-icon">
-                    🥊
+                    <Dumbbell size={48} />
                 </div>
 
                 {/* 제목 */}
@@ -130,7 +131,7 @@ export default function AdminLogin() {
                         className="admin-login-btn"
                         disabled={loading}
                     >
-                        {loading ? '로그인 중...' : '로그인 →'}
+                        {loading ? '로그인 중...' : <><LogIn size={18} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 로그인</>}
                     </button>
                 </form>
 

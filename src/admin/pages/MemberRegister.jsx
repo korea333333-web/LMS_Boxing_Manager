@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
+import { ArrowLeft, User, Phone, Cake, Users as UsersIcon, UserPlus, AlertCircle, CheckCircle } from 'lucide-react'
 
 export default function MemberRegister() {
     const navigate = useNavigate()
@@ -92,7 +93,7 @@ export default function MemberRegister() {
                 {/* 헤더 */}
                 <div className="register-header">
                     <button className="register-back-btn" onClick={() => navigate('/admin/members')}>
-                        ← 돌아가기
+                        <><ArrowLeft size={16} style={{display:'inline',verticalAlign:'middle',marginRight:4}} /> 돌아가기</>
                     </button>
                     <h1 className="register-title">신규 회원 등록</h1>
                     <p className="register-subtitle">새로운 회원 정보를 입력해주세요</p>
@@ -101,12 +102,12 @@ export default function MemberRegister() {
                 {/* 알림 */}
                 {error && (
                     <div className="register-alert error">
-                        ❌ {error}
+                        <><AlertCircle size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> {error}</>
                     </div>
                 )}
                 {success && (
                     <div className="register-alert success">
-                        ✅ 회원이 성공적으로 등록되었습니다!
+                        <><CheckCircle size={16} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 회원이 성공적으로 등록되었습니다!</>
                     </div>
                 )}
 
@@ -115,7 +116,7 @@ export default function MemberRegister() {
                     {/* 이름 */}
                     <div className="register-field">
                         <label className="register-label">
-                            <span className="register-label-icon">👤</span>
+                            <span className="register-label-icon"><User size={16} /></span>
                             이름
                         </label>
                         <input
@@ -130,7 +131,7 @@ export default function MemberRegister() {
                     {/* 전화번호 */}
                     <div className="register-field">
                         <label className="register-label">
-                            <span className="register-label-icon">📱</span>
+                            <span className="register-label-icon"><Phone size={16} /></span>
                             전화번호
                         </label>
                         <input
@@ -145,7 +146,7 @@ export default function MemberRegister() {
                     {/* 나이 */}
                     <div className="register-field">
                         <label className="register-label">
-                            <span className="register-label-icon">🎂</span>
+                            <span className="register-label-icon"><Cake size={16} /></span>
                             나이
                         </label>
                         <input
@@ -162,7 +163,7 @@ export default function MemberRegister() {
                     {/* 성별 */}
                     <div className="register-field">
                         <label className="register-label">
-                            <span className="register-label-icon">⚧</span>
+                            <span className="register-label-icon"><UsersIcon size={16} /></span>
                             성별
                         </label>
                         <div className="register-gender-group">
@@ -171,14 +172,14 @@ export default function MemberRegister() {
                                 className={`register-gender-btn ${form.gender === 'male' ? 'active' : ''}`}
                                 onClick={() => handleChange('gender', 'male')}
                             >
-                                🙋‍♂️ 남성
+                                남성
                             </button>
                             <button
                                 type="button"
                                 className={`register-gender-btn ${form.gender === 'female' ? 'active' : ''}`}
                                 onClick={() => handleChange('gender', 'female')}
                             >
-                                🙋‍♀️ 여성
+                                여성
                             </button>
                         </div>
                     </div>
@@ -189,7 +190,7 @@ export default function MemberRegister() {
                         className="register-submit-btn"
                         disabled={loading}
                     >
-                        {loading ? '등록 중...' : '회원 등록 →'}
+                        {loading ? '등록 중...' : <><UserPlus size={18} style={{display:'inline',verticalAlign:'middle',marginRight:6}} /> 회원 등록</>}
                     </button>
                 </form>
             </div>
