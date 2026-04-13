@@ -91,6 +91,20 @@ export default function AdminLayout() {
                             <span className="admin-sidebar-icon"><CreditCard size={18} /></span>
                             <span>매출/결제</span>
                         </NavLink>
+                        <NavLink
+                            to="/admin/lessons"
+                            className={({ isActive }) => `admin-sidebar-item ${isActive ? 'active' : ''}`}
+                        >
+                            <span className="admin-sidebar-icon">📋</span>
+                            <span>수업일지</span>
+                        </NavLink>
+                        <NavLink
+                            to="/admin/notices"
+                            className={({ isActive }) => `admin-sidebar-item ${isActive ? 'active' : ''}`}
+                        >
+                            <span className="admin-sidebar-icon">📢</span>
+                            <span>공지/메시지</span>
+                        </NavLink>
 
                         {/* 분석 메뉴 (토글) */}
                         <div className="admin-sidebar-group">

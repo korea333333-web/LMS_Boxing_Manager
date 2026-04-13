@@ -1,0 +1,435 @@
+/* ============================================
+   회원용 페이지 스타일
+   모바일 최적화 (폰에서 주로 접속)
+   ============================================ */
+
+/* === 로그인 페이지 === */
+.ml-page {
+    width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1020 50%, #0A0A0A 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ml-card {
+    width: 100%;
+    max-width: 400px;
+    background: #141414;
+    border: 1px solid #2A2A2A;
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+}
+
+.ml-logo {
+    font-size: 56px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 4px 12px rgba(229, 62, 62, 0.3));
+}
+
+.ml-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.ml-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 28px;
+}
+
+.ml-error {
+    padding: 12px 16px;
+    background: rgba(229, 62, 62, 0.1);
+    border: 1px solid rgba(229, 62, 62, 0.3);
+    border-radius: 10px;
+    color: #E53E3E;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.ml-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ml-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: #1A1A2E;
+    border: 1px solid #2A2A3A;
+    border-radius: 12px;
+    transition: border-color 0.2s;
+}
+
+.ml-input-wrap:focus-within {
+    border-color: #E53E3E;
+}
+
+.ml-input-icon {
+    font-size: 18px;
+}
+
+.ml-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.ml-input::placeholder {
+    color: #555;
+}
+
+.ml-btn {
+    padding: 16px;
+    background: linear-gradient(135deg, #E53E3E, #C53030);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.ml-btn:hover:not(:disabled) {
+    box-shadow: 0 6px 24px rgba(229, 62, 62, 0.4);
+    transform: translateY(-1px);
+}
+
+.ml-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ml-footer-text {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* === 회원 홈 === */
+.mh-page {
+    width: 100vw;
+    min-height: 100vh;
+    background: #0F1923;
+    display: flex;
+    flex-direction: column;
+}
+
+.mh-loading {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 16px;
+}
+
+/* 상단 헤더 */
+.mh-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: #141E2B;
+    border-bottom: 1px solid #2A3A4A;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.mh-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mh-header-logo {
+    font-size: 22px;
+}
+
+.mh-header-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.mh-header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mh-header-name {
+    font-size: 13px;
+    color: #CCC;
+    font-weight: 500;
+}
+
+.mh-logout-btn {
+    padding: 6px 12px;
+    background: #2A3A4A;
+    color: #888;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.mh-logout-btn:hover {
+    background: #3A4A5A;
+    color: #CCC;
+}
+
+/* 환영 배너 */
+.mh-welcome {
+    padding: 24px 20px;
+    background: linear-gradient(135deg, rgba(229, 62, 62, 0.1) 0%, rgba(229, 62, 62, 0.02) 100%);
+    border-bottom: 1px solid #2A3A4A;
+}
+
+.mh-welcome h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.mh-welcome p {
+    font-size: 14px;
+    color: #888;
+}
+
+/* 탭 */
+.mh-tabs {
+    display: flex;
+    padding: 0 20px;
+    background: #141E2B;
+    border-bottom: 1px solid #2A3A4A;
+    position: sticky;
+    top: 53px;
+    z-index: 9;
+}
+
+.mh-tab {
+    flex: 1;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.mh-tab:hover {
+    color: #CCC;
+}
+
+.mh-tab.active {
+    color: #E53E3E;
+    border-bottom-color: #E53E3E;
+}
+
+.mh-tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background: #E53E3E;
+    color: #FFF;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* 콘텐츠 영역 */
+.mh-content {
+    flex: 1;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.mh-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 12px;
+}
+
+.mh-empty span {
+    font-size: 48px;
+}
+
+.mh-empty p {
+    color: #666;
+    font-size: 15px;
+}
+
+/* 공지 카드 */
+.mh-notice-card {
+    background: #1A2332;
+    border: 1px solid #2A3A4A;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mh-notice-card:hover {
+    border-color: #3A4A5A;
+}
+
+.mh-notice-card.unread {
+    border-left: 3px solid #E53E3E;
+}
+
+.mh-notice-card.read {
+    opacity: 0.7;
+}
+
+.mh-notice-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.mh-notice-priority {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.mh-notice-time {
+    font-size: 12px;
+    color: #666;
+}
+
+.mh-notice-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mh-unread-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #E53E3E;
+    flex-shrink: 0;
+}
+
+.mh-notice-body {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #2A3A4A;
+    color: #CCC;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.mh-notice-body p {
+    margin-bottom: 4px;
+}
+
+/* 수업일지 카드 */
+.mh-lesson-card {
+    background: #1A2332;
+    border: 1px solid #2A3A4A;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mh-lesson-card:hover {
+    border-color: #3A4A5A;
+}
+
+.mh-lesson-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.mh-lesson-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: #E53E3E;
+}
+
+.mh-lesson-group {
+    font-size: 11px;
+    color: #888;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.mh-lesson-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.mh-lesson-body {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #2A3A4A;
+    color: #CCC;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.mh-lesson-body p {
+    margin-bottom: 4px;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 480px) {
+    .ml-card {
+        padding: 32px 24px;
+    }
+
+    .mh-welcome h2 {
+        font-size: 18px;
+    }
+}
