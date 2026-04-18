@@ -51,26 +51,75 @@ const DEFAULT_SETTINGS = {
  * - 처음 호출 시 DB에서 fetch
  * - 이후 메모리 캐시 사용
  * - 다른 곳에서 업데이트 시 자동 동기화
+ * - 테이블 없거나 에러 시 DEFAULT_SETTINGS로 동작
  */
 export function useSettings() {
     const [settings, setSettings] = useState(cachedSettings || DEFAULT_SETTINGS)
     const [loading, setLoading] = useState(!cachedSettings)
+    const [tableExists, setTableExists] = useState(true)
 
     useEffect(() => {
-        if (cachedSettings) {
-            setSettings(cachedSettings)
-            setLoading(false)
-        } else {
-            fetchSettings()
+        let mounted = true
+
+        async function load() {
+            if (cachedSettings) {
+                if (mounted) {
+                    setSettings(cachedSettings)
+                    setLoading(false)
+                }
+                return
+            }
+
+            try {
+                const { data, error } = await supabase
+                    .from('gym_settings')
+                    .select('*')
+                    .limit(1)
+                    .maybeSingle()
+
+                if (!mounted) return
+
+                if (error) {
+                    console.warn('gym_settings 테이블 로딩 실패 (DEFAULT 사용):', error.message)
+                    cachedSettings = DEFAULT_SETTINGS
+                    setSettings(DEFAULT_SETTINGS)
+                    setTableExists(false)
+                } else if (!data) {
+                    // 테이블은 있지만 row가 없음 - DEFAULT 사용
+                    cachedSettings = DEFAULT_SETTINGS
+                    setSettings(DEFAULT_SETTINGS)
+                } else {
+                    const merged = { ...DEFAULT_SETTINGS, ...data }
+                    cachedSettings = merged
+                    setSettings(merged)
+                }
+            } catch (err) {
+                console.warn('설정 로딩 에러 (DEFAULT 사용):', err)
+                if (mounted) {
+                    cachedSettings = DEFAULT_SETTINGS
+                    setSettings(DEFAULT_SETTINGS)
+                    setTableExists(false)
+                }
+            } finally {
+                if (mounted) setLoading(false)
+            }
         }
 
+        load()
+
         // 설정 변경 구독
-        const handler = (newSettings) => setSettings(newSettings)
+        const handler = (newSettings) => {
+            if (mounted) setSettings(newSettings)
+        }
         subscribers.add(handler)
-        return () => { subscribers.delete(handler) }
+
+        return () => {
+            mounted = false
+            subscribers.delete(handler)
+        }
     }, [])
 
-    return { settings, loading, refresh: fetchSettings }
+    return { settings, loading, tableExists, refresh: fetchSettings }
 }
 
 export async function fetchSettings() {
@@ -79,14 +128,14 @@ export async function fetchSettings() {
             .from('gym_settings')
             .select('*')
             .limit(1)
-            .single()
+            .maybeSingle()
 
         if (error) {
             console.error('설정 로딩 에러:', error)
             return DEFAULT_SETTINGS
         }
 
-        const merged = { ...DEFAULT_SETTINGS, ...data }
+        const merged = data ? { ...DEFAULT_SETTINGS, ...data } : DEFAULT_SETTINGS
         cachedSettings = merged
         subscribers.forEach(fn => fn(merged))
         return merged
@@ -97,38 +146,33 @@ export async function fetchSettings() {
 }
 
 export async function updateSettings(updates) {
-    try {
-        // 현재 row id 가져오기
-        const { data: existing } = await supabase
+    // 현재 row id 가져오기
+    const { data: existing } = await supabase
+        .from('gym_settings')
+        .select('id')
+        .limit(1)
+        .maybeSingle()
+
+    if (!existing) {
+        // row가 없으면 새로 만들기
+        const { data: created, error: createError } = await supabase
             .from('gym_settings')
-            .select('id')
-            .limit(1)
+            .insert(updates)
+            .select()
             .single()
-
-        if (!existing) {
-            // row가 없으면 새로 만들기
-            const { data: created, error: createError } = await supabase
-                .from('gym_settings')
-                .insert(updates)
-                .select()
-                .single()
-            if (createError) throw createError
-            cachedSettings = { ...DEFAULT_SETTINGS, ...created }
-        } else {
-            const { data: updated, error: updateError } = await supabase
-                .from('gym_settings')
-                .update(updates)
-                .eq('id', existing.id)
-                .select()
-                .single()
-            if (updateError) throw updateError
-            cachedSettings = { ...DEFAULT_SETTINGS, ...updated }
-        }
-
-        subscribers.forEach(fn => fn(cachedSettings))
-        return cachedSettings
-    } catch (err) {
-        console.error('설정 저장 에러:', err)
-        throw err
+        if (createError) throw createError
+        cachedSettings = { ...DEFAULT_SETTINGS, ...created }
+    } else {
+        const { data: updated, error: updateError } = await supabase
+            .from('gym_settings')
+            .update(updates)
+            .eq('id', existing.id)
+            .select()
+            .single()
+        if (updateError) throw updateError
+        cachedSettings = { ...DEFAULT_SETTINGS, ...updated }
     }
+
+    subscribers.forEach(fn => fn(cachedSettings))
+    return cachedSettings
 }
