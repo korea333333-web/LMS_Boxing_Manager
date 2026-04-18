@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "WebFetch(domain:company.broj.co.kr)",
+      "Bash(curl -sL \"https://company.broj.co.kr/broj_service_face_recognition.html\")",
+      "WebFetch(domain:brojcompany.wixsite.com)",
+      "Bash(curl -sL \"https://company.broj.co.kr/broj_service_price.html\")",
+      "Bash(curl -sL \"https://company.broj.co.kr/broj_service_unmanned_kiosk.html\")",
+      "Bash(curl -sL \"https://company.broj.co.kr/broj_service_door_management.html\")",
+      "Bash(curl -sL \"https://company.broj.co.kr/broj_crm_service.html\")",
+      "Bash(curl -sL \"https://company.broj.co.kr/broj_service_customer_management.html\")",
+      "Bash(curl -sL \"https://company.broj.co.kr/broj_service_class_reservation.html\")",
+      "WebFetch(domain:play.google.com)",
+      "WebSearch",
+      "WebFetch(domain:apps.apple.com)"
     ]
   }
 }

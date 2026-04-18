@@ -17,7 +17,7 @@ export default function MemberLogin({ onLogin }) {
         try {
             const { data, error: fetchError } = await supabase
                 .from('members')
-                .select('id, name, phone, age, gender')
+                .select('id, name, phone, age, gender, nickname, privacy_agreed_at, terms_agreed_at, marketing_agreed_at')
                 .eq('phone', phone.trim())
                 .single()
 

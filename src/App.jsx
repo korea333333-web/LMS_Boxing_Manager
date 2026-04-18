@@ -13,6 +13,9 @@ import PaymentManagement from './admin/pages/PaymentManagement'
 import LessonJournal from './admin/pages/LessonJournal'
 import NoticeManagement from './admin/pages/NoticeManagement'
 import MemberApp from './member/MemberApp'
+import PrivacyPolicy from './legal/PrivacyPolicy'
+import TermsOfService from './legal/TermsOfService'
+import ConsentForm from './legal/ConsentForm'
 
 export default function App() {
     return (
@@ -34,6 +37,10 @@ export default function App() {
             </Route>
             {/* 회원용 페이지 */}
             <Route path="/member" element={<MemberApp />} />
+            {/* 정책 페이지 (공개) */}
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/consent-form" element={<ConsentForm />} />
             {/* 루트 접속 시 관리자 로그인으로 리다이렉트 */}
             <Route path="*" element={<Navigate to="/admin/login" replace />} />
         </Routes>
