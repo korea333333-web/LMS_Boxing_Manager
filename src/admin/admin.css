@@ -7239,3 +7239,385 @@ button:disabled {
     .monitor-gym-name { font-size: 2rem; }
     .monitor-clock { font-size: 2.5rem; }
 }
+
+/* ============================================
+   모니터 슬라이드 시스템
+   ============================================ */
+.monitor-slide-area {
+    flex: 1;
+    margin-top: 24px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.slide {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: slideFadeIn 0.6s ease-out;
+}
+
+@keyframes slideFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFF;
+    margin-bottom: 24px;
+    text-shadow: 0 0 24px rgba(229, 62, 62, 0.4);
+}
+
+/* === 슬라이드 1: 칼로리 챔피언 === */
+.slide-ranking {
+    background: rgba(20, 30, 43, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(229, 62, 62, 0.3);
+    border-radius: 24px;
+    padding: 32px 40px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+
+/* === 슬라이드 2: 실시간 현황 === */
+.slide-realtime {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 24px;
+}
+.realtime-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.realtime-big-card {
+    background: rgba(20, 30, 43, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+.realtime-big-card.live {
+    background: linear-gradient(135deg, rgba(229, 62, 62, 0.2) 0%, rgba(229, 62, 62, 0.05) 100%);
+    border-color: rgba(229, 62, 62, 0.5);
+    animation: livePulse 2s ease-in-out infinite;
+}
+.big-icon { font-size: 4rem; margin-bottom: 12px; }
+.big-value {
+    font-size: 5rem; font-weight: 800; color: #FFF; line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+.big-value span { font-size: 2rem; color: #888; margin-left: 6px; }
+.realtime-big-card.live .big-value { color: #E53E3E; }
+.big-label { font-size: 1.2rem; color: #999; margin-top: 12px; }
+.realtime-chart {
+    background: rgba(20, 30, 43, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 24px 32px;
+    backdrop-filter: blur(10px);
+}
+.chart-label { font-size: 1.4rem; color: #CCC; margin-bottom: 16px; }
+
+/* === 슬라이드 3: 운동 강도 === */
+.slide-intensity {
+    background: rgba(20, 30, 43, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 24px;
+    padding: 32px 40px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+.intensity-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+}
+.intensity-pie-wrap {
+    display: flex; align-items: center; justify-content: center;
+}
+.intensity-stats {
+    display: flex; flex-direction: column; gap: 16px;
+}
+.intensity-stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 24px 28px;
+    display: flex; align-items: center; gap: 20px;
+}
+.i-stat-icon { font-size: 3rem; }
+.i-stat-label { font-size: 1.1rem; color: #888; margin-bottom: 4px; }
+.i-stat-value {
+    font-size: 2.4rem; font-weight: 800; color: #FFF; line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+.i-stat-value span { font-size: 1.1rem; color: #888; margin-left: 6px; }
+
+/* === 슬라이드 4: 격려 메시지 === */
+.slide-motivation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px;
+    background: linear-gradient(135deg, rgba(229, 62, 62, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border: 1px solid rgba(229, 62, 62, 0.3);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+}
+.motivation-quote {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #FFF;
+    line-height: 1.4;
+    text-shadow: 0 0 40px rgba(229, 62, 62, 0.5);
+    animation: quoteShine 3s ease-in-out infinite;
+}
+@keyframes quoteShine {
+    0%, 100% { text-shadow: 0 0 40px rgba(229, 62, 62, 0.5); }
+    50% { text-shadow: 0 0 60px rgba(229, 62, 62, 0.8); }
+}
+.motivation-divider {
+    color: rgba(229, 62, 62, 0.5);
+    font-size: 1.2rem;
+    margin: 32px 0;
+    letter-spacing: 4px;
+}
+.motivation-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin: 24px 0;
+}
+.motiv-stat { text-align: center; }
+.motiv-num {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #E53E3E;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+.motiv-num span { font-size: 2.5rem; color: #FFA0A0; }
+.motiv-text { font-size: 1.1rem; color: #BBB; margin-top: 12px; }
+.motivation-cta {
+    margin-top: 32px;
+    font-size: 1.3rem;
+    color: #DDD;
+    font-style: italic;
+}
+
+/* === 슬라이드 5: 회원 앱 홍보 (전국 순위) === */
+.slide-nationwide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    padding: 40px;
+}
+.nationwide-promo {
+    text-align: center;
+    max-width: 900px;
+}
+.promo-phone {
+    font-size: 7rem;
+    margin-bottom: 24px;
+    animation: phoneFloat 3s ease-in-out infinite;
+}
+@keyframes phoneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.promo-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #FFF;
+    line-height: 1.4;
+    margin-bottom: 32px;
+}
+.promo-highlight {
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+.promo-example {
+    margin: 32px 0;
+    display: flex;
+    justify-content: center;
+}
+.example-card {
+    background: rgba(20, 30, 43, 0.8);
+    border: 2px solid rgba(59, 130, 246, 0.4);
+    border-radius: 20px;
+    padding: 24px 48px;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+}
+.example-label { font-size: 1.1rem; color: #999; margin-bottom: 8px; }
+.example-rank {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FFF;
+    margin-bottom: 8px;
+}
+.example-percentile {
+    font-size: 1.2rem;
+    color: #3B82F6;
+    font-weight: 600;
+}
+.promo-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 32px;
+    margin: 32px 0;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.promo-feat {
+    font-size: 1.2rem;
+    color: #CCC;
+    padding: 8px 0;
+}
+.promo-cta {
+    margin-top: 32px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFF;
+    display: inline-block;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+/* === 슬라이드 6: 신규 회원 환영 === */
+.slide-new-members {
+    background: rgba(20, 30, 43, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 24px;
+    padding: 32px 40px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+}
+.new-members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 16px;
+}
+.new-member-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 20px;
+    padding: 32px 20px;
+    text-align: center;
+    animation: newMemberPop 0.6s ease-out backwards;
+}
+@keyframes newMemberPop {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+.new-member-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: #FFF;
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 0 32px rgba(16, 185, 129, 0.4);
+}
+.new-member-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #FFF;
+    margin-bottom: 8px;
+}
+.new-member-welcome {
+    font-size: 1rem;
+    color: #10B981;
+}
+
+/* === 슬라이드 인디케이터 === */
+.monitor-indicators {
+    display: flex; align-items: center; gap: 12px;
+}
+.indicator-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.indicator-dot:hover { background: rgba(255, 255, 255, 0.4); }
+.indicator-dot.active {
+    background: #E53E3E;
+    width: 36px;
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(229, 62, 62, 0.6);
+}
+.indicator-arrow {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFF;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.indicator-arrow:hover { background: rgba(229, 62, 62, 0.2); border-color: #E53E3E; }
+.autoplay-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFF;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 12px;
+    font-family: inherit;
+}
+.autoplay-btn.on { background: rgba(229, 62, 62, 0.2); border-color: #E53E3E; color: #E53E3E; }
+
+/* === 1080p 이상 디스플레이 추가 최적화 === */
+@media (min-width: 1920px) {
+    .slide-title { font-size: 3rem; }
+    .big-value { font-size: 6rem; }
+    .big-icon { font-size: 5rem; }
+    .motivation-quote { font-size: 5rem; }
+    .motiv-num { font-size: 5.5rem; }
+    .promo-phone { font-size: 9rem; }
+    .promo-title { font-size: 3rem; }
+    .example-rank { font-size: 3rem; }
+    .new-member-avatar { width: 100px; height: 100px; font-size: 3rem; }
+    .new-member-name { font-size: 1.8rem; }
+}
+
+@media (max-width: 1024px) {
+    .realtime-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .intensity-content { grid-template-columns: 1fr; }
+    .motivation-quote { font-size: 2.5rem; }
+    .motivation-stats { grid-template-columns: 1fr; gap: 24px; }
+    .promo-features { grid-template-columns: 1fr; }
+    .new-members-grid { grid-template-columns: repeat(2, 1fr); }
+}
