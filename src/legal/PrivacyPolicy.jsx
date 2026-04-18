@@ -1,31 +1,46 @@
 import { useNavigate } from 'react-router-dom'
+import { useSettings } from '../lib/useSettings'
 
-// 사업자 정보 - 출시 전 본인 정보로 변경하세요
+// 하위 호환성을 위해 export 유지 (다른 곳에서 사용 중)
+// 실제 데이터는 useSettings()에서 동적으로 가져옴
 export const BUSINESS_INFO = {
-    name: '바디복싱짐',
-    representative: '[대표자 이름]',
-    address: '[사업자 주소]',
-    businessNumber: '[사업자등록번호]',
-    email: '[연락 이메일]',
-    phone: '[연락 전화번호]',
-    privacyOfficer: '[개인정보보호책임자 이름]',
-    privacyOfficerEmail: '[개인정보보호책임자 이메일]',
+    name: '내 체육관',
+    representative: '',
+    address: '',
+    businessNumber: '',
+    email: '',
+    phone: '',
+    privacyOfficer: '',
+    privacyOfficerEmail: '',
     effectiveDate: '2026-04-18',
 }
 
 export default function PrivacyPolicy() {
     const navigate = useNavigate()
+    const { settings } = useSettings()
+    const info = {
+        name: settings.business_name || settings.gym_name || '내 체육관',
+        representative: settings.business_representative || '[대표자 이름]',
+        address: settings.business_address || '[사업자 주소]',
+        businessNumber: settings.business_number || '[사업자등록번호]',
+        email: settings.gym_email || '[연락 이메일]',
+        phone: settings.gym_phone || '[연락 전화번호]',
+        privacyOfficer: settings.privacy_officer_name || settings.business_representative || '[개인정보보호책임자]',
+        privacyOfficerEmail: settings.privacy_officer_email || settings.gym_email || '[이메일]',
+        privacyOfficerPhone: settings.privacy_officer_phone || settings.gym_phone || '[연락처]',
+        effectiveDate: '2026-04-18',
+    }
 
     return (
         <div className="legal-page">
             <div className="legal-container">
                 <button className="legal-back" onClick={() => navigate(-1)}>← 돌아가기</button>
                 <h1 className="legal-title">개인정보처리방침</h1>
-                <p className="legal-effective">시행일: {BUSINESS_INFO.effectiveDate}</p>
+                <p className="legal-effective">시행일: {info.effectiveDate}</p>
 
                 <section className="legal-section">
                     <p>
-                        {BUSINESS_INFO.name}(이하 "사업자")은 회원의 개인정보를 중요시하며,
+                        {info.name}(이하 "사업자")은 회원의 개인정보를 중요시하며,
                         「개인정보 보호법」을 준수하기 위하여 노력하고 있습니다.
                         사업자는 본 개인정보처리방침을 통하여 회원이 제공하는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며,
                         개인정보 보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
@@ -174,9 +189,9 @@ export default function PrivacyPolicy() {
                     <h2>제9조 (개인정보보호책임자)</h2>
                     <div className="legal-info-box">
                         <p><strong>개인정보보호책임자</strong></p>
-                        <p>이름: {BUSINESS_INFO.privacyOfficer}</p>
-                        <p>이메일: {BUSINESS_INFO.privacyOfficerEmail}</p>
-                        <p>연락처: {BUSINESS_INFO.phone}</p>
+                        <p>이름: {info.privacyOfficer}</p>
+                        <p>이메일: {info.privacyOfficerEmail}</p>
+                        <p>연락처: {info.phone}</p>
                     </div>
                     <p>
                         회원은 사업자의 서비스를 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을
@@ -206,12 +221,12 @@ export default function PrivacyPolicy() {
 
                 <div className="legal-footer-info">
                     <p><strong>사업자 정보</strong></p>
-                    <p>상호: {BUSINESS_INFO.name}</p>
-                    <p>대표자: {BUSINESS_INFO.representative}</p>
-                    <p>주소: {BUSINESS_INFO.address}</p>
-                    <p>사업자등록번호: {BUSINESS_INFO.businessNumber}</p>
-                    <p>연락처: {BUSINESS_INFO.phone}</p>
-                    <p>이메일: {BUSINESS_INFO.email}</p>
+                    <p>상호: {info.name}</p>
+                    <p>대표자: {info.representative}</p>
+                    <p>주소: {info.address}</p>
+                    <p>사업자등록번호: {info.businessNumber}</p>
+                    <p>연락처: {info.phone}</p>
+                    <p>이메일: {info.email}</p>
                 </div>
             </div>
         </div>

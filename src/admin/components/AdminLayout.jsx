@@ -150,10 +150,13 @@ export default function AdminLayout() {
                     </nav>
 
                     <div className="admin-sidebar-bottom">
-                        <button className="admin-sidebar-item">
+                        <NavLink
+                            to="/admin/settings"
+                            className={({ isActive }) => `admin-sidebar-item ${isActive ? 'active' : ''}`}
+                        >
                             <span className="admin-sidebar-icon"><Settings size={18} /></span>
                             <span>설정</span>
-                        </button>
+                        </NavLink>
                         <button className="admin-sidebar-item" onClick={handleLogout}>
                             <span className="admin-sidebar-icon"><LogOut size={18} /></span>
                             <span>로그아웃</span>

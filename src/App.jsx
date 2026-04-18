@@ -17,6 +17,7 @@ import PrivacyPolicy from './legal/PrivacyPolicy'
 import TermsOfService from './legal/TermsOfService'
 import ConsentForm from './legal/ConsentForm'
 import MonitorDisplay from './admin/pages/MonitorDisplay'
+import Settings from './admin/pages/Settings'
 
 export default function App() {
     return (
@@ -32,6 +33,7 @@ export default function App() {
                 <Route path="lessons" element={<LessonJournal />} />
                 <Route path="notices" element={<NoticeManagement />} />
                 <Route path="stats" element={<Statistics />} />
+                <Route path="settings" element={<Settings />} />
                 <Route path="analysis/age-stats" element={<AnalysisAgeStats />} />
                 <Route path="analysis/attendance" element={<AnalysisAttendance />} />
                 <Route path="analysis/demographics" element={<AnalysisDemographics />} />

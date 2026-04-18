@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../../lib/supabase'
 import { getDisplayName } from '../../utils/displayName'
-import { BUSINESS_INFO } from '../../legal/PrivacyPolicy'
+import { useSettings } from '../../lib/useSettings'
 import {
     AreaChart, Area, XAxis, YAxis, ResponsiveContainer, BarChart, Bar, Cell,
     PieChart, Pie, Tooltip
@@ -20,8 +20,6 @@ import {
  * 슬라이드 6: 신규 회원 환영
  */
 
-const SLIDE_DURATION = 10000 // 10초
-
 const MOTIVATIONAL_QUOTES = [
     "💪 어제의 나보다 1% 더 강해지자",
     "🥊 챔피언은 매일 만들어진다",
@@ -36,6 +34,7 @@ const MOTIVATIONAL_QUOTES = [
 ]
 
 export default function MonitorDisplay() {
+    const { settings } = useSettings()
     const [now, setNow] = useState(new Date())
     const [currentSlide, setCurrentSlide] = useState(0)
     const [period, setPeriod] = useState('week')
@@ -55,10 +54,19 @@ export default function MonitorDisplay() {
     })
     const [quote, setQuote] = useState(MOTIVATIONAL_QUOTES[0])
 
-    // 활성화된 슬라이드 (관장님이 끄고 켤 수 있게)
-    const [enabledSlides] = useState([0, 1, 2, 3, 4, 5])
+    // 설정에서 활성화된 슬라이드만 표시 (관장님이 설정 페이지에서 ON/OFF)
+    const enabledSlides = []
+    if (settings.monitor_show_ranking !== false) enabledSlides.push(0)
+    if (settings.monitor_show_realtime !== false) enabledSlides.push(1)
+    if (settings.monitor_show_intensity !== false) enabledSlides.push(2)
+    if (settings.monitor_show_motivation !== false) enabledSlides.push(3)
+    enabledSlides.push(4) // 회원 앱 홍보는 항상 표시
+    if (settings.monitor_show_new_members !== false) enabledSlides.push(5)
+
     const slidesRef = useRef(enabledSlides)
     slidesRef.current = enabledSlides
+
+    const SLIDE_DURATION = (settings.monitor_slide_duration || 10) * 1000
 
     // 시계 (1초)
     useEffect(() => {
@@ -234,7 +242,7 @@ export default function MonitorDisplay() {
         <div className="monitor-page">
             {/* 헤더 - 항상 표시 */}
             <div className="monitor-header">
-                <div className="monitor-gym-name">🥊 {BUSINESS_INFO.name}</div>
+                <div className="monitor-gym-name">{settings.gym_logo_emoji || '🥊'} {settings.gym_name || '내 체육관'}</div>
                 <div className="monitor-time">
                     <div className="monitor-date">{dateStr} ({weekday})</div>
                     <div className="monitor-clock">{timeStr}</div>

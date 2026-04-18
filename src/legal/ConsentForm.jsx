@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { BUSINESS_INFO } from './PrivacyPolicy'
+import { useSettings } from '../lib/useSettings'
 
 /**
  * 인쇄용 동의서
@@ -10,10 +10,19 @@ import { BUSINESS_INFO } from './PrivacyPolicy'
  */
 export default function ConsentForm() {
     const [params] = useSearchParams()
+    const { settings } = useSettings()
     const name = params.get('name') || ''
     const phone = params.get('phone') || ''
     const age = params.get('age') || ''
     const today = new Date().toLocaleDateString('ko-KR')
+
+    const BUSINESS_INFO = {
+        name: settings.business_name || settings.gym_name || '내 체육관',
+        representative: settings.business_representative || '',
+        address: settings.business_address || '',
+        phone: settings.gym_phone || '',
+        email: settings.gym_email || '',
+    }
 
     useEffect(() => {
         // 페이지 로드되면 자동으로 인쇄 다이얼로그 띄우기
