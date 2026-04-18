@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
-import { ArrowLeft, User, Phone, Cake, Users as UsersIcon, UserPlus, AlertCircle, CheckCircle, Shield, Printer, Camera, FileImage } from 'lucide-react'
+import { ArrowLeft, User, Phone, Cake, Users as UsersIcon, UserPlus, AlertCircle, CheckCircle, Shield, Printer, Camera, FileImage, Tv } from 'lucide-react'
+import { checkNickname, maskName } from '../../utils/displayName'
 
 export default function MemberRegister() {
     const navigate = useNavigate()
@@ -11,6 +12,7 @@ export default function MemberRegister() {
         age: '',
         gender: '',
         nickname: '',
+        display_mode: 'masked', // 'nickname' | 'masked' | 'hidden'
     })
     const [consents, setConsents] = useState({
         privacy: false,
@@ -118,6 +120,12 @@ export default function MemberRegister() {
         }
         if (!form.gender) { setError('성별을 선택해주세요'); return }
 
+        // 닉네임 모드 선택 시 닉네임 검사
+        if (form.display_mode === 'nickname') {
+            const result = checkNickname(form.nickname)
+            if (!result.ok) { setError(`닉네임 오류: ${result.reason}`); return }
+        }
+
         // 동의 확인
         if (!consents.privacy) { setError('개인정보 수집·이용에 동의해주세요 (필수)'); return }
         if (!consents.terms) { setError('이용약관에 동의해주세요 (필수)'); return }
@@ -142,6 +150,7 @@ export default function MemberRegister() {
                     age: Number(form.age),
                     gender: form.gender,
                     nickname: form.nickname.trim() || null,
+                    display_mode: form.display_mode,
                     privacy_agreed_at: now,
                     terms_agreed_at: now,
                     marketing_agreed_at: consents.marketing ? now : null,
@@ -193,7 +202,7 @@ export default function MemberRegister() {
             }
 
             setSuccess(true)
-            setForm({ name: '', phone: '', age: '', gender: '', nickname: '' })
+            setForm({ name: '', phone: '', age: '', gender: '', nickname: '', display_mode: 'masked' })
             setConsents({ privacy: false, terms: false, marketing: false, guardian: false })
             setGuardianInfo({ name: '', phone: '' })
             setConsentImage(null)
@@ -237,13 +246,53 @@ export default function MemberRegister() {
                             value={form.name} onChange={(e) => handleChange('name', e.target.value)} />
                     </div>
 
-                    <div className="register-field">
-                        <label className="register-label">
-                            <span className="register-label-icon"><User size={16} /></span> 닉네임 (선택)
-                        </label>
-                        <input type="text" className="register-input"
-                            placeholder="모니터/랭킹에 표시될 닉네임 (예: 펀치맨)"
-                            value={form.nickname} onChange={(e) => handleChange('nickname', e.target.value)} />
+                    {/* 모니터/랭킹 표시 방식 */}
+                    <div className="register-display-box">
+                        <div className="register-display-header">
+                            <Tv size={16} /> 체육관 모니터/랭킹 표시 방식
+                        </div>
+                        <p className="register-display-desc">
+                            체육관 TV에 칼로리 랭킹이 표시됩니다. 회원이 어떻게 표시될지 선택하세요.
+                        </p>
+                        <div className="register-display-options">
+                            <label className={`register-display-opt ${form.display_mode === 'nickname' ? 'active' : ''}`}>
+                                <input type="radio" name="display_mode" value="nickname"
+                                    checked={form.display_mode === 'nickname'}
+                                    onChange={() => handleChange('display_mode', 'nickname')} />
+                                <div>
+                                    <div className="opt-title">닉네임으로 표시</div>
+                                    <div className="opt-example">예: "펀치맨"</div>
+                                </div>
+                            </label>
+                            <label className={`register-display-opt ${form.display_mode === 'masked' ? 'active' : ''}`}>
+                                <input type="radio" name="display_mode" value="masked"
+                                    checked={form.display_mode === 'masked'}
+                                    onChange={() => handleChange('display_mode', 'masked')} />
+                                <div>
+                                    <div className="opt-title">마스킹 이름 (권장)</div>
+                                    <div className="opt-example">예: "{maskName(form.name) || '김*수'}"</div>
+                                </div>
+                            </label>
+                            <label className={`register-display-opt ${form.display_mode === 'hidden' ? 'active' : ''}`}>
+                                <input type="radio" name="display_mode" value="hidden"
+                                    checked={form.display_mode === 'hidden'}
+                                    onChange={() => handleChange('display_mode', 'hidden')} />
+                                <div>
+                                    <div className="opt-title">표시 안 함</div>
+                                    <div className="opt-example">랭킹에서 제외</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        {form.display_mode === 'nickname' && (
+                            <div className="register-field" style={{ marginTop: 12 }}>
+                                <input type="text" className="register-input"
+                                    placeholder="닉네임 (1~12자, 한글/영문/숫자)"
+                                    value={form.nickname}
+                                    onChange={(e) => handleChange('nickname', e.target.value)}
+                                    maxLength={12} />
+                            </div>
+                        )}
                     </div>
 
                     <div className="register-field">

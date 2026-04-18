@@ -105,6 +105,14 @@ export default function AdminLayout() {
                             <span className="admin-sidebar-icon">📢</span>
                             <span>공지/메시지</span>
                         </NavLink>
+                        <button
+                            className="admin-sidebar-item"
+                            onClick={() => window.open('/monitor', '_blank', 'fullscreen=yes')}
+                            title="새 창에서 모니터 화면 열기 (체육관 TV용)"
+                        >
+                            <span className="admin-sidebar-icon">📺</span>
+                            <span>모니터 화면 열기</span>
+                        </button>
 
                         {/* 분석 메뉴 (토글) */}
                         <div className="admin-sidebar-group">

@@ -97,7 +97,24 @@ export default function ConsentForm() {
                 </div>
 
                 <div className="cf-section">
-                    <h2>3. 마케팅·이벤트 알림 수신 동의 (선택)</h2>
+                    <h2>3. 체육관 모니터 표시 동의 (선택)</h2>
+                    <p className="cf-text">
+                        체육관 내 모니터에 회원 운동 랭킹·출석 현황을 표시할 때 본인의 정보를 노출하는 것에 동의합니다.
+                        아래 표시 방식 중 하나를 선택해주세요.
+                    </p>
+                    <div className="cf-checkbox-row" style={{ flexDirection: 'column', gap: 6, alignItems: 'flex-start' }}>
+                        <span className="cf-checkbox">☐ 닉네임으로 표시 (예: "펀치맨")</span>
+                        <span className="cf-checkbox">☐ 마스킹 이름으로 표시 (예: "김*수") — 기본 권장</span>
+                        <span className="cf-checkbox">☐ 모니터/랭킹에 표시 안 함</span>
+                    </div>
+                    <p className="cf-notice">
+                        ※ 닉네임 사용 시 부적절한 표현은 사업자가 사전 통보 후 마스킹 이름으로 변경할 수 있습니다.
+                        ※ 표시 방식은 언제든지 변경할 수 있습니다.
+                    </p>
+                </div>
+
+                <div className="cf-section">
+                    <h2>4. 마케팅·이벤트 알림 수신 동의 (선택)</h2>
                     <p className="cf-text">
                         센터의 이벤트, 할인 혜택, 신규 프로그램 안내 등을 SMS/카카오톡 등으로 수신하는 것에 동의합니다.
                     </p>
@@ -109,7 +126,7 @@ export default function ConsentForm() {
 
                 {age && Number(age) < 14 && (
                     <div className="cf-section cf-guardian-section">
-                        <h2>4. 법정대리인 동의 (만 14세 미만 필수)</h2>
+                        <h2>5. 법정대리인 동의 (만 14세 미만 필수)</h2>
                         <p className="cf-text">
                             본인은 위 회원의 법정대리인(부모)으로서 회원 가입 및 개인정보 처리에 동의합니다.
                         </p>

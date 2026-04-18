@@ -13,7 +13,9 @@
       "Bash(curl -sL \"https://company.broj.co.kr/broj_service_class_reservation.html\")",
       "WebFetch(domain:play.google.com)",
       "WebSearch",
-      "WebFetch(domain:apps.apple.com)"
+      "WebFetch(domain:apps.apple.com)",
+      "WebFetch(domain:github.com)",
+      "Read(//tmp/boxing_members_check/**)"
     ]
   }
 }

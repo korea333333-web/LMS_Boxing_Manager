@@ -16,6 +16,7 @@ import MemberApp from './member/MemberApp'
 import PrivacyPolicy from './legal/PrivacyPolicy'
 import TermsOfService from './legal/TermsOfService'
 import ConsentForm from './legal/ConsentForm'
+import MonitorDisplay from './admin/pages/MonitorDisplay'
 
 export default function App() {
     return (
@@ -41,6 +42,8 @@ export default function App() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/consent-form" element={<ConsentForm />} />
+            {/* 모니터 디스플레이 (체육관 TV용) - 별도 풀스크린 라우트 */}
+            <Route path="/monitor" element={<MonitorDisplay />} />
             {/* 루트 접속 시 관리자 로그인으로 리다이렉트 */}
             <Route path="*" element={<Navigate to="/admin/login" replace />} />
         </Routes>
