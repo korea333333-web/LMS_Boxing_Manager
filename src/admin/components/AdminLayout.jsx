@@ -397,6 +397,9 @@ export default function AdminLayout() {
                             </button>
                             {analysisOpen && (
                                 <div className="admin-sidebar-submenu">
+                                    <NavLink to="/admin/analysis/members-trend" className={({ isActive }) => `admin-sidebar-subitem ${isActive ? 'active' : ''}`}>
+                                        📈 회원 추이
+                                    </NavLink>
                                     <NavLink to="/admin/analysis/age-stats" className={({ isActive }) => `admin-sidebar-subitem ${isActive ? 'active' : ''}`}>
                                         연령별 현황
                                     </NavLink>

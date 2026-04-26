@@ -9,6 +9,7 @@ import MemberRegister from './admin/pages/MemberRegister'
 import AnalysisAgeStats from './admin/pages/AnalysisAgeStats'
 import AnalysisAttendance from './admin/pages/AnalysisAttendance'
 import AnalysisDemographics from './admin/pages/AnalysisDemographics'
+import AnalysisMembersTrend from './admin/pages/AnalysisMembersTrend'
 import PaymentManagement from './admin/pages/PaymentManagement'
 import LessonJournal from './admin/pages/LessonJournal'
 import NoticeManagement from './admin/pages/NoticeManagement'
@@ -37,6 +38,7 @@ export default function App() {
                 <Route path="analysis/age-stats" element={<AnalysisAgeStats />} />
                 <Route path="analysis/attendance" element={<AnalysisAttendance />} />
                 <Route path="analysis/demographics" element={<AnalysisDemographics />} />
+                <Route path="analysis/members-trend" element={<AnalysisMembersTrend />} />
             </Route>
             {/* 회원용 페이지 */}
             <Route path="/member" element={<MemberApp />} />
