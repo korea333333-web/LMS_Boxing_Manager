@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 import { useSettings } from '../../lib/useSettings'
 import {
@@ -6,7 +7,7 @@ import {
 } from 'recharts'
 import {
     Users, Activity, Flame, Clock, TrendingUp, TrendingDown,
-    Trophy, Sparkles, ArrowUpRight, Heart,
+    Trophy, Sparkles, ArrowUpRight, Heart, CalendarDays, RotateCcw,
 } from 'lucide-react'
 
 const AVATAR_COLORS = ['#FF3B47', '#0A84FF', '#30D158', '#FFD60A', '#BF5AF2', '#FF9500']
@@ -28,8 +29,22 @@ function pctChange(current, previous) {
     return Math.round(((current - previous) / previous) * 1000) / 10
 }
 
+function isSameDay(a, b) {
+    return a && b &&
+        a.getFullYear() === b.getFullYear() &&
+        a.getMonth() === b.getMonth() &&
+        a.getDate() === b.getDate()
+}
+
 export default function Dashboard() {
     const { settings } = useSettings()
+    const ctx = useOutletContext() || {}
+    const selectedDate = ctx.selectedDate || new Date()
+    const setSelectedDate = ctx.setSelectedDate
+
+    const today = new Date()
+    const isToday = isSameDay(selectedDate, today)
+
     const [stats, setStats] = useState({
         totalMembers: 0,
         currentlyWorking: 0,
@@ -50,6 +65,8 @@ export default function Dashboard() {
 
     useEffect(() => {
         fetchDashboardData()
+        // 실시간 구독은 오늘일 때만
+        if (!isToday) return
         const channel = supabase
             .channel('admin-dashboard-modern')
             .on('postgres_changes', { event: '*', schema: 'public', table: 'attendance' }, fetchDashboardData)
@@ -58,13 +75,19 @@ export default function Dashboard() {
             .on('postgres_changes', { event: '*', schema: 'public', table: 'members' }, fetchDashboardData)
             .subscribe()
         return () => { supabase.removeChannel(channel) }
-    }, [])
+    }, [selectedDate])
 
     async function fetchDashboardData() {
         try {
-            const todayStart = new Date()
-            todayStart.setHours(0, 0, 0, 0)
+            // 선택된 날짜를 기준으로 (기본: 오늘)
+            const refDate = new Date(selectedDate)
+            refDate.setHours(0, 0, 0, 0)
+            const todayStart = refDate
             const todayISO = todayStart.toISOString()
+
+            // 선택 날짜의 다음날 (해당 날짜 데이터만 가져오기)
+            const dayEnd = new Date(todayStart.getTime() + 86400000)
+            const dayEndISO = dayEnd.toISOString()
 
             const yesterdayStart = new Date(todayStart.getTime() - 86400000)
             const yesterdayISO = yesterdayStart.toISOString()
@@ -83,6 +106,7 @@ export default function Dashboard() {
                 supabase.from('attendance')
                     .select('*, members(name)')
                     .gte('checked_at', todayISO)
+                    .lt('checked_at', dayEndISO)
                     .order('checked_at', { ascending: false }),
                 supabase.from('attendance')
                     .select('member_id, qr_data')
@@ -107,7 +131,8 @@ export default function Dashboard() {
             const [{ data: todayWorkouts }, { data: yesterdayWorkouts }] = await Promise.all([
                 supabase.from('workout_records')
                     .select('*, members(name, created_at)')
-                    .gte('recorded_at', todayISO),
+                    .gte('recorded_at', todayISO)
+                    .lt('recorded_at', dayEndISO),
                 supabase.from('workout_records')
                     .select('total_calories, duration_minutes')
                     .gte('recorded_at', yesterdayISO)
@@ -219,9 +244,9 @@ export default function Dashboard() {
         )
     }
 
-    const hour = new Date().getHours()
+    const hour = selectedDate.getHours()
     const greeting = hour < 12 ? '좋은 아침' : hour < 18 ? '좋은 오후' : '좋은 저녁'
-    const todayStr = new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'long' })
+    const dateStr = selectedDate.toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'long' })
 
     function renderTrend(value, label) {
         const positive = value > 0
@@ -243,12 +268,25 @@ export default function Dashboard() {
             <div className="dash-modern-header">
                 <div>
                     <div className="dash-modern-greeting">
-                        {greeting}, <span className="dash-modern-greeting-accent">{settings.gym_name || '체육관'}</span>
+                        {isToday ? (
+                            <>{greeting}, <span className="dash-modern-greeting-accent">{settings.gym_name || '체육관'}</span></>
+                        ) : (
+                            <><span className="dash-modern-greeting-accent">📅 {dateStr}</span> 데이터</>
+                        )}
                     </div>
                     <div className="dash-modern-subtitle">
-                        {todayStr} · {stats.currentlyWorking > 0 ? `현재 ${stats.currentlyWorking}명이 운동 중이에요 🔥` : '오늘도 좋은 하루 되세요'}
+                        {isToday ? (
+                            <>{dateStr} · {stats.currentlyWorking > 0 ? `현재 ${stats.currentlyWorking}명이 운동 중이에요 🔥` : '오늘도 좋은 하루 되세요'}</>
+                        ) : (
+                            <>과거 데이터 조회 중 · 실시간 업데이트 일시 중지됨</>
+                        )}
                     </div>
                 </div>
+                {!isToday && setSelectedDate && (
+                    <button className="dash-back-today-btn" onClick={() => setSelectedDate(new Date())}>
+                        <RotateCcw size={14} /> 오늘로 돌아가기
+                    </button>
+                )}
             </div>
 
             <div className="bento-grid">

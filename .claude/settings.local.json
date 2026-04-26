@@ -22,7 +22,9 @@
       "mcp__4edde990-e5a8-4f29-bfc1-6d272a9b9990__apply_migration",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git revert *)",
+      "Bash(git commit *)"
     ]
   }
 }
