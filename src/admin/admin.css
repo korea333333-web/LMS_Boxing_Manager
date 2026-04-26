@@ -9094,12 +9094,17 @@ button:disabled {
 .login-progress-bar.active::after {
     background: #FF3B47;
     box-shadow: 0 0 12px rgba(255,59,71,0.6);
-    animation: progressFill 6s linear forwards;
+    animation: progressFill 7s linear forwards;
 }
 
 @keyframes progressFill {
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
+}
+
+/* 슬라이드 10개라 게이지 살짝 더 얇게 */
+.login-slide-progress {
+    gap: 4px;
 }
 
 /* 신뢰 배지 */

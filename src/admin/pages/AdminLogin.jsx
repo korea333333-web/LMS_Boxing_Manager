@@ -4,21 +4,79 @@ import { supabase } from '../../lib/supabase'
 import bcrypt from 'bcryptjs'
 import { ArrowRight, Eye, EyeOff, Sparkles, Shield, Zap } from 'lucide-react'
 
-// 슬라이드쇼 이미지 (5장 자동 회전)
-const HERO_IMAGES = [
-    { src: '/images/ring-spotlight.png', label: 'THE RING' },
-    { src: '/images/boxer-face.png', label: 'THE FIGHTER' },
-    { src: '/images/ring-underground.png', label: 'UNDERGROUND' },
-    { src: '/images/gloves-1.png', label: 'CRAFT' },
-    { src: '/images/gloves-2.png', label: 'LEGACY' },
-]
-
-const TAGLINES = [
-    { title: 'Train Smarter.', subtitle: '데이터로 만드는 챔피언' },
-    { title: 'Track Every Punch.', subtitle: '한 라운드도 놓치지 않는다' },
-    { title: 'Built for Champions.', subtitle: '진짜 체육관을 위한 도구' },
-    { title: 'Premium. Powerful.', subtitle: 'Pure PunchTrack' },
-    { title: 'Your Gym, Reimagined.', subtitle: '회원관리의 새로운 기준' },
+// 슬라이드쇼 이미지 + 매칭 태그라인 (10장 자동 회전)
+// focus: background-position 값 (인물/주체가 잘 보이도록 크롭 위치 조정)
+const HERO_SLIDES = [
+    {
+        src: '/images/ring-spotlight.png',
+        label: 'THE RING',
+        title: 'Step Into the Ring.',
+        subtitle: '오늘도 새로운 도전이 시작됩니다',
+        focus: 'center 60%',  // 링이 하단에 위치
+    },
+    {
+        src: '/images/champion-belt.png',
+        label: 'CHAMPION',
+        title: 'Earn Your Belt.',
+        subtitle: '한 명의 챔피언, 한 명의 회원부터',
+        focus: 'center 25%',  // 얼굴 + 벨트 살리기 (가로 → 세로 변환)
+    },
+    {
+        src: '/images/triumph-fist.png',
+        label: 'TRIUMPH',
+        title: 'Every Win Counts.',
+        subtitle: '모든 운동이 데이터가 되는 곳',
+        focus: 'center 20%',  // 주먹 + 얼굴 (가로)
+    },
+    {
+        src: '/images/boxer-face.png',
+        label: 'THE FIGHTER',
+        title: 'Train Smarter.',
+        subtitle: '데이터로 만드는 챔피언',
+        focus: 'center 30%',  // 얼굴이 상단에 위치
+    },
+    {
+        src: '/images/entrance-walk.png',
+        label: 'THE WALK',
+        title: 'The Walk Begins.',
+        subtitle: '전설의 시작은 한 걸음부터',
+        focus: 'center 40%',  // 후드 입은 인물 전신 (가로)
+    },
+    {
+        src: '/images/hooded-warrior.png',
+        label: 'WARRIOR',
+        title: 'Born to Fight.',
+        subtitle: '복싱장의 모든 순간을 기록하세요',
+        focus: 'center 35%',  // 후드 인물 (가로)
+    },
+    {
+        src: '/images/victory-stadium.png',
+        label: 'VICTORY',
+        title: 'Above the Crowd.',
+        subtitle: '회원이 빛나면 체육관이 빛납니다',
+        focus: 'center 20%',  // 주먹 들어올린 자세 (가로 → 위쪽 살림)
+    },
+    {
+        src: '/images/ring-underground.png',
+        label: 'UNDERGROUND',
+        title: 'Built for Real Gyms.',
+        subtitle: '겉만 화려한 시스템은 No.',
+        focus: 'center 50%',  // 링 중앙
+    },
+    {
+        src: '/images/gloves-1.png',
+        label: 'CRAFT',
+        title: 'Premium. Powerful.',
+        subtitle: '디테일 하나하나 신경 쓴 도구',
+        focus: '70% center',  // 글러브가 우측에 위치
+    },
+    {
+        src: '/images/gloves-2.png',
+        label: 'LEGACY',
+        title: 'Your Gym, Reimagined.',
+        subtitle: '회원관리의 새로운 기준',
+        focus: 'center 45%',  // 글러브 중앙
+    },
 ]
 
 export default function AdminLogin() {
@@ -29,23 +87,23 @@ export default function AdminLogin() {
     const [rememberMe, setRememberMe] = useState(false)
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const [slide, setSlide] = useState(0)
+    const [slideIdx, setSlideIdx] = useState(0)
     const [imgLoaded, setImgLoaded] = useState({})
 
-    // 자동 슬라이드쇼 (6초마다)
+    // 자동 슬라이드쇼 (7초마다 - 이미지 많아져서 살짝 늘림)
     useEffect(() => {
         const t = setInterval(() => {
-            setSlide(s => (s + 1) % HERO_IMAGES.length)
-        }, 6000)
+            setSlideIdx(s => (s + 1) % HERO_SLIDES.length)
+        }, 7000)
         return () => clearInterval(t)
     }, [])
 
     // 이미지 프리로드
     useEffect(() => {
-        HERO_IMAGES.forEach((img, i) => {
+        HERO_SLIDES.forEach((s, i) => {
             const image = new Image()
             image.onload = () => setImgLoaded(p => ({ ...p, [i]: true }))
-            image.src = img.src
+            image.src = s.src
         })
     }, [])
 
@@ -82,20 +140,22 @@ export default function AdminLogin() {
         }
     }
 
-    const currentImage = HERO_IMAGES[slide]
-    const currentTagline = TAGLINES[slide]
+    const current = HERO_SLIDES[slideIdx]
     const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
 
     return (
         <div className="login-stage">
             {/* === 좌측: 시네마틱 비주얼 === */}
             <div className="login-hero">
-                {/* 슬라이드쇼 (페이드 전환) */}
-                {HERO_IMAGES.map((img, i) => (
+                {/* 슬라이드쇼 (페이드 전환 + 정확한 크롭 위치) */}
+                {HERO_SLIDES.map((s, i) => (
                     <div
                         key={i}
-                        className={`login-hero-image ${slide === i ? 'active' : ''}`}
-                        style={{ backgroundImage: `url('${img.src}')` }}
+                        className={`login-hero-image ${slideIdx === i ? 'active' : ''}`}
+                        style={{
+                            backgroundImage: `url('${s.src}')`,
+                            backgroundPosition: s.focus || 'center',
+                        }}
                     />
                 ))}
                 {/* 그라데이션 오버레이 */}
@@ -122,9 +182,9 @@ export default function AdminLogin() {
 
                 {/* 좌측 중앙 - 큰 타이포 */}
                 <div className="login-hero-center">
-                    <div key={slide} className="login-hero-tagline">
-                        <h1 className="login-hero-title">{currentTagline.title}</h1>
-                        <p className="login-hero-sub">{currentTagline.subtitle}</p>
+                    <div key={slideIdx} className="login-hero-tagline">
+                        <h1 className="login-hero-title">{current.title}</h1>
+                        <p className="login-hero-sub">{current.subtitle}</p>
                     </div>
                 </div>
 
@@ -132,17 +192,17 @@ export default function AdminLogin() {
                 <div className="login-hero-bottom">
                     <div className="login-slide-meta">
                         <span className="login-slide-num">
-                            {String(slide + 1).padStart(2, '0')} <span className="login-slide-divider">/</span> {String(HERO_IMAGES.length).padStart(2, '0')}
+                            {String(slideIdx + 1).padStart(2, '0')} <span className="login-slide-divider">/</span> {String(HERO_SLIDES.length).padStart(2, '0')}
                         </span>
-                        <span className="login-slide-label">{currentImage.label}</span>
+                        <span className="login-slide-label">{current.label}</span>
                     </div>
 
                     <div className="login-slide-progress">
-                        {HERO_IMAGES.map((_, i) => (
+                        {HERO_SLIDES.map((_, i) => (
                             <button
                                 key={i}
-                                className={`login-progress-bar ${slide === i ? 'active' : ''} ${i < slide ? 'past' : ''}`}
-                                onClick={() => setSlide(i)}
+                                className={`login-progress-bar ${slideIdx === i ? 'active' : ''} ${i < slideIdx ? 'past' : ''}`}
+                                onClick={() => setSlideIdx(i)}
                                 aria-label={`슬라이드 ${i + 1}`}
                             />
                         ))}
