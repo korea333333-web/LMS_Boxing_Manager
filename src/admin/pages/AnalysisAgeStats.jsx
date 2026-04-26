@@ -2,10 +2,10 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '../../lib/supabase'
 
 const AGE_GROUPS = [
-    { key: 'elementary', label: '초등부', icon: '🧒', range: [7, 12], color: '#E53E3E' },
-    { key: 'middle', label: '중등부', icon: '📚', range: [13, 15], color: '#3B82F6' },
-    { key: 'high', label: '고등부', icon: '🎓', range: [16, 18], color: '#10B981' },
-    { key: 'adult', label: '성인부', icon: '👤', range: [19, 999], color: '#F59E0B' },
+    { key: 'elementary', label: '초등부', icon: '🧒', range: [7, 12], color: '#FF3B47' },
+    { key: 'middle', label: '중등부', icon: '📚', range: [13, 15], color: '#0A84FF' },
+    { key: 'high', label: '고등부', icon: '🎓', range: [16, 18], color: '#30D158' },
+    { key: 'adult', label: '성인부', icon: '👤', range: [19, 999], color: '#FFD60A' },
 ]
 
 export default function AnalysisAgeStats() {

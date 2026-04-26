@@ -5,7 +5,7 @@ import {
 } from 'recharts'
 import { Search, Plus, TrendingUp, AlertTriangle, CheckCircle } from 'lucide-react'
 
-const AVATAR_COLORS = ['#E53E3E', '#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899']
+const AVATAR_COLORS = ['#FF3B47', '#0A84FF', '#30D158', '#FFD60A', '#BF5AF2', '#FF9500']
 function getAvatarColor(name) {
     let hash = 0
     for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash)
@@ -357,7 +357,7 @@ export default function PaymentManagement() {
                                     <defs>
                                         <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
                                             <stop offset="0%" stopColor="#FF6B6B" />
-                                            <stop offset="100%" stopColor="#E53E3E" />
+                                            <stop offset="100%" stopColor="#FF3B47" />
                                         </linearGradient>
                                     </defs>
                                     <Bar dataKey="revenue" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
@@ -405,7 +405,7 @@ export default function PaymentManagement() {
                             )
                         }) : (
                             <div className="pm-alert-empty">
-                                <CheckCircle size={36} style={{color:'#10B981'}} />
+                                <CheckCircle size={36} style={{color:'#30D158'}} />
                                 <span style={{ color: '#666', fontSize: 13 }}>7일 이내 만료 예정 회원이 없습니다</span>
                             </div>
                         )}

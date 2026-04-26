@@ -24,7 +24,9 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Bash(git revert *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(cp admin.css admin.css.bak)",
+      "Bash(sed -i 's/#0F1923/var\\(--bg-base\\)/g; s/#1A2332/var\\(--bg-surface\\)/g; s/#141E2B/var\\(--bg-elevated\\)/g; s/#2A3A4A/var\\(--border-default\\)/g; s/#E53E3E/var\\(--accent\\)/g; s/#C53030/var\\(--accent-pressed\\)/g' admin.css)"
     ]
   }
 }

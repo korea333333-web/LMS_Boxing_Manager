@@ -123,7 +123,7 @@ export default function AnalysisAttendance() {
         })
     }, [members, attendance])
 
-    const RANK_COLORS = ['#E53E3E', '#F59E0B', '#3B82F6', '#888', '#888']
+    const RANK_COLORS = ['#FF3B47', '#FFD60A', '#0A84FF', '#888', '#888']
 
     if (loading) {
         return (
@@ -236,7 +236,7 @@ export default function AnalysisAttendance() {
                     <h3>| 월간 출석율 달성 추이</h3>
                     <div className="an-chart-legend">
                         <span className="an-legend-item"><span className="an-legend-dot" style={{ background: '#2A3A4A' }}></span>목표치</span>
-                        <span className="an-legend-item"><span className="an-legend-dot" style={{ background: '#E53E3E' }}></span>실제 출석</span>
+                        <span className="an-legend-item"><span className="an-legend-dot" style={{ background: '#FF3B47' }}></span>실제 출석</span>
                     </div>
                 </div>
                 <div className="an-bar-chart">

@@ -145,7 +145,7 @@ a {
 }
 
 .admin-login-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
 }
 
@@ -175,8 +175,8 @@ a {
 }
 
 .admin-login-checkbox:checked+.admin-login-checkbox-custom {
-    background: #E53E3E;
-    border-color: #E53E3E;
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
 .admin-login-checkbox:checked+.admin-login-checkbox-custom::after {
@@ -193,7 +193,7 @@ a {
 .admin-login-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     font-size: 16px;
     font-weight: 600;
@@ -241,7 +241,7 @@ a {
     background: rgba(229, 62, 62, 0.1);
     border: 1px solid rgba(229, 62, 62, 0.3);
     border-radius: 10px;
-    color: #E53E3E;
+    color: var(--accent);
     font-size: 13px;
     text-align: center;
     animation: shakeError 0.4s ease;
@@ -309,15 +309,15 @@ a {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #0F1923;
+    background: var(--bg-base);
     overflow: hidden;
 }
 
 /* --- 탑바 --- */
 .admin-topbar {
     height: 64px;
-    background: #0F1923;
-    border-bottom: 1px solid #1A2332;
+    background: var(--bg-base);
+    border-bottom: 1px solid var(--bg-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -334,7 +334,7 @@ a {
 .admin-topbar-logo {
     width: 36px;
     height: 36px;
-    background: #E53E3E;
+    background: var(--accent);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -358,8 +358,8 @@ a {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     padding: 8px 16px;
     min-width: 220px;
@@ -388,8 +388,8 @@ a {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -400,7 +400,7 @@ a {
 }
 
 .admin-topbar-icon-btn:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #CCC;
 }
 
@@ -408,7 +408,7 @@ a {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -429,7 +429,7 @@ a {
 .admin-sidebar {
     width: 220px;
     background: #0A1018;
-    border-right: 1px solid #1A2332;
+    border-right: 1px solid var(--bg-surface);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -468,8 +468,8 @@ a {
 
 .admin-sidebar-item.active {
     color: #FFFFFF;
-    border-left-color: #E53E3E;
-    background: #1A2332;
+    border-left-color: var(--accent);
+    background: var(--bg-surface);
     font-weight: 500;
 }
 
@@ -483,7 +483,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    border-top: 1px solid #1A2332;
+    border-top: 1px solid var(--bg-surface);
     padding-top: 12px;
 }
 
@@ -496,7 +496,7 @@ a {
     flex: 1;
     overflow-y: auto;
     padding: 24px;
-    background: #0F1923;
+    background: var(--bg-base);
     display: flex;
     flex-direction: column;
 }
@@ -514,7 +514,7 @@ a {
 }
 
 .dash-summary-card {
-    background: #1A2332;
+    background: var(--bg-surface);
     border-radius: 14px;
     padding: 20px;
     display: flex;
@@ -616,7 +616,7 @@ a {
 
 /* --- 공통 섹션 카드 --- */
 .dash-section {
-    background: #1A2332;
+    background: var(--bg-surface);
     border-radius: 14px;
     padding: 20px;
     display: flex;
@@ -644,7 +644,7 @@ a {
 
 .dash-section-link {
     font-size: 13px;
-    color: #E53E3E;
+    color: var(--accent);
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -661,7 +661,7 @@ a {
 }
 
 .dash-busy-banner {
-    background: #E53E3E;
+    background: var(--accent);
     border-radius: 10px;
     padding: 12px 16px;
     display: flex;
@@ -684,7 +684,7 @@ a {
     font-weight: 400;
     color: #666;
     padding: 0 8px 12px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .dash-feed-table td {
@@ -734,7 +734,7 @@ a {
 
 .dash-badge.exit {
     background: rgba(229, 62, 62, 0.15);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .dash-status {
@@ -768,7 +768,7 @@ a {
 }
 
 .dash-legend-dot.red {
-    background: #E53E3E;
+    background: var(--accent);
 }
 
 .dash-legend-dot.navy {
@@ -798,7 +798,7 @@ a {
 }
 
 .dash-bar-segment.high {
-    background: #E53E3E;
+    background: var(--accent);
 }
 
 .dash-bar-segment.mid {
@@ -806,8 +806,8 @@ a {
 }
 
 .dash-bar-segment.low {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
 }
 
 .dash-intensity-stats {
@@ -822,7 +822,7 @@ a {
 }
 
 .dash-intensity-stat+.dash-intensity-stat {
-    border-left: 1px solid #2A3A4A;
+    border-left: 1px solid var(--border-default);
 }
 
 .dash-intensity-stat-label {
@@ -845,7 +845,7 @@ a {
 
 /* --- 오늘의 칼로리 왕 --- */
 .dash-calorie-king {
-    background: linear-gradient(135deg, #1A2332 0%, #2A1520 60%, #3A1525 100%);
+    background: linear-gradient(135deg, var(--bg-surface) 0%, #2A1520 60%, #3A1525 100%);
     position: relative;
     overflow: hidden;
 }
@@ -893,7 +893,7 @@ a {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1083,7 +1083,7 @@ a {
 .register-alert.error {
     background: rgba(229, 62, 62, 0.1);
     border: 1px solid rgba(229, 62, 62, 0.3);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .register-alert.success {
@@ -1097,7 +1097,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background: #1A2332;
+    background: var(--bg-surface);
     border-radius: 14px;
     padding: 28px;
 }
@@ -1124,8 +1124,8 @@ a {
 .register-input {
     width: 100%;
     padding: 14px 16px;
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     color: #FFFFFF;
     font-size: 14px;
@@ -1139,7 +1139,7 @@ a {
 }
 
 .register-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.12);
 }
 
@@ -1163,8 +1163,8 @@ a {
 .register-gender-btn {
     flex: 1;
     padding: 14px;
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     color: #888;
     font-size: 14px;
@@ -1181,7 +1181,7 @@ a {
 }
 
 .register-gender-btn.active {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     background: rgba(229, 62, 62, 0.08);
     color: #FFFFFF;
 }
@@ -1190,7 +1190,7 @@ a {
 .register-submit-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     font-size: 16px;
     font-weight: 600;
@@ -1221,7 +1221,7 @@ a {
 /* 회원 관리 페이지 내 등록 버튼 */
 .register-nav-btn {
     padding: 14px 28px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     font-size: 15px;
     font-weight: 600;
@@ -1274,7 +1274,7 @@ a {
 
 .mem-add-btn {
     padding: 10px 20px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     font-size: 14px;
     font-weight: 600;
@@ -1302,8 +1302,8 @@ a {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     padding: 10px 16px;
     flex: 1;
@@ -1313,7 +1313,7 @@ a {
 }
 
 .mem-search:focus-within {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .mem-search-icon {
@@ -1343,8 +1343,8 @@ a {
 
 .mem-filter-btn {
     padding: 8px 14px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     color: #888;
     font-size: 12px;
@@ -1360,16 +1360,16 @@ a {
 }
 
 .mem-filter-btn.active {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     background: rgba(229, 62, 62, 0.1);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* --- 테이블 --- */
 .mem-table-wrap {
     flex: 1;
     overflow-y: auto;
-    background: #1A2332;
+    background: var(--bg-surface);
     border-radius: 14px;
     border: 1px solid rgba(42, 58, 74, 0.5);
 }
@@ -1382,13 +1382,13 @@ a {
 .mem-table th {
     position: sticky;
     top: 0;
-    background: #1A2332;
+    background: var(--bg-surface);
     text-align: left;
     font-size: 12px;
     font-weight: 500;
     color: #888;
     padding: 14px 16px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
     z-index: 1;
 }
 
@@ -1454,7 +1454,7 @@ a {
 
 .mem-status-expired {
     background: rgba(229, 62, 62, 0.12);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .mem-status-none {
@@ -1464,7 +1464,7 @@ a {
 
 .mem-detail-btn {
     font-size: 12px;
-    color: #E53E3E;
+    color: var(--accent);
     cursor: pointer;
     transition: color 0.2s;
     font-family: inherit;
@@ -1500,8 +1500,8 @@ a {
 }
 
 .mem-modal {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 18px;
     width: 95%;
     max-width: 600px;
@@ -1560,8 +1560,8 @@ a {
     width: 32px;
     height: 32px;
     border-radius: 8px;
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     color: #888;
     font-size: 16px;
     cursor: pointer;
@@ -1573,7 +1573,7 @@ a {
 }
 
 .mem-modal-close:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #FFF;
 }
 
@@ -1586,7 +1586,7 @@ a {
 }
 
 .mem-modal-info-item {
-    background: #0F1923;
+    background: var(--bg-base);
     border-radius: 10px;
     padding: 14px;
     display: flex;
@@ -1609,7 +1609,7 @@ a {
 .mem-edit-input {
     width: 100%;
     padding: 8px 12px;
-    background: #1A2332;
+    background: var(--bg-surface);
     border: 1px solid #3A4A5A;
     border-radius: 8px;
     color: #FFFFFF;
@@ -1620,7 +1620,7 @@ a {
 }
 
 .mem-edit-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .mem-edit-gender {
@@ -1631,8 +1631,8 @@ a {
 .mem-edit-gender-btn {
     flex: 1;
     padding: 8px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     color: #888;
     font-size: 13px;
@@ -1642,7 +1642,7 @@ a {
 }
 
 .mem-edit-gender-btn.active {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     background: rgba(229, 62, 62, 0.1);
     color: #FFF;
 }
@@ -1654,7 +1654,7 @@ a {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 16px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .mem-action-edit,
@@ -1679,7 +1679,7 @@ a {
 }
 
 .mem-action-save {
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFF;
 }
 
@@ -1695,7 +1695,7 @@ a {
     font-weight: 500;
     cursor: pointer;
     background: rgba(229, 62, 62, 0.1);
-    color: #E53E3E;
+    color: var(--accent);
     border: none;
     font-family: inherit;
     transition: all 0.2s;
@@ -1711,7 +1711,7 @@ a {
     font-size: 13px;
     color: #888;
     cursor: pointer;
-    border: 1px solid #2A3A4A;
+    border: 1px solid var(--border-default);
     background: transparent;
     font-family: inherit;
     transition: all 0.2s;
@@ -1727,14 +1727,14 @@ a {
     align-items: center;
     gap: 8px;
     font-size: 13px;
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .mem-action-delete-yes {
     padding: 6px 14px;
     border-radius: 6px;
     font-size: 12px;
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
     cursor: pointer;
     border: none;
@@ -1749,7 +1749,7 @@ a {
 }
 
 .mem-detail-section {
-    background: #0F1923;
+    background: var(--bg-base);
     border-radius: 12px;
     padding: 16px;
 }
@@ -1774,7 +1774,7 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 8px 12px;
-    background: #1A2332;
+    background: var(--bg-surface);
     border-radius: 8px;
 }
 
@@ -1814,7 +1814,7 @@ a {
 
 .mem-detail-badge.exit {
     background: rgba(229, 62, 62, 0.12);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .mem-detail-date {
@@ -1882,7 +1882,7 @@ a {
 }
 
 .stats-summary-card {
-    background: #1A2332;
+    background: var(--bg-surface);
     border-radius: 12px;
     padding: 18px;
     display: flex;
@@ -1936,7 +1936,7 @@ a {
 }
 
 .stats-chart-card {
-    background: #1A2332;
+    background: var(--bg-surface);
     border-radius: 14px;
     padding: 20px;
     display: flex;
@@ -2030,14 +2030,14 @@ a {
 
 .stats-membership-bar {
     height: 8px;
-    background: #0F1923;
+    background: var(--bg-base);
     border-radius: 4px;
     overflow: hidden;
 }
 
 .stats-membership-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, #E53E3E, #F56565);
+    background: linear-gradient(90deg, var(--accent), #F56565);
     border-radius: 4px;
     transition: width 0.5s ease;
 }
@@ -2093,8 +2093,8 @@ a {
 .mm-loading-spinner {
     width: 36px;
     height: 36px;
-    border: 3px solid #2A3A4A;
-    border-top-color: #E53E3E;
+    border: 3px solid var(--border-default);
+    border-top-color: var(--accent);
     border-radius: 50%;
     animation: mmSpin 0.8s linear infinite;
 }
@@ -2116,7 +2116,7 @@ a {
 .mm-left-panel {
     width: 380px;
     min-width: 380px;
-    border-right: 1px solid #1A2332;
+    border-right: 1px solid var(--bg-surface);
     display: flex;
     flex-direction: column;
     background: #0A1018;
@@ -2135,15 +2135,15 @@ a {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 14px;
     padding: 12px 16px;
     transition: border-color 0.2s;
 }
 
 .mm-search-bar:focus-within {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .mm-search-icon {
@@ -2169,8 +2169,8 @@ a {
 /* 상태 탭 */
 .mm-status-tabs {
     display: flex;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     padding: 3px;
 }
@@ -2191,7 +2191,7 @@ a {
 }
 
 .mm-status-tab.active {
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
     box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
 }
@@ -2206,8 +2206,8 @@ a {
 
 .mm-age-filters {
     display: flex;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 2px;
 }
@@ -2229,7 +2229,7 @@ a {
 }
 
 .mm-age-btn.active {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #EEE;
 }
 
@@ -2239,8 +2239,8 @@ a {
 
 .mm-gender-filters {
     display: flex;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 2px;
 }
@@ -2263,7 +2263,7 @@ a {
 }
 
 .mm-gender-btn.active {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #EEE;
 }
 
@@ -2298,12 +2298,12 @@ a {
 }
 
 .mm-member-card:hover {
-    background: #1A2332;
+    background: var(--bg-surface);
 }
 
 .mm-member-card.selected {
-    background: #1A2332;
-    border-left-color: #E53E3E;
+    background: var(--bg-surface);
+    border-left-color: var(--accent);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -2365,7 +2365,7 @@ a {
 .mm-card-tag {
     padding: 1px 6px;
     border-radius: 3px;
-    background: #2A3A4A;
+    background: var(--border-default);
     font-size: 9px;
     color: #888;
     font-weight: 500;
@@ -2380,7 +2380,7 @@ a {
 }
 
 .mm-card-membership.active {
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .mm-card-right {
@@ -2424,7 +2424,7 @@ a {
 .mm-register-btn {
     width: 100%;
     padding: 16px;
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
     font-size: 15px;
     font-weight: 700;
@@ -2447,7 +2447,7 @@ a {
 .mm-right-panel {
     flex: 1;
     overflow-y: auto;
-    background: #0F1923;
+    background: var(--bg-base);
     display: flex;
     flex-direction: column;
 }
@@ -2547,7 +2547,7 @@ a {
 
 .mm-profile-grade.active {
     background: rgba(229, 62, 62, 0.15);
-    color: #E53E3E;
+    color: var(--accent);
     border: 1px solid rgba(229, 62, 62, 0.3);
 }
 
@@ -2575,8 +2575,8 @@ a {
 }
 
 .mm-edit-input {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 8px 12px;
     color: #EEE;
@@ -2587,7 +2587,7 @@ a {
 }
 
 .mm-edit-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .mm-edit-input.name {
@@ -2617,15 +2617,15 @@ a {
     font-size: 12px;
     font-weight: 600;
     color: #666;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     transition: all 0.2s;
 }
 
 .mm-edit-gender-btn.active {
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 /* 프로필 액션 버튼 */
@@ -2643,36 +2643,36 @@ a {
     justify-content: center;
     font-size: 16px;
     transition: all 0.2s;
-    border: 1px solid #2A3A4A;
-    background: #1A2332;
+    border: 1px solid var(--border-default);
+    background: var(--bg-surface);
     color: #888;
 }
 
 .mm-action-btn:hover {
     color: #FFF;
-    background: #2A3A4A;
+    background: var(--border-default);
 }
 
 .mm-action-btn.save {
-    background: #E53E3E;
-    border-color: #E53E3E;
+    background: var(--accent);
+    border-color: var(--accent);
     color: #FFF;
 }
 
 .mm-action-btn.delete {
     border-color: rgba(229, 62, 62, 0.3);
     background: rgba(229, 62, 62, 0.1);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .mm-action-btn.delete:hover {
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
 }
 
 .mm-action-btn.delete-confirm {
-    background: #E53E3E;
-    border-color: #E53E3E;
+    background: var(--accent);
+    border-color: var(--accent);
     color: #FFF;
     width: auto;
     padding: 0 14px;
@@ -2695,8 +2695,8 @@ a {
 }
 
 .mm-stat-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 14px;
     padding: 16px;
     display: flex;
@@ -2731,7 +2731,7 @@ a {
 .mm-stat-bar {
     width: 100%;
     height: 4px;
-    background: #2A3A4A;
+    background: var(--border-default);
     border-radius: 2px;
     overflow: hidden;
     margin-top: 4px;
@@ -2739,7 +2739,7 @@ a {
 
 .mm-stat-bar-fill {
     height: 100%;
-    background: #E53E3E;
+    background: var(--accent);
     border-radius: 2px;
     transition: width 0.6s ease;
 }
@@ -2765,8 +2765,8 @@ a {
 
 /* 출석 캘린더 */
 .mm-calendar-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 20px;
 }
@@ -2793,7 +2793,7 @@ a {
     width: 28px;
     height: 28px;
     border-radius: 6px;
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #888;
     font-size: 11px;
     display: flex;
@@ -2828,11 +2828,11 @@ a {
 }
 
 .mm-legend-dot.attended {
-    background: #E53E3E;
+    background: var(--accent);
 }
 
 .mm-legend-dot.absent {
-    background: #2A3A4A;
+    background: var(--border-default);
     border: 1px solid #555;
 }
 
@@ -2859,8 +2859,8 @@ a {
     justify-content: center;
     font-size: 12px;
     color: #CCC;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     position: relative;
     transition: all 0.15s;
 }
@@ -2878,7 +2878,7 @@ a {
 }
 
 .mm-cal-day.today {
-    box-shadow: 0 0 0 2px #E53E3E;
+    box-shadow: 0 0 0 2px var(--accent);
     font-weight: 700;
 }
 
@@ -2886,14 +2886,14 @@ a {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #E53E3E;
+    background: var(--accent);
     margin-top: 2px;
 }
 
 /* 활동 로그 */
 .mm-activity-log {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 20px;
 }
@@ -2917,7 +2917,7 @@ a {
     top: 4px;
     bottom: 4px;
     width: 2px;
-    background: #2A3A4A;
+    background: var(--border-default);
 }
 
 .mm-timeline-item {
@@ -2933,16 +2933,16 @@ a {
     height: 10px;
     border-radius: 50%;
     background: #555;
-    border: 3px solid #0F1923;
+    border: 3px solid var(--bg-base);
 }
 
 .mm-timeline-dot.highlight {
-    background: #E53E3E;
+    background: var(--accent);
 }
 
 .mm-timeline-content {
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     padding: 14px;
 }
@@ -2982,7 +2982,7 @@ a {
 
 /* 회원권 카드 */
 .mm-membership-card {
-    background: linear-gradient(135deg, #E53E3E, rgba(229, 62, 62, 0.6));
+    background: linear-gradient(135deg, var(--accent), rgba(229, 62, 62, 0.6));
     border-radius: 18px;
     padding: 24px;
     position: relative;
@@ -3051,8 +3051,8 @@ a {
 
 /* 코치 노트 */
 .mm-coach-notes {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 20px;
 }
@@ -3073,9 +3073,9 @@ a {
 
 .mm-note-item {
     padding: 12px;
-    background: #0F1923;
+    background: var(--bg-base);
     border-radius: 10px;
-    border-left: 3px solid #E53E3E;
+    border-left: 3px solid var(--accent);
 }
 
 .mm-note-text {
@@ -3100,8 +3100,8 @@ a {
 
 .mm-note-input {
     flex: 1;
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 10px 12px;
     color: #EEE;
@@ -3112,12 +3112,12 @@ a {
 }
 
 .mm-note-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .mm-note-submit {
     padding: 10px 16px;
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #CCC;
     border-radius: 8px;
     font-size: 12px;
@@ -3127,14 +3127,14 @@ a {
 }
 
 .mm-note-submit:hover {
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
 }
 
 /* 결제 내역 */
 .mm-payment-summary {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 20px;
 }
@@ -3181,7 +3181,7 @@ a {
 .mm-payment-amount {
     font-size: 14px;
     font-weight: 700;
-    color: #E53E3E;
+    color: var(--accent);
     display: block;
 }
 
@@ -3192,8 +3192,8 @@ a {
 
 /* 라커 배정 */
 .mm-locker-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 20px;
 }
@@ -3206,8 +3206,8 @@ a {
 }
 
 .mm-locker-content {
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     padding: 14px;
 }
@@ -3230,7 +3230,7 @@ a {
 .mm-locker-number {
     font-size: 22px;
     font-weight: 800;
-    color: #E53E3E;
+    color: var(--accent);
     letter-spacing: -0.02em;
 }
 
@@ -3257,8 +3257,8 @@ a {
 
 .mm-locker-input {
     flex: 1;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 10px 12px;
     color: #EEE;
@@ -3270,12 +3270,12 @@ a {
 }
 
 .mm-locker-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .mm-locker-save {
     padding: 10px 16px;
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
     border-radius: 8px;
     font-size: 12px;
@@ -3290,7 +3290,7 @@ a {
 
 .mm-locker-cancel {
     padding: 10px 12px;
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #888;
     border-radius: 8px;
     font-size: 12px;
@@ -3386,7 +3386,7 @@ a {
 }
 
 .admin-sidebar-subitem.active {
-    color: #E53E3E;
+    color: var(--accent);
     font-weight: 600;
     background: rgba(229, 62, 62, 0.08);
 }
@@ -3408,8 +3408,8 @@ a {
 .an-loading-spinner {
     width: 36px;
     height: 36px;
-    border: 3px solid #2A3A4A;
-    border-top-color: #E53E3E;
+    border: 3px solid var(--border-default);
+    border-top-color: var(--accent);
     border-radius: 50%;
     animation: mmSpin 0.8s linear infinite;
 }
@@ -3434,7 +3434,7 @@ a {
 }
 
 .an-breadcrumb-active {
-    color: #E53E3E;
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -3458,8 +3458,8 @@ a {
 
 .an-period-btn {
     padding: 10px 18px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     color: #CCC;
     font-size: 13px;
@@ -3468,12 +3468,12 @@ a {
 }
 
 .an-period-btn:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
 }
 
 .an-download-btn {
     padding: 10px 20px;
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFF;
     border-radius: 10px;
     font-size: 13px;
@@ -3508,8 +3508,8 @@ a {
 }
 
 .an-summary-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 20px;
     display: flex;
@@ -3563,7 +3563,7 @@ a {
 }
 
 .an-summary-change.negative {
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .an-summary-sub {
@@ -3574,14 +3574,14 @@ a {
 .an-progress-bar {
     width: 100%;
     height: 5px;
-    background: #2A3A4A;
+    background: var(--border-default);
     border-radius: 3px;
     overflow: hidden;
 }
 
 .an-progress-fill {
     height: 100%;
-    background: #E53E3E;
+    background: var(--accent);
     border-radius: 3px;
     transition: width 0.5s ease;
 }
@@ -3597,7 +3597,7 @@ a {
 
 .an-live-dot {
     font-size: 11px;
-    color: #E53E3E;
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -3613,8 +3613,8 @@ a {
 }
 
 .an-chart-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 24px;
 }
@@ -3700,7 +3700,7 @@ a {
 .an-rate-bar {
     width: 100%;
     height: 6px;
-    background: #2A3A4A;
+    background: var(--border-default);
     border-radius: 3px;
     overflow: hidden;
 }
@@ -3722,7 +3722,7 @@ a {
 }
 
 .an-insight-title {
-    color: #E53E3E;
+    color: var(--accent);
     font-weight: 700;
 }
 
@@ -3835,7 +3835,7 @@ a {
 .an-top-bar-wrap {
     width: 100%;
     height: 4px;
-    background: #2A3A4A;
+    background: var(--border-default);
     border-radius: 2px;
     margin-top: 6px;
     overflow: hidden;
@@ -3894,7 +3894,7 @@ a {
 }
 
 .an-bar.target {
-    background: #2A3A4A;
+    background: var(--border-default);
     opacity: 0.5;
 }
 
@@ -3911,7 +3911,7 @@ a {
     font-size: 10px;
     font-weight: 700;
     color: #FFF;
-    background: #2A3A4A;
+    background: var(--border-default);
     padding: 2px 6px;
     border-radius: 4px;
 }
@@ -3924,8 +3924,8 @@ a {
 
 /* 테이블 */
 .an-table-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     padding: 24px;
 }
@@ -3945,7 +3945,7 @@ a {
 
 .an-export-btn {
     padding: 8px 16px;
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #CCC;
     border-radius: 8px;
     font-size: 12px;
@@ -3971,7 +3971,7 @@ a {
     color: #666;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .an-table td {
@@ -4019,7 +4019,7 @@ a {
 
 .an-status-badge.low {
     background: rgba(229, 62, 62, 0.15);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* 이탈율 바 */
@@ -4032,7 +4032,7 @@ a {
 .an-churn-bar {
     width: 80px;
     height: 6px;
-    background: #2A3A4A;
+    background: var(--border-default);
     border-radius: 3px;
     overflow: hidden;
 }
@@ -4119,7 +4119,7 @@ a {
 }
 
 .pm-add-btn {
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     padding: 10px 24px;
     border-radius: 10px;
@@ -4148,8 +4148,8 @@ a {
 }
 
 .pm-summary-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 14px;
     padding: 20px;
     display: flex;
@@ -4189,7 +4189,7 @@ a {
 
 .pm-card-badge.red {
     background: rgba(229, 62, 62, 0.12);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .pm-card-icon-trend {
@@ -4199,7 +4199,7 @@ a {
 
 .pm-card-icon-warning {
     font-size: 18px;
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .pm-card-value {
@@ -4223,8 +4223,8 @@ a {
 }
 
 .pm-section {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 14px;
     padding: 20px;
     display: flex;
@@ -4271,7 +4271,7 @@ a {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #E53E3E;
+    background: var(--accent);
 }
 
 /* 차트 영역 */
@@ -4313,13 +4313,13 @@ a {
     justify-content: space-between;
     padding: 14px 16px;
     background: #222e3e;
-    border: 1px solid #2A3A4A;
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     transition: background 0.2s;
 }
 
 .pm-alert-item:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
 }
 
 .pm-alert-left {
@@ -4364,7 +4364,7 @@ a {
 }
 
 .pm-dday.urgent {
-    color: #E53E3E;
+    color: var(--accent);
     background: rgba(229, 62, 62, 0.12);
 }
 
@@ -4380,8 +4380,8 @@ a {
 
 .pm-extend-btn {
     padding: 6px 14px;
-    border: 1px solid #E53E3E;
-    color: #E53E3E;
+    border: 1px solid var(--accent);
+    color: var(--accent);
     font-size: 12px;
     font-weight: 700;
     border-radius: 6px;
@@ -4392,7 +4392,7 @@ a {
 }
 
 .pm-extend-btn:hover {
-    background: #E53E3E;
+    background: var(--accent);
     color: #FFFFFF;
 }
 
@@ -4408,15 +4408,15 @@ a {
 
 /* --- 결제 내역 테이블 --- */
 .pm-table-section {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 14px;
     overflow: hidden;
 }
 
 .pm-table-header {
     padding: 20px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -4445,8 +4445,8 @@ a {
 }
 
 .pm-search-input {
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 8px 12px 8px 32px;
     color: #CCC;
@@ -4458,7 +4458,7 @@ a {
 }
 
 .pm-search-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .pm-search-input::placeholder {
@@ -4466,8 +4466,8 @@ a {
 }
 
 .pm-filter-select {
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 8px 12px;
     color: #CCC;
@@ -4478,7 +4478,7 @@ a {
 }
 
 .pm-filter-select:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .pm-table-wrap {
@@ -4499,7 +4499,7 @@ a {
     letter-spacing: 0.05em;
     padding: 14px 20px;
     background: #222e3e;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .pm-table td {
@@ -4548,7 +4548,7 @@ a {
 
 .pm-item-badge.membership {
     background: rgba(229, 62, 62, 0.12);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .pm-item-badge.pt {
@@ -4577,17 +4577,17 @@ a {
 
 .pm-status-badge.cancelled {
     background: rgba(229, 62, 62, 0.12);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* --- 페이지네이션 --- */
 .pm-pagination {
     padding: 14px 20px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1A2332;
+    background: var(--bg-surface);
 }
 
 .pm-page-info {
@@ -4605,7 +4605,7 @@ a {
     width: 32px;
     height: 32px;
     border-radius: 6px;
-    border: 1px solid #2A3A4A;
+    border: 1px solid var(--border-default);
     background: transparent;
     color: #888;
     font-size: 12px;
@@ -4624,8 +4624,8 @@ a {
 }
 
 .pm-page-btn.active {
-    background: #E53E3E;
-    border-color: #E53E3E;
+    background: var(--accent);
+    border-color: var(--accent);
     color: #FFFFFF;
 }
 
@@ -4657,8 +4657,8 @@ a {
 }
 
 .pm-modal {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     width: 100%;
     max-width: 480px;
@@ -4683,7 +4683,7 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 20px 24px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .pm-modal-header h3 {
@@ -4696,7 +4696,7 @@ a {
     width: 32px;
     height: 32px;
     border-radius: 8px;
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #888;
     font-size: 14px;
     cursor: pointer;
@@ -4733,8 +4733,8 @@ a {
 
 .pm-form-group input,
 .pm-form-group select {
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 10px 14px;
     color: #FFFFFF;
@@ -4746,7 +4746,7 @@ a {
 
 .pm-form-group input:focus,
 .pm-form-group select:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .pm-form-group input::placeholder {
@@ -4755,7 +4755,7 @@ a {
 
 .pm-modal-footer {
     padding: 16px 24px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
     display: flex;
     justify-content: flex-end;
     gap: 10px;
@@ -4763,7 +4763,7 @@ a {
 
 .pm-modal-cancel {
     padding: 10px 20px;
-    border: 1px solid #2A3A4A;
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     color: #888;
     font-size: 13px;
@@ -4775,13 +4775,13 @@ a {
 }
 
 .pm-modal-cancel:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #CCC;
 }
 
 .pm-modal-submit {
     padding: 10px 24px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     border: none;
     border-radius: 8px;
@@ -4816,7 +4816,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #E53E3E;
+    color: var(--accent);
     filter: drop-shadow(0 0 8px rgba(229,62,62,0.4));
 }
 
@@ -4841,7 +4841,7 @@ a {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #E53E3E, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -4879,7 +4879,7 @@ a {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #E53E3E, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -4895,7 +4895,7 @@ a {
 
 /* --- 칼로리 왕 섹션 강렬한 그라데이션 --- */
 .dash-calorie-king {
-    background: linear-gradient(135deg, #1A2332 0%, #2D1520 50%, #3D1018 100%) !important;
+    background: linear-gradient(135deg, var(--bg-surface) 0%, #2D1520 50%, #3D1018 100%) !important;
     border: 1px solid rgba(229, 62, 62, 0.3) !important;
     position: relative;
     overflow: hidden;
@@ -4940,7 +4940,7 @@ a {
 }
 
 .admin-sidebar-item.active .admin-sidebar-icon {
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .admin-sidebar-item:hover .admin-sidebar-icon {
@@ -4949,7 +4949,7 @@ a {
 
 /* --- 사이드바 하단 구분선 --- */
 .admin-sidebar-bottom {
-    border-top: 1px solid #1A2332;
+    border-top: 1px solid var(--bg-surface);
     padding-top: 12px;
     margin-top: auto;
 }
@@ -4966,11 +4966,11 @@ a {
     padding: 6px 14px;
     background: rgba(26, 35, 50, 0.6);
     border-radius: 8px;
-    border: 1px solid #2A3A4A;
+    border: 1px solid var(--border-default);
 }
 
 .admin-topbar-date svg {
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* --- 탑바 관리자 프로필 개선 --- */
@@ -5013,7 +5013,7 @@ a {
 
 .admin-topbar-icon-btn:hover {
     background: rgba(255, 255, 255, 0.08);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .admin-topbar-icon-btn .notification-dot {
@@ -5022,9 +5022,9 @@ a {
     right: 6px;
     width: 8px;
     height: 8px;
-    background: #E53E3E;
+    background: var(--accent);
     border-radius: 50%;
-    border: 2px solid #0F1923;
+    border: 2px solid var(--bg-base);
 }
 
 /* --- 테이블 행 호버 --- */
@@ -5155,7 +5155,7 @@ a {
 }
 
 .skeleton {
-    background: linear-gradient(90deg, #1A2332 25%, #2A3A4A 50%, #1A2332 75%);
+    background: linear-gradient(90deg, var(--bg-surface) 25%, var(--border-default) 50%, var(--bg-surface) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s ease-in-out infinite;
     border-radius: 8px;
@@ -5187,7 +5187,7 @@ a {
 }
 
 .mm-member-card.selected {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     box-shadow: 0 0 0 1px rgba(229, 62, 62, 0.3), 0 4px 16px rgba(229, 62, 62, 0.1);
 }
 
@@ -5231,7 +5231,7 @@ a {
 }
 
 .dash-intensity-stat:hover .dash-intensity-stat-value {
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* --- 차트 영역 배경 --- */
@@ -5248,7 +5248,7 @@ a {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #2A3A4A, transparent);
+    background: linear-gradient(90deg, transparent, var(--border-default), transparent);
 }
 
 /* --- 입력 필드 포커스 개선 --- */
@@ -5256,7 +5256,7 @@ a {
 .mm-search-bar input:focus,
 .mm-note-input:focus,
 .mm-locker-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
     outline: none;
 }
@@ -5363,7 +5363,7 @@ a {
         width: 100%;
         max-height: 40vh;
         border-right: none;
-        border-bottom: 1px solid #2A3A4A;
+        border-bottom: 1px solid var(--border-default);
     }
 
     .mm-right-panel {
@@ -5512,7 +5512,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 a:focus-visible {
-    outline: 2px solid #E53E3E;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
@@ -5529,7 +5529,7 @@ button:disabled {
 
 .mm-member-card:hover .mm-card-tag {
     background: rgba(229, 62, 62, 0.15);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* --- 캘린더 셀 호버 --- */
@@ -5559,7 +5559,7 @@ button:disabled {
 
 .pm-page-btn:hover:not(:disabled):not(.active) {
     background: rgba(229, 62, 62, 0.1);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* --- 만료 알림 아이템 호버 --- */
@@ -5573,8 +5573,8 @@ button:disabled {
 
 /* --- 로딩 스피너 개선 --- */
 .mm-loading-spinner {
-    border-color: #2A3A4A;
-    border-top-color: #E53E3E;
+    border-color: var(--border-default);
+    border-top-color: var(--accent);
 }
 
 .admin-page-placeholder h2 {
@@ -5587,7 +5587,7 @@ button:disabled {
     display: block;
     height: 1px;
     margin: 12px 16px;
-    background: linear-gradient(90deg, transparent, #2A3A4A, transparent);
+    background: linear-gradient(90deg, transparent, var(--border-default), transparent);
 }   수업일지(Lesson Journal) 페이지
    ============================================ */
 
@@ -5623,7 +5623,7 @@ button:disabled {
 
 .lj-add-btn {
     padding: 10px 20px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     font-size: 14px;
     font-weight: 600;
@@ -5648,8 +5648,8 @@ button:disabled {
     align-items: center;
     gap: 6px;
     padding: 8px 16px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 20px;
     color: #888;
     font-size: 13px;
@@ -5663,8 +5663,8 @@ button:disabled {
 
 .lj-filter-chip.active {
     background: rgba(229, 62, 62, 0.15);
-    border-color: #E53E3E;
-    color: #E53E3E;
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* 수업일지 목록 */
@@ -5697,7 +5697,7 @@ button:disabled {
 .lj-empty-btn {
     margin-top: 8px;
     padding: 10px 24px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFF;
     border-radius: 10px;
     font-size: 14px;
@@ -5731,13 +5731,13 @@ button:disabled {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #E53E3E;
+    background: var(--accent);
 }
 
 /* 수업일지 카드 */
 .lj-card {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     overflow: hidden;
     transition: border-color 0.2s;
@@ -5796,7 +5796,7 @@ button:disabled {
 
 .lj-group-badge.adult {
     background: rgba(229, 62, 62, 0.15);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .lj-card-title {
@@ -5833,7 +5833,7 @@ button:disabled {
 /* 카드 펼친 내용 */
 .lj-card-body {
     padding: 0 20px 16px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
 }
 
 .lj-card-content {
@@ -5851,7 +5851,7 @@ button:disabled {
     display: flex;
     gap: 8px;
     padding-top: 12px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
 }
 
 .lj-action-btn {
@@ -5872,7 +5872,7 @@ button:disabled {
 
 .lj-action-btn.delete {
     background: rgba(229, 62, 62, 0.1);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .lj-action-btn.delete:hover {
@@ -5889,7 +5889,7 @@ button:disabled {
     align-items: center;
     gap: 8px;
     font-size: 13px;
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* 모달 공용 */
@@ -5908,8 +5908,8 @@ button:disabled {
     width: 95%;
     max-width: 600px;
     max-height: 90vh;
-    background: #141E2B;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -5921,7 +5921,7 @@ button:disabled {
     justify-content: space-between;
     align-items: center;
     padding: 20px 24px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .lj-modal-header h2 {
@@ -5942,7 +5942,7 @@ button:disabled {
 }
 
 .lj-modal-close:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #FFF;
 }
 
@@ -5959,7 +5959,7 @@ button:disabled {
     justify-content: flex-end;
     gap: 12px;
     padding: 16px 24px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
 }
 
 /* 폼 요소 */
@@ -5978,8 +5978,8 @@ button:disabled {
 .lj-form-input {
     width: 100%;
     padding: 12px 16px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 14px;
@@ -5989,14 +5989,14 @@ button:disabled {
 }
 
 .lj-form-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .lj-form-textarea {
     width: 100%;
     padding: 12px 16px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 14px;
@@ -6008,7 +6008,7 @@ button:disabled {
 }
 
 .lj-form-textarea:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .lj-form-chips {
@@ -6019,8 +6019,8 @@ button:disabled {
 
 .lj-form-chip {
     padding: 8px 14px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     color: #888;
     font-size: 13px;
@@ -6034,13 +6034,13 @@ button:disabled {
 
 .lj-form-chip.active {
     background: rgba(229, 62, 62, 0.15);
-    border-color: #E53E3E;
-    color: #E53E3E;
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .lj-btn-cancel {
     padding: 10px 20px;
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #CCC;
     border-radius: 10px;
     font-size: 14px;
@@ -6054,7 +6054,7 @@ button:disabled {
 
 .lj-btn-save {
     padding: 10px 24px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     border-radius: 10px;
     font-size: 14px;
@@ -6107,7 +6107,7 @@ button:disabled {
 
 .nt-add-btn {
     padding: 10px 20px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     font-size: 14px;
     font-weight: 600;
@@ -6132,8 +6132,8 @@ button:disabled {
     align-items: center;
     gap: 14px;
     padding: 16px 20px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
 }
 
@@ -6189,7 +6189,7 @@ button:disabled {
 .nt-empty-btn {
     margin-top: 8px;
     padding: 10px 24px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFF;
     border-radius: 10px;
     font-size: 14px;
@@ -6204,8 +6204,8 @@ button:disabled {
 /* 공지 카드 */
 .nt-card {
     padding: 16px 20px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
@@ -6216,7 +6216,7 @@ button:disabled {
 }
 
 .nt-card.selected {
-    border-color: #E53E3E;
+    border-color: var(--accent);
     background: rgba(229, 62, 62, 0.05);
 }
 
@@ -6270,8 +6270,8 @@ button:disabled {
 .nt-detail {
     width: 380px;
     flex-shrink: 0;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     padding: 20px;
     display: flex;
@@ -6315,7 +6315,7 @@ button:disabled {
 }
 
 .nt-detail-close:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #FFF;
 }
 
@@ -6326,7 +6326,7 @@ button:disabled {
     font-size: 12px;
     color: #888;
     padding-bottom: 16px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .nt-detail-content {
@@ -6342,7 +6342,7 @@ button:disabled {
 
 .nt-detail-actions {
     padding-top: 12px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
 }
 
 .nt-action-btn {
@@ -6354,7 +6354,7 @@ button:disabled {
 
 .nt-action-btn.delete {
     background: rgba(229, 62, 62, 0.1);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .nt-action-btn.delete:hover {
@@ -6371,7 +6371,7 @@ button:disabled {
     align-items: center;
     gap: 8px;
     font-size: 13px;
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 /* 공지 작성 모달 */
@@ -6390,8 +6390,8 @@ button:disabled {
     width: 95%;
     max-width: 640px;
     max-height: 90vh;
-    background: #141E2B;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -6403,7 +6403,7 @@ button:disabled {
     justify-content: space-between;
     align-items: center;
     padding: 20px 24px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .nt-modal-header h2 {
@@ -6424,7 +6424,7 @@ button:disabled {
 }
 
 .nt-modal-close:hover {
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #FFF;
 }
 
@@ -6441,7 +6441,7 @@ button:disabled {
     justify-content: flex-end;
     gap: 12px;
     padding: 16px 24px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
 }
 
 /* 공지 폼 요소 */
@@ -6460,8 +6460,8 @@ button:disabled {
 .nt-form-input {
     width: 100%;
     padding: 12px 16px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 14px;
@@ -6471,14 +6471,14 @@ button:disabled {
 }
 
 .nt-form-input:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .nt-form-textarea {
     width: 100%;
     padding: 12px 16px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 10px;
     color: #FFFFFF;
     font-size: 14px;
@@ -6490,7 +6490,7 @@ button:disabled {
 }
 
 .nt-form-textarea:focus {
-    border-color: #E53E3E;
+    border-color: var(--accent);
 }
 
 .nt-form-chips {
@@ -6504,8 +6504,8 @@ button:disabled {
     align-items: center;
     gap: 6px;
     padding: 8px 14px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     color: #888;
     font-size: 13px;
@@ -6519,8 +6519,8 @@ button:disabled {
 
 .nt-form-chip.active {
     background: rgba(229, 62, 62, 0.15);
-    border-color: #E53E3E;
-    color: #E53E3E;
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .nt-chip-dot {
@@ -6536,7 +6536,7 @@ button:disabled {
     gap: 14px;
     padding: 16px;
     background: rgba(26, 35, 50, 0.5);
-    border: 1px solid #2A3A4A;
+    border: 1px solid var(--border-default);
     border-radius: 10px;
 }
 
@@ -6577,7 +6577,7 @@ button:disabled {
 
 .nt-btn-cancel {
     padding: 10px 20px;
-    background: #2A3A4A;
+    background: var(--border-default);
     color: #CCC;
     border-radius: 10px;
     font-size: 14px;
@@ -6591,7 +6591,7 @@ button:disabled {
 
 .nt-btn-save {
     padding: 10px 24px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFFFFF;
     border-radius: 10px;
     font-size: 14px;
@@ -6614,7 +6614,7 @@ button:disabled {
 .legal-page {
     width: 100vw;
     min-height: 100vh;
-    background: #0F1923;
+    background: var(--bg-base);
     color: #FFF;
     overflow-y: auto;
     padding: 32px 16px;
@@ -6622,8 +6622,8 @@ button:disabled {
 .legal-container {
     max-width: 800px;
     margin: 0 auto;
-    background: #141E2B;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     padding: 32px;
 }
@@ -6635,11 +6635,11 @@ button:disabled {
 .legal-title { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
 .legal-effective {
     font-size: 12px; color: #888; margin-bottom: 24px;
-    padding-bottom: 16px; border-bottom: 1px solid #2A3A4A;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border-default);
 }
 .legal-section { margin-bottom: 24px; }
 .legal-section h2 {
-    font-size: 16px; font-weight: 700; color: #E53E3E; margin-bottom: 10px;
+    font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 10px;
 }
 .legal-section h3 {
     font-size: 14px; font-weight: 600; color: #CCC;
@@ -6654,9 +6654,9 @@ button:disabled {
     width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px;
 }
 .legal-table th, .legal-table td {
-    padding: 10px; border: 1px solid #2A3A4A; text-align: left;
+    padding: 10px; border: 1px solid var(--border-default); text-align: left;
 }
-.legal-table th { background: #1A2332; color: #FFF; font-weight: 600; }
+.legal-table th { background: var(--bg-surface); color: #FFF; font-weight: 600; }
 .legal-info-box {
     background: rgba(229, 62, 62, 0.05);
     border: 1px solid rgba(229, 62, 62, 0.2);
@@ -6665,7 +6665,7 @@ button:disabled {
 .legal-info-box p { margin-bottom: 4px; font-size: 13px; }
 .legal-footer-info {
     margin-top: 32px; padding-top: 16px;
-    border-top: 1px solid #2A3A4A; font-size: 12px; color: #888;
+    border-top: 1px solid var(--border-default); font-size: 12px; color: #888;
 }
 .legal-footer-info p { margin-bottom: 2px; }
 
@@ -6733,7 +6733,7 @@ button:disabled {
 .cf-business-footer p { margin-bottom: 2px; }
 .cf-print-help { text-align: center; margin-top: 20px; padding: 16px; background: #FFF; }
 .cf-print-btn {
-    background: #E53E3E; color: #FFF; padding: 10px 24px; border: none;
+    background: var(--accent); color: #FFF; padding: 10px 24px; border: none;
     border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
 }
 @media print {
@@ -6752,7 +6752,7 @@ button:disabled {
     border-radius: 12px; padding: 16px 18px; margin-top: 16px;
 }
 .register-paper-title {
-    font-size: 14px; font-weight: 700; color: #E53E3E; margin-bottom: 6px;
+    font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 6px;
 }
 .register-paper-desc {
     font-size: 12px; color: #CCC; margin-bottom: 14px; line-height: 1.6;
@@ -6762,22 +6762,22 @@ button:disabled {
     flex: 1; min-width: 160px;
     display: inline-flex; align-items: center; justify-content: center;
     gap: 8px; padding: 12px 16px;
-    border: 1px solid #2A3A4A; border-radius: 10px; background: #1A2332;
+    border: 1px solid var(--border-default); border-radius: 10px; background: var(--bg-surface);
     color: #FFF; font-size: 13px; font-weight: 600;
     cursor: pointer; transition: all 0.2s; font-family: inherit;
 }
-.register-paper-btn:hover { border-color: #E53E3E; color: #E53E3E; }
+.register-paper-btn:hover { border-color: var(--accent); color: var(--accent); }
 .register-paper-btn.print {
     border-color: rgba(59, 130, 246, 0.5); color: #3B82F6;
 }
 .register-paper-btn.print:hover { background: rgba(59, 130, 246, 0.1); }
 .register-paper-btn.upload {
-    border-color: rgba(229, 62, 62, 0.5); color: #E53E3E;
+    border-color: rgba(229, 62, 62, 0.5); color: var(--accent);
 }
 .register-paper-btn.upload:hover { background: rgba(229, 62, 62, 0.1); }
 .register-image-preview {
     margin-top: 14px; padding: 10px;
-    background: #1A2332; border-radius: 8px;
+    background: var(--bg-surface); border-radius: 8px;
 }
 .register-image-preview img {
     width: 100%; max-height: 300px; object-fit: contain;
@@ -6788,7 +6788,7 @@ button:disabled {
     margin-top: 8px; font-size: 12px; color: #888;
 }
 .register-image-remove {
-    margin-left: auto; background: none; border: none; color: #E53E3E;
+    margin-left: auto; background: none; border: none; color: var(--accent);
     font-size: 12px; cursor: pointer; text-decoration: underline; font-family: inherit;
 }
 .register-paper-warning { margin-top: 10px; font-size: 12px; color: #F59E0B; }
@@ -6796,7 +6796,7 @@ button:disabled {
 /* === 동의 체크박스 박스 === */
 .register-consent-box {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid #2A3A4A; border-radius: 12px;
+    border: 1px solid var(--border-default); border-radius: 12px;
     padding: 16px 18px; margin-top: 12px;
 }
 .register-consent-header {
@@ -6809,14 +6809,14 @@ button:disabled {
     padding: 8px 0; cursor: pointer; font-size: 13px; color: #CCC;
 }
 .register-consent-row.all {
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
     padding-bottom: 12px; margin-bottom: 6px; color: #FFF;
 }
 .register-consent-row input[type="checkbox"] {
-    width: 18px; height: 18px; accent-color: #E53E3E;
+    width: 18px; height: 18px; accent-color: var(--accent);
     cursor: pointer; flex-shrink: 0;
 }
-.register-consent-row .required { color: #E53E3E; font-weight: 600; margin-right: 4px; }
+.register-consent-row .required { color: var(--accent); font-weight: 600; margin-right: 4px; }
 .register-consent-row .optional { color: #888; margin-right: 4px; }
 .register-consent-link {
     margin-left: 8px; color: #3B82F6; font-size: 12px; text-decoration: underline;
@@ -6844,9 +6844,9 @@ button:disabled {
 .mc-consent-row.all { color: #FFF; }
 .mc-divider { height: 1px; background: #2A2A3A; margin: 4px 0 8px; }
 .mc-consent-row input[type="checkbox"] {
-    width: 18px; height: 18px; accent-color: #E53E3E; flex-shrink: 0;
+    width: 18px; height: 18px; accent-color: var(--accent); flex-shrink: 0;
 }
-.mc-required { color: #E53E3E; font-weight: 600; margin-right: 4px; }
+.mc-required { color: var(--accent); font-weight: 600; margin-right: 4px; }
 .mc-optional { color: #888; margin-right: 4px; }
 .mc-link {
     margin-left: auto; color: #3B82F6;
@@ -6877,8 +6877,8 @@ button:disabled {
 }
 .register-display-opt {
     display: flex; align-items: flex-start; gap: 8px;
-    padding: 12px; border: 1px solid #2A3A4A; border-radius: 10px;
-    background: #1A2332; cursor: pointer; transition: all 0.2s;
+    padding: 12px; border: 1px solid var(--border-default); border-radius: 10px;
+    background: var(--bg-surface); cursor: pointer; transition: all 0.2s;
 }
 .register-display-opt:hover { border-color: #3A4A5A; }
 .register-display-opt.active {
@@ -6997,7 +6997,7 @@ button:disabled {
 .monitor-section-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #E53E3E;
+    color: var(--accent);
     margin-bottom: 24px;
     text-shadow: 0 0 20px rgba(229, 62, 62, 0.5);
 }
@@ -7077,7 +7077,7 @@ button:disabled {
 .rank-cal-value {
     font-size: 2.4rem;
     font-weight: 800;
-    color: #E53E3E;
+    color: var(--accent);
     line-height: 1;
     font-variant-numeric: tabular-nums;
     text-shadow: 0 0 20px rgba(229, 62, 62, 0.3);
@@ -7152,7 +7152,7 @@ button:disabled {
     margin-left: 4px;
 }
 
-.monitor-stat-card.live .stat-value { color: #E53E3E; }
+.monitor-stat-card.live .stat-value { color: var(--accent); }
 
 /* 푸터 */
 .monitor-footer {
@@ -7190,8 +7190,8 @@ button:disabled {
 
 .monitor-period-tabs button.active {
     background: rgba(229, 62, 62, 0.2);
-    color: #E53E3E;
-    border-color: #E53E3E;
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 .monitor-tip {
@@ -7297,7 +7297,7 @@ button:disabled {
     font-variant-numeric: tabular-nums;
 }
 .big-value span { font-size: 2rem; color: #888; margin-left: 6px; }
-.realtime-big-card.live .big-value { color: #E53E3E; }
+.realtime-big-card.live .big-value { color: var(--accent); }
 .big-label { font-size: 1.2rem; color: #999; margin-top: 12px; }
 .realtime-chart {
     background: rgba(20, 30, 43, 0.6);
@@ -7386,7 +7386,7 @@ button:disabled {
 .motiv-num {
     font-size: 4.5rem;
     font-weight: 800;
-    color: #E53E3E;
+    color: var(--accent);
     line-height: 1;
     font-variant-numeric: tabular-nums;
 }
@@ -7553,7 +7553,7 @@ button:disabled {
 }
 .indicator-dot:hover { background: rgba(255, 255, 255, 0.4); }
 .indicator-dot.active {
-    background: #E53E3E;
+    background: var(--accent);
     width: 36px;
     border-radius: 6px;
     box-shadow: 0 0 12px rgba(229, 62, 62, 0.6);
@@ -7570,7 +7570,7 @@ button:disabled {
     transition: all 0.2s;
     font-family: inherit;
 }
-.indicator-arrow:hover { background: rgba(229, 62, 62, 0.2); border-color: #E53E3E; }
+.indicator-arrow:hover { background: rgba(229, 62, 62, 0.2); border-color: var(--accent); }
 .autoplay-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -7582,7 +7582,7 @@ button:disabled {
     margin-left: 12px;
     font-family: inherit;
 }
-.autoplay-btn.on { background: rgba(229, 62, 62, 0.2); border-color: #E53E3E; color: #E53E3E; }
+.autoplay-btn.on { background: rgba(229, 62, 62, 0.2); border-color: var(--accent); color: var(--accent); }
 
 /* === 1080p 이상 디스플레이 추가 최적화 === */
 @media (min-width: 1920px) {
@@ -7627,7 +7627,7 @@ button:disabled {
 .settings-save-btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #E53E3E, #C53030);
+    background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
     color: #FFF; border-radius: 10px; border: none;
     font-size: 14px; font-weight: 600; cursor: pointer;
     transition: all 0.3s; font-family: inherit;
@@ -7650,7 +7650,7 @@ button:disabled {
 .settings-alert.error {
     background: rgba(229, 62, 62, 0.1);
     border: 1px solid rgba(229, 62, 62, 0.3);
-    color: #E53E3E;
+    color: var(--accent);
 }
 
 .settings-body {
@@ -7663,8 +7663,8 @@ button:disabled {
 
 .settings-tabs {
     display: flex; flex-direction: column; gap: 4px;
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     padding: 12px;
     height: fit-content;
@@ -7681,13 +7681,13 @@ button:disabled {
 .settings-tab:hover { background: rgba(255, 255, 255, 0.03); color: #CCC; }
 .settings-tab.active {
     background: rgba(229, 62, 62, 0.1);
-    color: #E53E3E;
+    color: var(--accent);
     font-weight: 600;
 }
 
 .settings-content {
-    background: #1A2332;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
     border-radius: 12px;
     padding: 28px;
     overflow-y: auto;
@@ -7701,7 +7701,7 @@ button:disabled {
     font-size: 14px; font-weight: 600; color: #CCC;
     margin-bottom: 12px; margin-top: 16px;
     padding-top: 16px;
-    border-top: 1px solid #2A3A4A;
+    border-top: 1px solid var(--border-default);
 }
 .section-desc { font-size: 13px; color: #888; margin-bottom: 24px; }
 
@@ -7716,22 +7716,22 @@ button:disabled {
 .settings-row label:first-child {
     font-size: 13px; color: #CCC; font-weight: 500;
 }
-.settings-row .required { color: #E53E3E; }
+.settings-row .required { color: var(--accent); }
 .settings-row input[type="text"],
 .settings-row input[type="email"],
 .settings-row input[type="tel"],
 .settings-row input[type="number"],
 .settings-row input[type="time"] {
     padding: 10px 14px;
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
     color: #FFF; font-size: 14px;
     font-family: inherit; outline: none;
     transition: border-color 0.2s;
     width: 100%;
 }
-.settings-row input:focus { border-color: #E53E3E; }
+.settings-row input:focus { border-color: var(--accent); }
 .settings-row input:disabled { opacity: 0.4; cursor: not-allowed; }
 .settings-hint { font-size: 12px; color: #666; }
 
@@ -7744,7 +7744,7 @@ button:disabled {
 .toggle-slider {
     position: absolute; cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: #2A3A4A; border-radius: 26px;
+    background: var(--border-default); border-radius: 26px;
     transition: 0.3s;
 }
 .toggle-slider:before {
@@ -7756,7 +7756,7 @@ button:disabled {
     border-radius: 50%;
     transition: 0.3s;
 }
-.settings-toggle input:checked + .toggle-slider { background: #E53E3E; }
+.settings-toggle input:checked + .toggle-slider { background: var(--accent); }
 .settings-toggle input:checked + .toggle-slider:before {
     transform: translateX(24px);
 }
@@ -7768,7 +7768,7 @@ button:disabled {
 }
 .settings-checkbox input[type="checkbox"] {
     width: 16px; height: 16px;
-    accent-color: #E53E3E;
+    accent-color: var(--accent);
 }
 
 /* 운영시간 테이블 */
@@ -7783,7 +7783,7 @@ button:disabled {
 .settings-membership-table th,
 .settings-membership-table td {
     padding: 10px 12px;
-    border-bottom: 1px solid #2A3A4A;
+    border-bottom: 1px solid var(--border-default);
     font-size: 13px;
 }
 .settings-hours-table th,
@@ -7794,8 +7794,8 @@ button:disabled {
 .settings-hours-table td input,
 .settings-membership-table td input {
     padding: 8px 12px;
-    background: #0F1923;
-    border: 1px solid #2A3A4A;
+    background: var(--bg-base);
+    border: 1px solid var(--border-default);
     border-radius: 6px;
     color: #FFF; font-size: 13px;
     font-family: inherit; outline: none;
@@ -7809,7 +7809,7 @@ button:disabled {
     background: rgba(229, 62, 62, 0.1);
     border: 1px dashed rgba(229, 62, 62, 0.4);
     border-radius: 8px;
-    color: #E53E3E; font-size: 13px; cursor: pointer;
+    color: var(--accent); font-size: 13px; cursor: pointer;
     font-family: inherit; transition: all 0.2s;
 }
 .settings-add-btn:hover { background: rgba(229, 62, 62, 0.2); }
@@ -7818,7 +7818,7 @@ button:disabled {
     padding: 6px 12px;
     background: rgba(229, 62, 62, 0.1);
     border: none; border-radius: 6px;
-    color: #E53E3E; font-size: 12px; cursor: pointer;
+    color: var(--accent); font-size: 12px; cursor: pointer;
     font-family: inherit;
 }
 

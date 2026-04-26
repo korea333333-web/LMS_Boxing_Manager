@@ -5,9 +5,9 @@ import {
     XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
 
-const PIE_COLORS = ['#E53E3E', '#3B82F6', '#10B981', '#F59E0B', '#8B5CF6']
-const GENDER_COLORS = { male: '#3B82F6', female: '#EC4899' }
-const AGE_COLOR = '#E53E3E'
+const PIE_COLORS = ['#FF3B47', '#0A84FF', '#30D158', '#FFD60A', '#BF5AF2']
+const GENDER_COLORS = { male: '#0A84FF', female: '#FF9500' }
+const AGE_COLOR = '#FF3B47'
 
 export default function Statistics() {
     const [loading, setLoading] = useState(true)
@@ -284,7 +284,7 @@ export default function Statistics() {
                                     contentStyle={CustomTooltipStyle}
                                     formatter={(value) => [`${value.toLocaleString()}원`, '매출']}
                                 />
-                                <Bar dataKey="revenue" fill="#E53E3E" radius={[6, 6, 0, 0]} />
+                                <Bar dataKey="revenue" fill="#FF3B47" radius={[6, 6, 0, 0]} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -301,8 +301,8 @@ export default function Statistics() {
                             <AreaChart data={attendanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="colorAtt" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3} />
-                                        <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
+                                        <stop offset="5%" stopColor="#0A84FF" stopOpacity={0.3} />
+                                        <stop offset="95%" stopColor="#0A84FF" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#2A3A4A" vertical={false} />
@@ -318,7 +318,7 @@ export default function Statistics() {
                                     contentStyle={CustomTooltipStyle}
                                     formatter={(value) => [`${value}명`, '출석']}
                                 />
-                                <Area type="monotone" dataKey="count" stroke="#3B82F6" strokeWidth={2} fill="url(#colorAtt)" />
+                                <Area type="monotone" dataKey="count" stroke="#0A84FF" strokeWidth={2} fill="url(#colorAtt)" />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>

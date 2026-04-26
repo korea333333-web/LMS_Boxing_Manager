@@ -2,9 +2,9 @@ import { useState, useEffect, useMemo } from 'react'
 import { supabase } from '../../lib/supabase'
 
 const AGE_BRACKETS = [
-    { key: '10s', label: '10대 (Teenagers)', range: [10, 19], color: '#E53E3E' },
+    { key: '10s', label: '10대 (Teenagers)', range: [10, 19], color: '#FF3B47' },
     { key: '20s', label: '20대 (Young Adults)', range: [20, 29], color: '#F97316' },
-    { key: '30s', label: '30대 (Professionals)', range: [30, 39], color: '#3B82F6' },
+    { key: '30s', label: '30대 (Professionals)', range: [30, 39], color: '#0A84FF' },
     { key: '40+', label: '40대+ (Seniors/Vets)', range: [40, 999], color: '#6B7280' },
 ]
 
@@ -216,9 +216,9 @@ export default function AnalysisDemographics() {
                                 }).join(' ')
                                 return (
                                     <>
-                                        <path d={pathD} fill="none" stroke="#E53E3E" strokeWidth="2.5" />
+                                        <path d={pathD} fill="none" stroke="#FF3B47" strokeWidth="2.5" />
                                         {points.map((p, i) => (
-                                            <circle key={i} cx={p.x} cy={p.y} r="4" fill="#E53E3E" />
+                                            <circle key={i} cx={p.x} cy={p.y} r="4" fill="#FF3B47" />
                                         ))}
                                     </>
                                 )
