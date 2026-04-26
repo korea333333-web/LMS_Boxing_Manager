@@ -8821,3 +8821,698 @@ button:disabled {
     font-size: 13px;
     font-weight: 600;
 }
+
+/* ============================================
+   🎬 시네마틱 로그인 페이지 (2025 모던)
+   Split Screen + Cinematic + Glassmorphism
+   ============================================ */
+
+.login-stage {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    background: #000;
+    overflow: hidden;
+    color: #FFF;
+}
+
+/* === 좌측: 시네마틱 비주얼 === */
+.login-hero {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.login-hero-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.05);
+    animation: heroKenBurns 20s ease-in-out infinite;
+}
+.login-hero-image.active {
+    opacity: 1;
+}
+
+@keyframes heroKenBurns {
+    0%, 100% { transform: scale(1.05) translate(0, 0); }
+    50% { transform: scale(1.12) translate(-1%, -1%); }
+}
+
+/* 그라데이션 오버레이 (가독성) */
+.login-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(0,0,0,0.7) 0%,
+            rgba(0,0,0,0.2) 30%,
+            rgba(0,0,0,0.4) 70%,
+            rgba(0,0,0,0.95) 100%
+        ),
+        radial-gradient(circle at 80% 50%, rgba(255,59,71,0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.login-hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 좌측 상단 - 브랜드 */
+.login-hero-top {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.login-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.login-brand-mark {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    font-size: 22px;
+}
+
+.login-brand-glow {
+    position: absolute;
+    inset: -4px;
+    background: radial-gradient(circle, rgba(255,59,71,0.6) 0%, transparent 70%);
+    border-radius: 14px;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(8px);
+    animation: brandPulse 3s ease-in-out infinite;
+}
+
+@keyframes brandPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.login-brand-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFF;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.login-brand-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.2em;
+    margin-top: 4px;
+}
+
+.login-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+}
+
+.login-time-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FF3B47;
+    box-shadow: 0 0 12px #FF3B47;
+    animation: timeDotPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes timeDotPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* 좌측 중앙 - 큰 타이포 */
+.login-hero-center {
+    position: absolute;
+    bottom: 200px;
+    left: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+.login-hero-tagline {
+    animation: taglineEnter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes taglineEnter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-hero-title {
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #FFF;
+    margin-bottom: 16px;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.login-hero-sub {
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+/* 좌측 하단 */
+.login-hero-bottom {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+.login-slide-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.login-slide-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFF;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+
+.login-slide-divider {
+    color: rgba(255,255,255,0.3);
+    margin: 0 4px;
+    font-weight: 400;
+}
+
+.login-slide-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.25em;
+}
+
+.login-slide-progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.login-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: background 0.3s;
+    padding: 0;
+}
+
+.login-progress-bar:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.login-progress-bar.past::after,
+.login-progress-bar.active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #FFF;
+    border-radius: 999px;
+    transform-origin: left;
+    animation: none;
+}
+.login-progress-bar.past::after {
+    transform: scaleX(1);
+}
+.login-progress-bar.active::after {
+    background: #FF3B47;
+    box-shadow: 0 0 12px rgba(255,59,71,0.6);
+    animation: progressFill 6s linear forwards;
+}
+
+@keyframes progressFill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* 신뢰 배지 */
+.login-trust {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.login-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.02em;
+}
+
+.login-trust-item svg {
+    color: #FF3B47;
+}
+
+/* === 우측: 미니멀 폼 === */
+.login-form-side {
+    background: var(--bg-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme='dark'] .login-form-side {
+    background: linear-gradient(135deg, #0E1217 0%, #161B22 100%);
+}
+[data-theme='light'] .login-form-side {
+    background: linear-gradient(135deg, #F9F6F0 0%, #FFFFFF 100%);
+}
+
+/* 미묘한 배경 패턴 */
+.login-form-side::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 90% 10%, rgba(255,59,71,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 10% 90%, rgba(10,132,255,0.05) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.login-form-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    animation: formEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes formEnter {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 폼 헤더 */
+.login-form-header {
+    margin-bottom: 36px;
+}
+
+.login-form-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+}
+
+.login-form-eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: eyebrowPulse 2s ease-in-out infinite;
+}
+
+@keyframes eyebrowPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.login-form-title {
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.login-form-title-accent {
+    background: var(--grad-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-form-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+}
+
+/* 폼 */
+.login-form-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-error-modern {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255, 59, 71, 0.08);
+    border: 1px solid rgba(255, 59, 71, 0.2);
+    border-radius: 12px;
+    color: #FF3B47;
+    font-size: 13px;
+    font-weight: 500;
+    animation: errorShake 0.4s;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.login-error-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FF3B47;
+    box-shadow: 0 0 8px #FF3B47;
+}
+
+.login-field-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login-label-modern {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+}
+
+.login-label-link {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+}
+
+.login-input-wrap {
+    position: relative;
+    background: var(--bg-elevated);
+    border: 1.5px solid var(--border-default);
+    border-radius: 12px;
+    transition: all var(--motion-base);
+}
+
+.login-input-wrap:focus-within {
+    border-color: var(--accent);
+    background: var(--bg-surface);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.login-input-modern {
+    width: 100%;
+    padding: 16px 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.login-input-modern::placeholder {
+    color: var(--text-tertiary);
+}
+
+.login-input-action {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all var(--motion-fast);
+}
+
+.login-input-action:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* Remember Me */
+.login-remember-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    user-select: none;
+}
+
+.login-remember-modern input[type="checkbox"] {
+    display: none;
+}
+
+.login-checkbox-modern {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--motion-base);
+    background: var(--bg-elevated);
+}
+
+.login-remember-modern input:checked + .login-checkbox-modern {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.login-check {
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* CTA 버튼 (메인) */
+.login-cta-modern {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: var(--grad-accent);
+    color: #FFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    overflow: hidden;
+    transition: all var(--motion-base);
+    margin-top: 8px;
+    box-shadow:
+        0 4px 16px rgba(255,59,71,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    letter-spacing: -0.01em;
+}
+
+.login-cta-modern:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow:
+        0 8px 24px rgba(255,59,71,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.login-cta-modern:hover:not(:disabled) .login-cta-arrow {
+    transform: translateX(4px);
+}
+
+.login-cta-modern:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.login-cta-modern:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.login-cta-text {
+    position: relative;
+    z-index: 1;
+}
+
+.login-cta-arrow {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    transition: transform var(--motion-base);
+}
+
+.login-cta-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--motion-base);
+}
+
+.login-cta-modern:hover:not(:disabled) .login-cta-glow {
+    opacity: 1;
+}
+
+/* 폼 푸터 */
+.login-form-footer {
+    margin-top: 32px;
+}
+
+.login-form-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    letter-spacing: 0.2em;
+}
+
+.login-form-divider::before,
+.login-form-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+
+.login-help {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.login-help-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity var(--motion-fast);
+}
+
+.login-help-link:hover {
+    opacity: 0.8;
+}
+
+.login-copyright {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 24px;
+    letter-spacing: 0.05em;
+}
+
+/* === 반응형 === */
+@media (max-width: 1024px) {
+    .login-stage {
+        grid-template-columns: 1fr;
+    }
+    .login-hero {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form-side {
+        padding: 20px;
+    }
+    .login-form-title {
+        font-size: 26px;
+    }
+}
