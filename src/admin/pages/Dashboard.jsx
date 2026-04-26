@@ -66,6 +66,7 @@ export default function Dashboard() {
         weekCalorieMembers: [],  // 이번 주
         monthCalorieMembers: [], // 이번 달
         todayDurationMembers: [], // 오늘 운동한 회원 + 시간 + 입장시각
+        weekHourlyData: [],       // 이번 주 시간대별 출석
     })
     const [hourlyData, setHourlyData] = useState([])
     const [feedData, setFeedData] = useState([])
@@ -119,7 +120,14 @@ export default function Dashboard() {
             ])
             const membersGrowth = pctChange(totalMembers || 0, lastMonthMembers || 0)
 
-            const [{ data: todayAttendance }, { data: yesterdayAttendance }] = await Promise.all([
+            // 이번주 시작 (월요일 00:00) - workout_records와 동일 기준
+            const _weekStart = new Date(todayStart)
+            const _day = _weekStart.getDay()
+            const _diff = _day === 0 ? -6 : 1 - _day
+            _weekStart.setDate(_weekStart.getDate() + _diff)
+            const weekAttISO = _weekStart.toISOString()
+
+            const [{ data: todayAttendance }, { data: yesterdayAttendance }, { data: weekAttendance }] = await Promise.all([
                 supabase.from('attendance')
                     .select('*, members(name)')
                     .gte('checked_at', todayISO)
@@ -129,6 +137,10 @@ export default function Dashboard() {
                     .select('member_id, qr_data')
                     .gte('checked_at', yesterdayISO)
                     .lt('checked_at', todayISO),
+                supabase.from('attendance')
+                    .select('checked_at, qr_data')
+                    .gte('checked_at', weekAttISO)
+                    .lt('checked_at', dayEndISO),
             ])
 
             const entryToday = new Set()
@@ -206,19 +218,25 @@ export default function Dashboard() {
             const durationGrowth = pctChange(avgDuration, yesterdayAvgDur)
 
             const timeLabels = ['6시', '9시', '12시', '15시', '18시', '21시']
-            const hourlyMap = {}
-            timeLabels.forEach(l => { hourlyMap[l] = 0 })
-            todayAttendance?.forEach(r => {
-                if (r.qr_data?.startsWith('exit-')) return
-                const h = new Date(r.checked_at).getHours()
-                if (h < 9) hourlyMap['6시']++
-                else if (h < 12) hourlyMap['9시']++
-                else if (h < 15) hourlyMap['12시']++
-                else if (h < 18) hourlyMap['15시']++
-                else if (h < 21) hourlyMap['18시']++
-                else hourlyMap['21시']++
-            })
-            const chartData = timeLabels.map(t => ({ time: t, count: hourlyMap[t] }))
+
+            function buildHourlyData(records) {
+                const m = {}
+                timeLabels.forEach(l => { m[l] = 0 })
+                records?.forEach(r => {
+                    if (r.qr_data?.startsWith('exit-')) return
+                    const h = new Date(r.checked_at).getHours()
+                    if (h < 9) m['6시']++
+                    else if (h < 12) m['9시']++
+                    else if (h < 15) m['12시']++
+                    else if (h < 18) m['15시']++
+                    else if (h < 21) m['18시']++
+                    else m['21시']++
+                })
+                return timeLabels.map(t => ({ time: t, count: m[t] }))
+            }
+
+            const chartData = buildHourlyData(todayAttendance)
+            const weekHourlyData = buildHourlyData(weekAttendance)
 
             const feed = (todayAttendance || []).slice(0, 8).map(r => {
                 const isExit = r.qr_data?.startsWith('exit-')
@@ -355,6 +373,7 @@ export default function Dashboard() {
                 weekCalorieMembers,
                 monthCalorieMembers,
                 todayDurationMembers,
+                weekHourlyData,
             })
             setHourlyData(chartData)
             setFeedData(feed)
@@ -508,7 +527,9 @@ export default function Dashboard() {
                     <div className="chart-card-header">
                         <div>
                             <div className="chart-card-title">시간대별 출석 트래픽</div>
-                            <div className="chart-card-subtitle">오늘 회원 입장 패턴</div>
+                            <div className="chart-card-subtitle">
+                                {chartPeriod === 'today' ? '오늘 회원 입장 패턴' : '이번 주 (월요일~) 누적 입장 패턴'}
+                            </div>
                         </div>
                         <div className="chart-card-tabs">
                             <button className={`chart-card-tab ${chartPeriod === 'today' ? 'active' : ''}`} onClick={() => setChartPeriod('today')}>오늘</button>
@@ -517,7 +538,7 @@ export default function Dashboard() {
                     </div>
                     <div style={{ width: '100%', height: 240 }}>
                         <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart data={hourlyData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                            <AreaChart data={chartPeriod === 'today' ? hourlyData : (stats.weekHourlyData || [])} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                                 <defs>
                                     <linearGradient id="modernArea" x1="0" y1="0" x2="0" y2="1">
                                         <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.4} />
