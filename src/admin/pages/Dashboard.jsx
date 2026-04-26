@@ -217,7 +217,11 @@ export default function Dashboard() {
                 : 0
             const durationGrowth = pctChange(avgDuration, yesterdayAvgDur)
 
-            const timeLabels = ['6시', '9시', '12시', '15시', '18시', '21시']
+            // 06시 ~ 24시(자정) - 체육관 운영시간 - 1시간 단위
+            const timeLabels = []
+            for (let h = 6; h <= 24; h++) {
+                timeLabels.push(`${String(h).padStart(2, '0')}시`)
+            }
 
             function buildHourlyData(records) {
                 const m = {}
@@ -225,12 +229,12 @@ export default function Dashboard() {
                 records?.forEach(r => {
                     if (r.qr_data?.startsWith('exit-')) return
                     const h = new Date(r.checked_at).getHours()
-                    if (h < 9) m['6시']++
-                    else if (h < 12) m['9시']++
-                    else if (h < 15) m['12시']++
-                    else if (h < 18) m['15시']++
-                    else if (h < 21) m['18시']++
-                    else m['21시']++
+                    // 0시(자정 = 24시 라벨), 6시~23시
+                    if (h === 0) {
+                        m['24시']++
+                    } else if (h >= 6 && h <= 23) {
+                        m[`${String(h).padStart(2, '0')}시`]++
+                    }
                 })
                 return timeLabels.map(t => ({ time: t, count: m[t] }))
             }
@@ -546,8 +550,14 @@ export default function Dashboard() {
                                     </linearGradient>
                                 </defs>
                                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />
-                                <XAxis dataKey="time" tick={{ fill: 'var(--text-tertiary)', fontSize: 12 }} axisLine={false} tickLine={false} />
-                                <YAxis tick={{ fill: 'var(--text-tertiary)', fontSize: 12 }} axisLine={false} tickLine={false} />
+                                <XAxis
+                                    dataKey="time"
+                                    tick={{ fill: 'var(--text-tertiary)', fontSize: 11 }}
+                                    axisLine={false}
+                                    tickLine={false}
+                                    interval={1}
+                                />
+                                <YAxis tick={{ fill: 'var(--text-tertiary)', fontSize: 12 }} axisLine={false} tickLine={false} allowDecimals={false} />
                                 <Tooltip
                                     contentStyle={{
                                         background: 'var(--bg-elevated)',
