@@ -96,14 +96,14 @@ a {
 .admin-login-title {
     font-size: 32px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
     margin-bottom: 4px;
 }
 
 .admin-login-subtitle {
     font-size: 14px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 400;
     margin-bottom: 32px;
 }
@@ -124,7 +124,7 @@ a {
 .admin-login-label {
     font-size: 14px;
     font-weight: 500;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .admin-login-input {
@@ -133,7 +133,7 @@ a {
     background: #1E1E1E;
     border: 1px solid #333;
     border-radius: 12px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -141,7 +141,7 @@ a {
 }
 
 .admin-login-input::placeholder {
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .admin-login-input:focus {
@@ -155,7 +155,7 @@ a {
     gap: 10px;
     cursor: pointer;
     font-size: 13px;
-    color: #999;
+    color: var(--text-tertiary);
     margin-top: -4px;
 }
 
@@ -194,7 +194,7 @@ a {
     width: 100%;
     padding: 16px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 600;
     border: none;
@@ -274,7 +274,7 @@ a {
 .admin-login-links {
     margin-top: 24px;
     font-size: 13px;
-    color: #666;
+    color: var(--text-tertiary);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -286,11 +286,11 @@ a {
 }
 
 .admin-login-links span:not(.admin-login-divider):hover {
-    color: #999;
+    color: var(--text-tertiary);
 }
 
 .admin-login-divider {
-    color: #444;
+    color: var(--text-disabled);
 }
 
 .admin-login-copyright {
@@ -298,7 +298,7 @@ a {
     z-index: 1;
     margin-top: 40px;
     font-size: 12px;
-    color: #555;
+    color: var(--text-tertiary);
 }
 
 /* ============================================
@@ -345,7 +345,7 @@ a {
 .admin-topbar-title {
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .admin-topbar-right {
@@ -367,14 +367,14 @@ a {
 
 .admin-topbar-search-icon {
     font-size: 14px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .admin-topbar-search input {
     background: transparent;
     border: none;
     outline: none;
-    color: #CCC;
+    color: var(--text-secondary);
     font-size: 13px;
     font-family: inherit;
     width: 100%;
@@ -394,14 +394,14 @@ a {
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    color: #888;
+    color: var(--text-tertiary);
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .admin-topbar-icon-btn:hover {
     background: var(--border-default);
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .admin-topbar-avatar {
@@ -450,7 +450,7 @@ a {
     padding: 12px 20px;
     font-size: 14px;
     font-weight: 400;
-    color: #888;
+    color: var(--text-tertiary);
     cursor: pointer;
     transition: all 0.2s;
     border-left: 3px solid transparent;
@@ -462,12 +462,12 @@ a {
 }
 
 .admin-sidebar-item:hover {
-    color: #CCC;
+    color: var(--text-secondary);
     background: rgba(26, 35, 50, 0.5);
 }
 
 .admin-sidebar-item.active {
-    color: #FFFFFF;
+    color: var(--text-primary);
     border-left-color: var(--accent);
     background: var(--bg-surface);
     font-weight: 500;
@@ -488,7 +488,7 @@ a {
 }
 
 .admin-sidebar-bottom .admin-sidebar-item {
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 /* --- 메인 콘텐츠 --- */
@@ -538,14 +538,14 @@ a {
 
 .dash-summary-label {
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 400;
 }
 
 .dash-summary-value {
     font-size: 36px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
     line-height: 1.1;
     display: flex;
     align-items: baseline;
@@ -555,7 +555,7 @@ a {
 .dash-summary-unit {
     font-size: 18px;
     font-weight: 400;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .dash-summary-change {
@@ -568,7 +568,7 @@ a {
 }
 
 .dash-summary-change.neutral {
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .dash-summary-icon {
@@ -633,12 +633,12 @@ a {
 .dash-section-title {
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .dash-section-subtitle {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     margin-bottom: 16px;
 }
 
@@ -669,7 +669,7 @@ a {
     gap: 8px;
     font-size: 13px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 /* --- 입퇴장 피드 테이블 --- */
@@ -682,7 +682,7 @@ a {
     text-align: left;
     font-size: 12px;
     font-weight: 400;
-    color: #666;
+    color: var(--text-tertiary);
     padding: 0 8px 12px;
     border-bottom: 1px solid var(--border-default);
 }
@@ -690,7 +690,7 @@ a {
 .dash-feed-table td {
     padding: 12px 8px;
     font-size: 14px;
-    color: #CCC;
+    color: var(--text-secondary);
     border-bottom: 1px solid rgba(42, 58, 74, 0.4);
     vertical-align: middle;
 }
@@ -710,13 +710,13 @@ a {
     justify-content: center;
     font-size: 12px;
     font-weight: 600;
-    color: #FFF;
+    color: var(--text-primary);
     flex-shrink: 0;
 }
 
 .dash-feed-name {
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .dash-badge {
@@ -747,7 +747,7 @@ a {
 }
 
 .dash-status.done {
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 /* --- 운동 강도 분포 --- */
@@ -756,7 +756,7 @@ a {
     align-items: center;
     gap: 16px;
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .dash-legend-dot {
@@ -793,7 +793,7 @@ a {
     justify-content: center;
     font-size: 13px;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--text-primary);
     transition: flex 0.5s ease;
 }
 
@@ -827,19 +827,19 @@ a {
 
 .dash-intensity-stat-label {
     font-size: 11px;
-    color: #888;
+    color: var(--text-tertiary);
     margin-bottom: 4px;
 }
 
 .dash-intensity-stat-value {
     font-size: 22px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .dash-intensity-stat-unit {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 400;
 }
 
@@ -876,7 +876,7 @@ a {
 
 .dash-king-subtitle {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     margin-bottom: 24px;
 }
 
@@ -899,25 +899,25 @@ a {
     justify-content: center;
     font-size: 22px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     border: 2px solid rgba(229, 62, 62, 0.4);
 }
 
 .dash-king-name {
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .dash-king-since {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     margin-top: 2px;
 }
 
 .dash-king-calorie-label {
     font-size: 11px;
-    color: #888;
+    color: var(--text-tertiary);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 4px;
@@ -959,19 +959,19 @@ a {
     justify-content: center;
     height: 100%;
     min-height: 400px;
-    color: #666;
+    color: var(--text-tertiary);
     gap: 16px;
 }
 
 .admin-page-placeholder h2 {
     font-size: 24px;
     font-weight: 600;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .admin-page-placeholder p {
     font-size: 14px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 /* --- 반응형 --- */
@@ -1045,7 +1045,7 @@ a {
 
 .register-back-btn {
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
     cursor: pointer;
     transition: color 0.2s;
     margin-bottom: 16px;
@@ -1054,19 +1054,19 @@ a {
 }
 
 .register-back-btn:hover {
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .register-title {
     font-size: 26px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 
 .register-subtitle {
     font-size: 14px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 /* 알림 */
@@ -1111,7 +1111,7 @@ a {
 .register-label {
     font-size: 14px;
     font-weight: 500;
-    color: #CCC;
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -1127,7 +1127,7 @@ a {
     background: var(--bg-base);
     border: 1px solid var(--border-default);
     border-radius: 12px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -1166,7 +1166,7 @@ a {
     background: var(--bg-base);
     border: 1px solid var(--border-default);
     border-radius: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -1177,13 +1177,13 @@ a {
 
 .register-gender-btn:hover {
     border-color: #3A4A5A;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .register-gender-btn.active {
     border-color: var(--accent);
     background: rgba(229, 62, 62, 0.08);
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 /* 등록 버튼 */
@@ -1191,7 +1191,7 @@ a {
     width: 100%;
     padding: 16px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 600;
     border: none;
@@ -1222,7 +1222,7 @@ a {
 .register-nav-btn {
     padding: 14px 28px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 15px;
     font-weight: 600;
     border: none;
@@ -1264,18 +1264,18 @@ a {
 .mem-title {
     font-size: 24px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .mem-count {
     font-size: 14px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .mem-add-btn {
     padding: 10px 20px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 600;
     border: none;
@@ -1318,14 +1318,14 @@ a {
 
 .mem-search-icon {
     font-size: 14px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .mem-search input {
     background: transparent;
     border: none;
     outline: none;
-    color: #CCC;
+    color: var(--text-secondary);
     font-size: 13px;
     font-family: inherit;
     width: 100%;
@@ -1346,7 +1346,7 @@ a {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
@@ -1356,7 +1356,7 @@ a {
 
 .mem-filter-btn:hover {
     border-color: #3A4A5A;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .mem-filter-btn.active {
@@ -1386,7 +1386,7 @@ a {
     text-align: left;
     font-size: 12px;
     font-weight: 500;
-    color: #888;
+    color: var(--text-tertiary);
     padding: 14px 16px;
     border-bottom: 1px solid var(--border-default);
     z-index: 1;
@@ -1395,7 +1395,7 @@ a {
 .mem-table td {
     padding: 14px 16px;
     font-size: 14px;
-    color: #CCC;
+    color: var(--text-secondary);
     border-bottom: 1px solid rgba(42, 58, 74, 0.3);
     vertical-align: middle;
 }
@@ -1424,13 +1424,13 @@ a {
     justify-content: center;
     font-size: 13px;
     font-weight: 600;
-    color: #FFF;
+    color: var(--text-primary);
     flex-shrink: 0;
 }
 
 .mem-name {
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 /* --- 상태 뱃지 --- */
@@ -1545,14 +1545,14 @@ a {
     justify-content: center;
     font-size: 20px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     flex-shrink: 0;
 }
 
 .mem-modal-name {
     font-size: 20px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
     margin-bottom: 4px;
 }
 
@@ -1562,7 +1562,7 @@ a {
     border-radius: 8px;
     background: var(--bg-base);
     border: 1px solid var(--border-default);
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 16px;
     cursor: pointer;
     display: flex;
@@ -1574,7 +1574,7 @@ a {
 
 .mem-modal-close:hover {
     background: var(--border-default);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* --- 모달 정보 그리드 --- */
@@ -1596,13 +1596,13 @@ a {
 
 .mem-modal-info-label {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .mem-modal-info-value {
     font-size: 15px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 /* --- 수정 모드 --- */
@@ -1612,7 +1612,7 @@ a {
     background: var(--bg-surface);
     border: 1px solid #3A4A5A;
     border-radius: 8px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -1634,7 +1634,7 @@ a {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 13px;
     cursor: pointer;
     transition: all 0.2s;
@@ -1644,7 +1644,7 @@ a {
 .mem-edit-gender-btn.active {
     border-color: var(--accent);
     background: rgba(229, 62, 62, 0.1);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* --- 모달 액션 버튼 --- */
@@ -1680,7 +1680,7 @@ a {
 
 .mem-action-save {
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mem-action-save:disabled {
@@ -1709,7 +1709,7 @@ a {
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
     cursor: pointer;
     border: 1px solid var(--border-default);
     background: transparent;
@@ -1718,7 +1718,7 @@ a {
 }
 
 .mem-action-cancel:hover {
-    color: #CCC;
+    color: var(--text-secondary);
     border-color: #3A4A5A;
 }
 
@@ -1735,7 +1735,7 @@ a {
     border-radius: 6px;
     font-size: 12px;
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     cursor: pointer;
     border: none;
     font-family: inherit;
@@ -1757,7 +1757,7 @@ a {
 .mem-detail-title {
     font-size: 15px;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--text-primary);
     margin-bottom: 12px;
 }
 
@@ -1819,18 +1819,18 @@ a {
 
 .mem-detail-date {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .mem-detail-type {
     font-size: 14px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .mem-detail-method {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .mem-detail-amount {
@@ -1842,7 +1842,7 @@ a {
 .mem-detail-empty {
     text-align: center;
     padding: 20px;
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 13px;
 }
 
@@ -1866,12 +1866,12 @@ a {
 .stats-title {
     font-size: 24px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .stats-subtitle {
     font-size: 14px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 /* --- 요약 카드 --- */
@@ -1915,13 +1915,13 @@ a {
 
 .stats-summary-label {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .stats-summary-value {
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 /* --- 차트 행 --- */
@@ -1953,12 +1953,12 @@ a {
 .stats-chart-title {
     font-size: 16px;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .stats-chart-subtitle {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .stats-chart-area {
@@ -1988,7 +1988,7 @@ a {
     align-items: center;
     gap: 6px;
     font-size: 12px;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .stats-pie-legend-dot {
@@ -2020,12 +2020,12 @@ a {
 .stats-membership-type {
     font-size: 14px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .stats-membership-count {
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .stats-membership-bar {
@@ -2053,7 +2053,7 @@ a {
 }
 
 .stats-membership-expired {
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 /* --- 통계 반응형 --- */
@@ -2086,7 +2086,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: 16px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 14px;
 }
 
@@ -2148,7 +2148,7 @@ a {
 
 .mm-search-icon {
     font-size: 14px;
-    color: #666;
+    color: var(--text-tertiary);
     flex-shrink: 0;
 }
 
@@ -2156,7 +2156,7 @@ a {
     background: transparent;
     border: none;
     outline: none;
-    color: #EEE;
+    color: var(--text-primary);
     font-size: 13px;
     font-family: inherit;
     width: 100%;
@@ -2180,19 +2180,19 @@ a {
     padding: 8px;
     font-size: 12px;
     font-weight: 600;
-    color: #666;
+    color: var(--text-tertiary);
     border-radius: 9px;
     transition: all 0.2s;
     text-align: center;
 }
 
 .mm-status-tab:hover {
-    color: #AAA;
+    color: var(--text-secondary);
 }
 
 .mm-status-tab.active {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
 }
 
@@ -2216,7 +2216,7 @@ a {
     padding: 6px 10px;
     font-size: 11px;
     font-weight: 500;
-    color: #666;
+    color: var(--text-tertiary);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -2225,12 +2225,12 @@ a {
 }
 
 .mm-age-btn:hover {
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .mm-age-btn.active {
     background: var(--border-default);
-    color: #EEE;
+    color: var(--text-primary);
 }
 
 .mm-age-icon {
@@ -2253,18 +2253,18 @@ a {
     justify-content: center;
     font-size: 12px;
     font-weight: 700;
-    color: #666;
+    color: var(--text-tertiary);
     border-radius: 6px;
     transition: all 0.2s;
 }
 
 .mm-gender-btn:hover {
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .mm-gender-btn.active {
     background: var(--border-default);
-    color: #EEE;
+    color: var(--text-primary);
 }
 
 /* 결과 라벨 */
@@ -2321,7 +2321,7 @@ a {
     justify-content: center;
     font-size: 16px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-card-status-dot {
@@ -2356,7 +2356,7 @@ a {
 .mm-card-name {
     font-size: 14px;
     font-weight: 600;
-    color: #EEE;
+    color: var(--text-primary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2367,14 +2367,14 @@ a {
     border-radius: 3px;
     background: var(--border-default);
     font-size: 9px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 500;
 }
 
 .mm-card-membership {
     font-size: 11px;
     font-weight: 600;
-    color: #666;
+    color: var(--text-tertiary);
     margin-top: 3px;
     letter-spacing: -0.03em;
 }
@@ -2397,7 +2397,7 @@ a {
 
 .mm-card-time {
     font-size: 10px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .mm-empty-list {
@@ -2406,7 +2406,7 @@ a {
     align-items: center;
     gap: 8px;
     padding: 40px 20px;
-    color: #555;
+    color: var(--text-tertiary);
     font-size: 13px;
 }
 
@@ -2425,7 +2425,7 @@ a {
     width: 100%;
     padding: 16px;
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     font-size: 15px;
     font-weight: 700;
     border-radius: 16px;
@@ -2459,7 +2459,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    color: #555;
+    color: var(--text-tertiary);
 }
 
 .mm-no-icon {
@@ -2470,12 +2470,12 @@ a {
 .mm-no-selection h3 {
     font-size: 18px;
     font-weight: 600;
-    color: #777;
+    color: var(--text-tertiary);
 }
 
 .mm-no-selection p {
     font-size: 13px;
-    color: #555;
+    color: var(--text-tertiary);
 }
 
 .mm-detail-content {
@@ -2511,7 +2511,7 @@ a {
     justify-content: center;
     font-size: 30px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
 }
@@ -2525,7 +2525,7 @@ a {
 .mm-profile-name {
     font-size: 28px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     letter-spacing: -0.03em;
 }
 
@@ -2565,13 +2565,13 @@ a {
 
 .mm-profile-grade.none {
     background: rgba(107, 114, 128, 0.1);
-    color: #666;
+    color: var(--text-tertiary);
     border: 1px solid rgba(107, 114, 128, 0.2);
 }
 
 .mm-profile-detail {
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .mm-edit-input {
@@ -2579,7 +2579,7 @@ a {
     border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 8px 12px;
-    color: #EEE;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -2616,7 +2616,7 @@ a {
     border-radius: 6px;
     font-size: 12px;
     font-weight: 600;
-    color: #666;
+    color: var(--text-tertiary);
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     transition: all 0.2s;
@@ -2624,7 +2624,7 @@ a {
 
 .mm-edit-gender-btn.active {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     border-color: var(--accent);
 }
 
@@ -2645,18 +2645,18 @@ a {
     transition: all 0.2s;
     border: 1px solid var(--border-default);
     background: var(--bg-surface);
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .mm-action-btn:hover {
-    color: #FFF;
+    color: var(--text-primary);
     background: var(--border-default);
 }
 
 .mm-action-btn.save {
     background: var(--accent);
     border-color: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-action-btn.delete {
@@ -2667,13 +2667,13 @@ a {
 
 .mm-action-btn.delete:hover {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-action-btn.delete-confirm {
     background: var(--accent);
     border-color: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     width: auto;
     padding: 0 14px;
     font-size: 12px;
@@ -2684,7 +2684,7 @@ a {
     width: auto;
     padding: 0 14px;
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 /* 통계 그리드 */
@@ -2707,7 +2707,7 @@ a {
 .mm-stat-label {
     font-size: 10px;
     font-weight: 700;
-    color: #666;
+    color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
@@ -2715,12 +2715,12 @@ a {
 .mm-stat-value {
     font-size: 24px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-stat-value small {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 400;
 }
 
@@ -2781,7 +2781,7 @@ a {
 .mm-calendar-header h4 {
     font-size: 15px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-calendar-nav {
@@ -2794,7 +2794,7 @@ a {
     height: 28px;
     border-radius: 6px;
     background: var(--border-default);
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 11px;
     display: flex;
     align-items: center;
@@ -2804,7 +2804,7 @@ a {
 
 .mm-calendar-nav button:hover {
     background: #3A4A5A;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-calendar-legend {
@@ -2818,7 +2818,7 @@ a {
     align-items: center;
     gap: 6px;
     font-size: 10px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .mm-legend-dot {
@@ -2846,7 +2846,7 @@ a {
     text-align: center;
     font-size: 10px;
     font-weight: 700;
-    color: #666;
+    color: var(--text-tertiary);
     padding: 6px 0;
 }
 
@@ -2858,7 +2858,7 @@ a {
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    color: #CCC;
+    color: var(--text-secondary);
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     position: relative;
@@ -2874,7 +2874,7 @@ a {
 .mm-cal-day.attended {
     background: rgba(229, 62, 62, 0.15);
     border-color: rgba(229, 62, 62, 0.35);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-cal-day.today {
@@ -2901,7 +2901,7 @@ a {
 .mm-activity-log h4 {
     font-size: 15px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 16px;
 }
 
@@ -2957,25 +2957,25 @@ a {
 .mm-timeline-title {
     font-size: 13px;
     font-weight: 700;
-    color: #EEE;
+    color: var(--text-primary);
 }
 
 .mm-timeline-date {
     font-size: 9px;
     font-weight: 600;
-    color: #666;
+    color: var(--text-tertiary);
     letter-spacing: 0.05em;
 }
 
 .mm-timeline-desc {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     line-height: 1.5;
 }
 
 .mm-empty-text {
     font-size: 12px;
-    color: #555;
+    color: var(--text-tertiary);
     text-align: center;
     padding: 16px;
 }
@@ -3023,7 +3023,7 @@ a {
 .mm-membership-type {
     font-size: 22px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 20px;
     position: relative;
     z-index: 1;
@@ -3046,7 +3046,7 @@ a {
 
 .mm-membership-val {
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* 코치 노트 */
@@ -3060,7 +3060,7 @@ a {
 .mm-coach-notes h4 {
     font-size: 15px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 14px;
 }
 
@@ -3080,14 +3080,14 @@ a {
 
 .mm-note-text {
     font-size: 12px;
-    color: #CCC;
+    color: var(--text-secondary);
     font-style: italic;
     line-height: 1.6;
 }
 
 .mm-note-date {
     font-size: 10px;
-    color: #666;
+    color: var(--text-tertiary);
     font-weight: 600;
     display: block;
     margin-top: 6px;
@@ -3104,7 +3104,7 @@ a {
     border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 10px 12px;
-    color: #EEE;
+    color: var(--text-primary);
     font-size: 12px;
     font-family: inherit;
     outline: none;
@@ -3118,7 +3118,7 @@ a {
 .mm-note-submit {
     padding: 10px 16px;
     background: var(--border-default);
-    color: #CCC;
+    color: var(--text-secondary);
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
@@ -3128,7 +3128,7 @@ a {
 
 .mm-note-submit:hover {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* 결제 내역 */
@@ -3142,7 +3142,7 @@ a {
 .mm-payment-summary h4 {
     font-size: 15px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 14px;
 }
 
@@ -3167,7 +3167,7 @@ a {
 .mm-payment-type {
     font-size: 13px;
     font-weight: 600;
-    color: #EEE;
+    color: var(--text-primary);
 }
 
 .mm-payment-method {
@@ -3187,7 +3187,7 @@ a {
 
 .mm-payment-date {
     font-size: 10px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 /* 라커 배정 */
@@ -3201,7 +3201,7 @@ a {
 .mm-locker-card h4 {
     font-size: 15px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 14px;
 }
 
@@ -3221,7 +3221,7 @@ a {
 .mm-locker-label {
     display: block;
     font-size: 10px;
-    color: #666;
+    color: var(--text-tertiary);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -3237,7 +3237,7 @@ a {
 .mm-locker-change-btn {
     font-size: 12px;
     font-weight: 600;
-    color: #888;
+    color: var(--text-tertiary);
     text-decoration: underline;
     text-underline-offset: 2px;
     letter-spacing: 0.05em;
@@ -3246,7 +3246,7 @@ a {
 }
 
 .mm-locker-change-btn:hover {
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .mm-locker-edit {
@@ -3261,7 +3261,7 @@ a {
     border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 10px 12px;
-    color: #EEE;
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 700;
     font-family: inherit;
@@ -3276,7 +3276,7 @@ a {
 .mm-locker-save {
     padding: 10px 16px;
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
@@ -3291,7 +3291,7 @@ a {
 .mm-locker-cancel {
     padding: 10px 12px;
     background: var(--border-default);
-    color: #888;
+    color: var(--text-tertiary);
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
@@ -3300,7 +3300,7 @@ a {
 }
 
 .mm-locker-cancel:hover {
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* 반응형 */
@@ -3344,7 +3344,7 @@ a {
     margin-left: auto;
     font-size: 11px;
     transition: transform 0.2s;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .admin-sidebar-chevron.open {
@@ -3373,7 +3373,7 @@ a {
 .admin-sidebar-subitem {
     padding: 8px 16px 8px 28px;
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
     text-decoration: none;
     transition: all 0.15s;
     border-radius: 8px;
@@ -3381,7 +3381,7 @@ a {
 }
 
 .admin-sidebar-subitem:hover {
-    color: #CCC;
+    color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.03);
 }
 
@@ -3402,7 +3402,7 @@ a {
     align-items: center;
     justify-content: center;
     gap: 16px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .an-loading-spinner {
@@ -3429,7 +3429,7 @@ a {
 
 .an-breadcrumb {
     font-size: 12px;
-    color: #666;
+    color: var(--text-tertiary);
     margin-bottom: 6px;
 }
 
@@ -3441,13 +3441,13 @@ a {
 .an-page-title {
     font-size: 28px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     letter-spacing: -0.03em;
 }
 
 .an-page-desc {
     font-size: 13px;
-    color: #777;
+    color: var(--text-tertiary);
     margin-top: 4px;
 }
 
@@ -3461,7 +3461,7 @@ a {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 10px;
-    color: #CCC;
+    color: var(--text-secondary);
     font-size: 13px;
     font-weight: 500;
     transition: all 0.2s;
@@ -3474,7 +3474,7 @@ a {
 .an-download-btn {
     padding: 10px 20px;
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     border-radius: 10px;
     font-size: 13px;
     font-weight: 700;
@@ -3489,7 +3489,7 @@ a {
 .an-section-title {
     font-size: 16px;
     font-weight: 700;
-    color: #EEE;
+    color: var(--text-primary);
     padding-left: 4px;
 }
 
@@ -3526,7 +3526,7 @@ a {
 .an-summary-label {
     font-size: 11px;
     font-weight: 700;
-    color: #888;
+    color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -3539,13 +3539,13 @@ a {
 .an-summary-value {
     font-size: 32px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
 .an-summary-value small {
     font-size: 16px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 500;
 }
 
@@ -3568,7 +3568,7 @@ a {
 
 .an-summary-sub {
     font-size: 11px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .an-progress-bar {
@@ -3637,7 +3637,7 @@ a {
 .an-chart-header h3 {
     font-size: 15px;
     font-weight: 700;
-    color: #EEE;
+    color: var(--text-primary);
 }
 
 .an-chart-legend {
@@ -3651,7 +3651,7 @@ a {
     align-items: center;
     gap: 5px;
     font-size: 10px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .an-legend-dot {
@@ -3689,12 +3689,12 @@ a {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .an-rate-value {
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .an-rate-bar {
@@ -3717,7 +3717,7 @@ a {
     border-radius: 10px;
     padding: 14px;
     font-size: 11px;
-    color: #CCC;
+    color: var(--text-secondary);
     line-height: 1.7;
 }
 
@@ -3749,7 +3749,7 @@ a {
     text-align: center;
     font-size: 10px;
     font-weight: 700;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .an-heatmap-row {
@@ -3761,7 +3761,7 @@ a {
     width: 50px;
     flex-shrink: 0;
     font-size: 10px;
-    color: #666;
+    color: var(--text-tertiary);
     display: flex;
     align-items: center;
 }
@@ -3803,7 +3803,7 @@ a {
     justify-content: center;
     font-size: 10px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     flex-shrink: 0;
 }
 
@@ -3816,7 +3816,7 @@ a {
     justify-content: center;
     font-size: 15px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     flex-shrink: 0;
     opacity: 0.8;
 }
@@ -3829,7 +3829,7 @@ a {
 .an-top-name {
     font-size: 13px;
     font-weight: 600;
-    color: #EEE;
+    color: var(--text-primary);
 }
 
 .an-top-bar-wrap {
@@ -3855,7 +3855,7 @@ a {
 
 .an-empty-text {
     font-size: 12px;
-    color: #555;
+    color: var(--text-tertiary);
     text-align: center;
     padding: 20px;
 }
@@ -3910,7 +3910,7 @@ a {
     top: -20px;
     font-size: 10px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     background: var(--border-default);
     padding: 2px 6px;
     border-radius: 4px;
@@ -3918,7 +3918,7 @@ a {
 
 .an-bar-month {
     font-size: 11px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 600;
 }
 
@@ -3940,13 +3940,13 @@ a {
 .an-table-header h3 {
     font-size: 15px;
     font-weight: 700;
-    color: #EEE;
+    color: var(--text-primary);
 }
 
 .an-export-btn {
     padding: 8px 16px;
     background: var(--border-default);
-    color: #CCC;
+    color: var(--text-secondary);
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
@@ -3955,7 +3955,7 @@ a {
 
 .an-export-btn:hover {
     background: #3A4A5A;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .an-table {
@@ -3968,7 +3968,7 @@ a {
     padding: 12px 16px;
     font-size: 11px;
     font-weight: 700;
-    color: #666;
+    color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-bottom: 1px solid var(--border-default);
@@ -3977,7 +3977,7 @@ a {
 .an-table td {
     padding: 14px 16px;
     font-size: 13px;
-    color: #CCC;
+    color: var(--text-secondary);
     border-bottom: 1px solid rgba(42, 58, 74, 0.5);
 }
 
@@ -3997,7 +3997,7 @@ a {
 
 .an-table-rate {
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .an-status-badge {
@@ -4109,18 +4109,18 @@ a {
 .pm-title {
     font-size: 24px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .pm-subtitle {
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
     margin-top: 4px;
 }
 
 .pm-add-btn {
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     padding: 10px 24px;
     border-radius: 10px;
     font-size: 14px;
@@ -4171,7 +4171,7 @@ a {
 
 .pm-card-label {
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 500;
 }
 
@@ -4194,7 +4194,7 @@ a {
 
 .pm-card-icon-trend {
     font-size: 14px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .pm-card-icon-warning {
@@ -4205,13 +4205,13 @@ a {
 .pm-card-value {
     font-size: 28px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
 .pm-card-sub {
     font-size: 11px;
-    color: #666;
+    color: var(--text-tertiary);
     margin-top: 4px;
 }
 
@@ -4241,7 +4241,7 @@ a {
 .pm-section-title {
     font-size: 16px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -4249,14 +4249,14 @@ a {
 
 .pm-section-link {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     cursor: pointer;
     text-decoration: underline;
     transition: color 0.2s;
 }
 
 .pm-section-link:hover {
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .pm-legend {
@@ -4264,7 +4264,7 @@ a {
     align-items: center;
     gap: 6px;
     font-size: 11px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .pm-legend-dot {
@@ -4337,14 +4337,14 @@ a {
     justify-content: center;
     font-size: 12px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     flex-shrink: 0;
 }
 
 .pm-alert-name {
     font-size: 14px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -4352,7 +4352,7 @@ a {
 
 .pm-alert-detail {
     font-size: 11px;
-    color: #888;
+    color: var(--text-tertiary);
     margin-top: 2px;
 }
 
@@ -4393,7 +4393,7 @@ a {
 
 .pm-extend-btn:hover {
     background: var(--accent);
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .pm-alert-empty {
@@ -4441,7 +4441,7 @@ a {
     top: 50%;
     transform: translateY(-50%);
     font-size: 12px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .pm-search-input {
@@ -4449,7 +4449,7 @@ a {
     border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 8px 12px 8px 32px;
-    color: #CCC;
+    color: var(--text-secondary);
     font-size: 12px;
     font-family: inherit;
     width: 180px;
@@ -4470,7 +4470,7 @@ a {
     border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 8px 12px;
-    color: #CCC;
+    color: var(--text-secondary);
     font-size: 12px;
     font-family: inherit;
     outline: none;
@@ -4494,7 +4494,7 @@ a {
     text-align: left;
     font-size: 11px;
     font-weight: 700;
-    color: #888;
+    color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 14px 20px;
@@ -4505,7 +4505,7 @@ a {
 .pm-table td {
     padding: 14px 20px;
     font-size: 13px;
-    color: #AAA;
+    color: var(--text-secondary);
     border-bottom: 1px solid rgba(42, 58, 74, 0.4);
     vertical-align: middle;
 }
@@ -4524,16 +4524,16 @@ a {
 
 .pm-td-name {
     font-weight: 700;
-    color: #FFFFFF !important;
+    color: var(--text-primary) !important;
 }
 
 .pm-td-amount {
     font-weight: 700;
-    color: #FFFFFF !important;
+    color: var(--text-primary) !important;
 }
 
 .pm-td-memo {
-    color: #666 !important;
+    color: var(--text-tertiary) !important;
     font-size: 12px !important;
 }
 
@@ -4592,7 +4592,7 @@ a {
 
 .pm-page-info {
     font-size: 11px;
-    color: #666;
+    color: var(--text-tertiary);
     font-weight: 500;
 }
 
@@ -4607,7 +4607,7 @@ a {
     border-radius: 6px;
     border: 1px solid var(--border-default);
     background: transparent;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
@@ -4620,13 +4620,13 @@ a {
 
 .pm-page-btn:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.05);
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .pm-page-btn.active {
     background: var(--accent);
     border-color: var(--accent);
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .pm-page-btn:disabled {
@@ -4689,7 +4689,7 @@ a {
 .pm-modal-header h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .pm-modal-close {
@@ -4697,7 +4697,7 @@ a {
     height: 32px;
     border-radius: 8px;
     background: var(--border-default);
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 14px;
     cursor: pointer;
     display: flex;
@@ -4709,7 +4709,7 @@ a {
 
 .pm-modal-close:hover {
     background: #3A4A5A;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .pm-modal-body {
@@ -4728,7 +4728,7 @@ a {
 .pm-form-group label {
     font-size: 13px;
     font-weight: 500;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .pm-form-group input,
@@ -4737,7 +4737,7 @@ a {
     border: 1px solid var(--border-default);
     border-radius: 8px;
     padding: 10px 14px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -4765,7 +4765,7 @@ a {
     padding: 10px 20px;
     border: 1px solid var(--border-default);
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -4776,13 +4776,13 @@ a {
 
 .pm-modal-cancel:hover {
     background: var(--border-default);
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .pm-modal-submit {
     padding: 10px 24px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     border: none;
     border-radius: 8px;
     font-size: 13px;
@@ -4935,7 +4935,7 @@ a {
 
 /* --- 사이드바 아이템 아이콘 색상 --- */
 .admin-sidebar-item .admin-sidebar-icon {
-    color: #888;
+    color: var(--text-tertiary);
     transition: color 0.2s ease;
 }
 
@@ -4944,7 +4944,7 @@ a {
 }
 
 .admin-sidebar-item:hover .admin-sidebar-icon {
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* --- 사이드바 하단 구분선 --- */
@@ -4957,7 +4957,7 @@ a {
 /* --- 탑바 날짜 표시 --- */
 .admin-topbar-date {
     font-size: 13px;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -4997,12 +4997,12 @@ a {
 .admin-topbar-profile-name {
     font-size: 13px;
     font-weight: 600;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .admin-topbar-profile-role {
     font-size: 11px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 /* --- 알림 버튼 개선 --- */
@@ -5613,18 +5613,18 @@ button:disabled {
 .lj-title {
     font-size: 24px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .lj-count {
     font-size: 14px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .lj-add-btn {
     padding: 10px 20px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 600;
     border-radius: 10px;
@@ -5651,14 +5651,14 @@ button:disabled {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 20px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 13px;
     transition: all 0.2s;
 }
 
 .lj-filter-chip:hover {
     border-color: #3A4A5A;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .lj-filter-chip.active {
@@ -5690,7 +5690,7 @@ button:disabled {
 }
 
 .lj-empty p {
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 15px;
 }
 
@@ -5698,7 +5698,7 @@ button:disabled {
     margin-top: 8px;
     padding: 10px 24px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFF;
+    color: var(--text-primary);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -5723,7 +5723,7 @@ button:disabled {
     gap: 8px;
     font-size: 13px;
     font-weight: 600;
-    color: #888;
+    color: var(--text-tertiary);
     padding-left: 4px;
 }
 
@@ -5802,7 +5802,7 @@ button:disabled {
 .lj-card-title {
     font-size: 15px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -5817,11 +5817,11 @@ button:disabled {
 
 .lj-card-author {
     font-size: 12px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 .lj-card-chevron {
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 14px;
     transition: transform 0.2s;
 }
@@ -5838,7 +5838,7 @@ button:disabled {
 
 .lj-card-content {
     padding: 16px 0;
-    color: #CCC;
+    color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.7;
 }
@@ -5881,7 +5881,7 @@ button:disabled {
 
 .lj-action-btn.cancel {
     background: rgba(136, 136, 136, 0.1);
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .lj-delete-confirm {
@@ -5936,14 +5936,14 @@ button:disabled {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 16px;
     transition: all 0.2s;
 }
 
 .lj-modal-close:hover {
     background: var(--border-default);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .lj-modal-body {
@@ -5972,7 +5972,7 @@ button:disabled {
 .lj-form-label {
     font-size: 13px;
     font-weight: 600;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .lj-form-input {
@@ -5981,7 +5981,7 @@ button:disabled {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 10px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -5998,7 +5998,7 @@ button:disabled {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 10px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -6022,14 +6022,14 @@ button:disabled {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 13px;
     transition: all 0.2s;
 }
 
 .lj-form-chip:hover {
     border-color: #3A4A5A;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .lj-form-chip.active {
@@ -6041,7 +6041,7 @@ button:disabled {
 .lj-btn-cancel {
     padding: 10px 20px;
     background: var(--border-default);
-    color: #CCC;
+    color: var(--text-secondary);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
@@ -6055,7 +6055,7 @@ button:disabled {
 .lj-btn-save {
     padding: 10px 24px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -6097,18 +6097,18 @@ button:disabled {
 .nt-title {
     font-size: 24px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .nt-count {
     font-size: 14px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .nt-add-btn {
     padding: 10px 20px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 600;
     border-radius: 10px;
@@ -6144,12 +6144,12 @@ button:disabled {
 .nt-summary-value {
     font-size: 22px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .nt-summary-label {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 /* 목록 + 상세 레이아웃 */
@@ -6182,7 +6182,7 @@ button:disabled {
 }
 
 .nt-empty p {
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 15px;
 }
 
@@ -6190,7 +6190,7 @@ button:disabled {
     margin-top: 8px;
     padding: 10px 24px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFF;
+    color: var(--text-primary);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -6238,7 +6238,7 @@ button:disabled {
     flex: 1;
     font-size: 15px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-primary);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -6246,7 +6246,7 @@ button:disabled {
 
 .nt-card-time {
     font-size: 12px;
-    color: #666;
+    color: var(--text-tertiary);
     flex-shrink: 0;
 }
 
@@ -6258,12 +6258,12 @@ button:disabled {
 
 .nt-card-target {
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .nt-card-read {
     font-size: 12px;
-    color: #666;
+    color: var(--text-tertiary);
 }
 
 /* 상세 패널 */
@@ -6292,14 +6292,14 @@ button:disabled {
     border-radius: 4px;
     font-size: 11px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .nt-detail-title {
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-primary);
 }
 
 .nt-detail-close {
@@ -6309,14 +6309,14 @@ button:disabled {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 16px;
     transition: all 0.2s;
 }
 
 .nt-detail-close:hover {
     background: var(--border-default);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .nt-detail-meta {
@@ -6324,14 +6324,14 @@ button:disabled {
     flex-wrap: wrap;
     gap: 8px 16px;
     font-size: 12px;
-    color: #888;
+    color: var(--text-tertiary);
     padding-bottom: 16px;
     border-bottom: 1px solid var(--border-default);
 }
 
 .nt-detail-content {
     flex: 1;
-    color: #CCC;
+    color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.7;
 }
@@ -6363,7 +6363,7 @@ button:disabled {
 
 .nt-action-btn.cancel {
     background: rgba(136, 136, 136, 0.1);
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .nt-delete-confirm {
@@ -6418,14 +6418,14 @@ button:disabled {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 16px;
     transition: all 0.2s;
 }
 
 .nt-modal-close:hover {
     background: var(--border-default);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .nt-modal-body {
@@ -6454,7 +6454,7 @@ button:disabled {
 .nt-form-label {
     font-size: 13px;
     font-weight: 600;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .nt-form-input {
@@ -6463,7 +6463,7 @@ button:disabled {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 10px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -6480,7 +6480,7 @@ button:disabled {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 10px;
-    color: #FFFFFF;
+    color: var(--text-primary);
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -6507,14 +6507,14 @@ button:disabled {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: 8px;
-    color: #888;
+    color: var(--text-tertiary);
     font-size: 13px;
     transition: all 0.2s;
 }
 
 .nt-form-chip:hover {
     border-color: #3A4A5A;
-    color: #CCC;
+    color: var(--text-secondary);
 }
 
 .nt-form-chip.active {
@@ -6549,7 +6549,7 @@ button:disabled {
 .nt-target-label {
     font-size: 12px;
     font-weight: 600;
-    color: #888;
+    color: var(--text-tertiary);
     width: 60px;
     flex-shrink: 0;
 }
@@ -6578,7 +6578,7 @@ button:disabled {
 .nt-btn-cancel {
     padding: 10px 20px;
     background: var(--border-default);
-    color: #CCC;
+    color: var(--text-secondary);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
@@ -6592,7 +6592,7 @@ button:disabled {
 .nt-btn-save {
     padding: 10px 24px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFFFFF;
+    color: var(--text-primary);
     border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
@@ -6615,7 +6615,7 @@ button:disabled {
     width: 100vw;
     min-height: 100vh;
     background: var(--bg-base);
-    color: #FFF;
+    color: var(--text-primary);
     overflow-y: auto;
     padding: 32px 16px;
 }
@@ -6628,13 +6628,13 @@ button:disabled {
     padding: 32px;
 }
 .legal-back {
-    color: #888; background: none; border: none; font-size: 14px;
+    color: var(--text-tertiary); background: none; border: none; font-size: 14px;
     cursor: pointer; margin-bottom: 16px; padding: 6px 0; font-family: inherit;
 }
-.legal-back:hover { color: #FFF; }
+.legal-back:hover { color: var(--text-primary); }
 .legal-title { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
 .legal-effective {
-    font-size: 12px; color: #888; margin-bottom: 24px;
+    font-size: 12px; color: var(--text-tertiary); margin-bottom: 24px;
     padding-bottom: 16px; border-bottom: 1px solid var(--border-default);
 }
 .legal-section { margin-bottom: 24px; }
@@ -6642,11 +6642,11 @@ button:disabled {
     font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 10px;
 }
 .legal-section h3 {
-    font-size: 14px; font-weight: 600; color: #CCC;
+    font-size: 14px; font-weight: 600; color: var(--text-secondary);
     margin-top: 12px; margin-bottom: 6px;
 }
 .legal-section p, .legal-section ol, .legal-section ul {
-    font-size: 14px; line-height: 1.8; color: #CCC; margin-bottom: 8px;
+    font-size: 14px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 8px;
 }
 .legal-section ol, .legal-section ul { padding-left: 24px; }
 .legal-section li { margin-bottom: 4px; }
@@ -6656,7 +6656,7 @@ button:disabled {
 .legal-table th, .legal-table td {
     padding: 10px; border: 1px solid var(--border-default); text-align: left;
 }
-.legal-table th { background: var(--bg-surface); color: #FFF; font-weight: 600; }
+.legal-table th { background: var(--bg-surface); color: var(--text-primary); font-weight: 600; }
 .legal-info-box {
     background: rgba(229, 62, 62, 0.05);
     border: 1px solid rgba(229, 62, 62, 0.2);
@@ -6665,7 +6665,7 @@ button:disabled {
 .legal-info-box p { margin-bottom: 4px; font-size: 13px; }
 .legal-footer-info {
     margin-top: 32px; padding-top: 16px;
-    border-top: 1px solid var(--border-default); font-size: 12px; color: #888;
+    border-top: 1px solid var(--border-default); font-size: 12px; color: var(--text-tertiary);
 }
 .legal-footer-info p { margin-bottom: 2px; }
 
@@ -6683,7 +6683,7 @@ button:disabled {
     padding-bottom: 14px; border-bottom: 2px solid #000;
 }
 .cf-header h1 { font-size: 20pt; font-weight: 700; margin-bottom: 6px; color: #000; }
-.cf-business-name { font-size: 11pt; color: #555; }
+.cf-business-name { font-size: 11pt; color: var(--text-tertiary); }
 .cf-info-table {
     width: 100%; border-collapse: collapse; margin-bottom: 18px; font-size: 10.5pt;
 }
@@ -6704,7 +6704,7 @@ button:disabled {
     border: 1px solid #000; padding: 6px 8px; text-align: left; vertical-align: middle;
 }
 .cf-consent-table th { background: #F0F0F0; font-weight: 600; }
-.cf-notice { font-size: 9.5pt; color: #555; margin: 6px 0; }
+.cf-notice { font-size: 9.5pt; color: var(--text-tertiary); margin: 6px 0; }
 .cf-checkbox-row { display: flex; gap: 24px; margin-top: 8px; padding-left: 8px; }
 .cf-checkbox { font-size: 11pt; font-weight: 500; }
 .cf-guardian-section {
@@ -6728,12 +6728,12 @@ button:disabled {
 .cf-sign-final-line { margin-left: 24px; font-weight: normal; }
 .cf-business-footer {
     margin-top: 40px; padding-top: 12px; border-top: 1px solid #999;
-    font-size: 9pt; color: #666; text-align: center;
+    font-size: 9pt; color: var(--text-tertiary); text-align: center;
 }
 .cf-business-footer p { margin-bottom: 2px; }
 .cf-print-help { text-align: center; margin-top: 20px; padding: 16px; background: #FFF; }
 .cf-print-btn {
-    background: var(--accent); color: #FFF; padding: 10px 24px; border: none;
+    background: var(--accent); color: var(--text-primary); padding: 10px 24px; border: none;
     border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
 }
 @media print {
@@ -6755,7 +6755,7 @@ button:disabled {
     font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 6px;
 }
 .register-paper-desc {
-    font-size: 12px; color: #CCC; margin-bottom: 14px; line-height: 1.6;
+    font-size: 12px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.6;
 }
 .register-paper-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .register-paper-btn {
@@ -6763,7 +6763,7 @@ button:disabled {
     display: inline-flex; align-items: center; justify-content: center;
     gap: 8px; padding: 12px 16px;
     border: 1px solid var(--border-default); border-radius: 10px; background: var(--bg-surface);
-    color: #FFF; font-size: 13px; font-weight: 600;
+    color: var(--text-primary); font-size: 13px; font-weight: 600;
     cursor: pointer; transition: all 0.2s; font-family: inherit;
 }
 .register-paper-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -6785,7 +6785,7 @@ button:disabled {
 }
 .register-image-info {
     display: flex; align-items: center; gap: 8px;
-    margin-top: 8px; font-size: 12px; color: #888;
+    margin-top: 8px; font-size: 12px; color: var(--text-tertiary);
 }
 .register-image-remove {
     margin-left: auto; background: none; border: none; color: var(--accent);
@@ -6801,23 +6801,23 @@ button:disabled {
 }
 .register-consent-header {
     display: flex; align-items: center; gap: 6px;
-    font-size: 14px; font-weight: 700; color: #FFF; margin-bottom: 4px;
+    font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;
 }
-.register-consent-notice { font-size: 12px; color: #888; margin-bottom: 12px; }
+.register-consent-notice { font-size: 12px; color: var(--text-tertiary); margin-bottom: 12px; }
 .register-consent-row {
     display: flex; align-items: center; gap: 10px;
-    padding: 8px 0; cursor: pointer; font-size: 13px; color: #CCC;
+    padding: 8px 0; cursor: pointer; font-size: 13px; color: var(--text-secondary);
 }
 .register-consent-row.all {
     border-bottom: 1px solid var(--border-default);
-    padding-bottom: 12px; margin-bottom: 6px; color: #FFF;
+    padding-bottom: 12px; margin-bottom: 6px; color: var(--text-primary);
 }
 .register-consent-row input[type="checkbox"] {
     width: 18px; height: 18px; accent-color: var(--accent);
     cursor: pointer; flex-shrink: 0;
 }
 .register-consent-row .required { color: var(--accent); font-weight: 600; margin-right: 4px; }
-.register-consent-row .optional { color: #888; margin-right: 4px; }
+.register-consent-row .optional { color: var(--text-tertiary); margin-right: 4px; }
 .register-consent-link {
     margin-left: 8px; color: #3B82F6; font-size: 12px; text-decoration: underline;
 }
@@ -6839,15 +6839,15 @@ button:disabled {
 }
 .mc-consent-row {
     display: flex; align-items: center; gap: 10px;
-    padding: 10px 0; font-size: 14px; color: #CCC; cursor: pointer;
+    padding: 10px 0; font-size: 14px; color: var(--text-secondary); cursor: pointer;
 }
-.mc-consent-row.all { color: #FFF; }
+.mc-consent-row.all { color: var(--text-primary); }
 .mc-divider { height: 1px; background: #2A2A3A; margin: 4px 0 8px; }
 .mc-consent-row input[type="checkbox"] {
     width: 18px; height: 18px; accent-color: var(--accent); flex-shrink: 0;
 }
 .mc-required { color: var(--accent); font-weight: 600; margin-right: 4px; }
-.mc-optional { color: #888; margin-right: 4px; }
+.mc-optional { color: var(--text-tertiary); margin-right: 4px; }
 .mc-link {
     margin-left: auto; color: #3B82F6;
     font-size: 12px; text-decoration: underline;
@@ -6868,7 +6868,7 @@ button:disabled {
     font-size: 14px; font-weight: 700; color: #3B82F6; margin-bottom: 4px;
 }
 .register-display-desc {
-    font-size: 12px; color: #888; margin-bottom: 12px; line-height: 1.5;
+    font-size: 12px; color: var(--text-tertiary); margin-bottom: 12px; line-height: 1.5;
 }
 .register-display-options {
     display: grid;
@@ -6888,10 +6888,10 @@ button:disabled {
     accent-color: #3B82F6; margin-top: 2px; flex-shrink: 0;
 }
 .register-display-opt .opt-title {
-    font-size: 13px; font-weight: 600; color: #FFF; margin-bottom: 4px;
+    font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;
 }
 .register-display-opt .opt-example {
-    font-size: 11px; color: #888;
+    font-size: 11px; color: var(--text-tertiary);
 }
 @media (max-width: 600px) {
     .register-display-options { grid-template-columns: 1fr; }
@@ -6904,7 +6904,7 @@ button:disabled {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(135deg, #0A0A14 0%, #1A0A1F 50%, #0A0A14 100%);
-    color: #FFF;
+    color: var(--text-primary);
     font-family: 'Pretendard', sans-serif;
     display: flex;
     flex-direction: column;
@@ -6960,13 +6960,13 @@ button:disabled {
 }
 .monitor-date {
     font-size: 1.4rem;
-    color: #888;
+    color: var(--text-tertiary);
     margin-bottom: 4px;
 }
 .monitor-clock {
     font-size: 4rem;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     font-variant-numeric: tabular-nums;
     line-height: 1;
 }
@@ -7057,7 +7057,7 @@ button:disabled {
 .rank-name {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;
@@ -7066,7 +7066,7 @@ button:disabled {
 
 .rank-meta {
     font-size: 1rem;
-    color: #888;
+    color: var(--text-tertiary);
 }
 
 .rank-cal {
@@ -7085,7 +7085,7 @@ button:disabled {
 
 .rank-cal-unit {
     font-size: 0.9rem;
-    color: #888;
+    color: var(--text-tertiary);
     margin-top: 4px;
 }
 
@@ -7133,21 +7133,21 @@ button:disabled {
 
 .stat-label {
     font-size: 1rem;
-    color: #999;
+    color: var(--text-tertiary);
     margin-bottom: 4px;
 }
 
 .stat-value {
     font-size: 2.8rem;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     line-height: 1;
     font-variant-numeric: tabular-nums;
 }
 
 .stat-value span {
     font-size: 1.2rem;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 500;
     margin-left: 4px;
 }
@@ -7174,7 +7174,7 @@ button:disabled {
     padding: 10px 24px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.05);
-    color: #888;
+    color: var(--text-tertiary);
     border: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 1rem;
     font-weight: 500;
@@ -7184,7 +7184,7 @@ button:disabled {
 }
 
 .monitor-period-tabs button:hover {
-    color: #FFF;
+    color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -7196,12 +7196,12 @@ button:disabled {
 
 .monitor-tip {
     font-size: 1.1rem;
-    color: #BBB;
+    color: var(--text-secondary);
 }
 
 .monitor-update {
     font-size: 0.85rem;
-    color: #555;
+    color: var(--text-tertiary);
 }
 
 /* 1080p 이상 디스플레이 최적화 */
@@ -7251,7 +7251,7 @@ button:disabled {
 .slide-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 24px;
     text-shadow: 0 0 24px rgba(229, 62, 62, 0.4);
 }
@@ -7293,12 +7293,12 @@ button:disabled {
 }
 .big-icon { font-size: 4rem; margin-bottom: 12px; }
 .big-value {
-    font-size: 5rem; font-weight: 800; color: #FFF; line-height: 1;
+    font-size: 5rem; font-weight: 800; color: var(--text-primary); line-height: 1;
     font-variant-numeric: tabular-nums;
 }
-.big-value span { font-size: 2rem; color: #888; margin-left: 6px; }
+.big-value span { font-size: 2rem; color: var(--text-tertiary); margin-left: 6px; }
 .realtime-big-card.live .big-value { color: var(--accent); }
-.big-label { font-size: 1.2rem; color: #999; margin-top: 12px; }
+.big-label { font-size: 1.2rem; color: var(--text-tertiary); margin-top: 12px; }
 .realtime-chart {
     background: rgba(20, 30, 43, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -7306,7 +7306,7 @@ button:disabled {
     padding: 24px 32px;
     backdrop-filter: blur(10px);
 }
-.chart-label { font-size: 1.4rem; color: #CCC; margin-bottom: 16px; }
+.chart-label { font-size: 1.4rem; color: var(--text-secondary); margin-bottom: 16px; }
 
 /* === 슬라이드 3: 운동 강도 === */
 .slide-intensity {
@@ -7338,12 +7338,12 @@ button:disabled {
     display: flex; align-items: center; gap: 20px;
 }
 .i-stat-icon { font-size: 3rem; }
-.i-stat-label { font-size: 1.1rem; color: #888; margin-bottom: 4px; }
+.i-stat-label { font-size: 1.1rem; color: var(--text-tertiary); margin-bottom: 4px; }
 .i-stat-value {
-    font-size: 2.4rem; font-weight: 800; color: #FFF; line-height: 1;
+    font-size: 2.4rem; font-weight: 800; color: var(--text-primary); line-height: 1;
     font-variant-numeric: tabular-nums;
 }
-.i-stat-value span { font-size: 1.1rem; color: #888; margin-left: 6px; }
+.i-stat-value span { font-size: 1.1rem; color: var(--text-tertiary); margin-left: 6px; }
 
 /* === 슬라이드 4: 격려 메시지 === */
 .slide-motivation {
@@ -7361,7 +7361,7 @@ button:disabled {
 .motivation-quote {
     font-size: 4rem;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     line-height: 1.4;
     text-shadow: 0 0 40px rgba(229, 62, 62, 0.5);
     animation: quoteShine 3s ease-in-out infinite;
@@ -7391,11 +7391,11 @@ button:disabled {
     font-variant-numeric: tabular-nums;
 }
 .motiv-num span { font-size: 2.5rem; color: #FFA0A0; }
-.motiv-text { font-size: 1.1rem; color: #BBB; margin-top: 12px; }
+.motiv-text { font-size: 1.1rem; color: var(--text-secondary); margin-top: 12px; }
 .motivation-cta {
     margin-top: 32px;
     font-size: 1.3rem;
-    color: #DDD;
+    color: var(--text-primary);
     font-style: italic;
 }
 
@@ -7427,7 +7427,7 @@ button:disabled {
 .promo-title {
     font-size: 2.4rem;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     line-height: 1.4;
     margin-bottom: 32px;
 }
@@ -7450,11 +7450,11 @@ button:disabled {
     padding: 24px 48px;
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
 }
-.example-label { font-size: 1.1rem; color: #999; margin-bottom: 8px; }
+.example-label { font-size: 1.1rem; color: var(--text-tertiary); margin-bottom: 8px; }
 .example-rank {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 .example-percentile {
@@ -7474,7 +7474,7 @@ button:disabled {
 }
 .promo-feat {
     font-size: 1.2rem;
-    color: #CCC;
+    color: var(--text-secondary);
     padding: 8px 0;
 }
 .promo-cta {
@@ -7484,7 +7484,7 @@ button:disabled {
     border-radius: 50px;
     font-size: 1.3rem;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     display: inline-block;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
 }
@@ -7521,7 +7521,7 @@ button:disabled {
     height: 80px;
     border-radius: 50%;
     background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    color: #FFF;
+    color: var(--text-primary);
     font-size: 2.5rem;
     font-weight: 700;
     display: flex; align-items: center; justify-content: center;
@@ -7531,7 +7531,7 @@ button:disabled {
 .new-member-name {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 .new-member-welcome {
@@ -7561,7 +7561,7 @@ button:disabled {
 .indicator-arrow {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #FFF;
+    color: var(--text-primary);
     width: 36px; height: 36px;
     border-radius: 50%;
     font-size: 1.4rem;
@@ -7574,7 +7574,7 @@ button:disabled {
 .autoplay-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #FFF;
+    color: var(--text-primary);
     width: 36px; height: 36px;
     border-radius: 50%;
     font-size: 1rem;
@@ -7621,14 +7621,14 @@ button:disabled {
 }
 .settings-title {
     display: flex; align-items: center; gap: 8px;
-    font-size: 24px; font-weight: 700; color: #FFF;
+    font-size: 24px; font-weight: 700; color: var(--text-primary);
 }
-.settings-subtitle { font-size: 13px; color: #888; margin-top: 4px; }
+.settings-subtitle { font-size: 13px; color: var(--text-tertiary); margin-top: 4px; }
 .settings-save-btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 12px 24px;
     background: linear-gradient(135deg, var(--accent), var(--accent-pressed));
-    color: #FFF; border-radius: 10px; border: none;
+    color: var(--text-primary); border-radius: 10px; border: none;
     font-size: 14px; font-weight: 600; cursor: pointer;
     transition: all 0.3s; font-family: inherit;
 }
@@ -7673,12 +7673,12 @@ button:disabled {
     display: flex; align-items: center; gap: 10px;
     padding: 10px 14px;
     background: none; border: none;
-    color: #888; font-size: 13px;
+    color: var(--text-tertiary); font-size: 13px;
     border-radius: 8px; cursor: pointer;
     transition: all 0.2s; font-family: inherit;
     text-align: left;
 }
-.settings-tab:hover { background: rgba(255, 255, 255, 0.03); color: #CCC; }
+.settings-tab:hover { background: rgba(255, 255, 255, 0.03); color: var(--text-secondary); }
 .settings-tab.active {
     background: rgba(229, 62, 62, 0.1);
     color: var(--accent);
@@ -7694,16 +7694,16 @@ button:disabled {
 }
 
 .settings-section h2 {
-    font-size: 18px; font-weight: 700; color: #FFF;
+    font-size: 18px; font-weight: 700; color: var(--text-primary);
     margin-bottom: 4px;
 }
 .settings-section h3 {
-    font-size: 14px; font-weight: 600; color: #CCC;
+    font-size: 14px; font-weight: 600; color: var(--text-secondary);
     margin-bottom: 12px; margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid var(--border-default);
 }
-.section-desc { font-size: 13px; color: #888; margin-bottom: 24px; }
+.section-desc { font-size: 13px; color: var(--text-tertiary); margin-bottom: 24px; }
 
 .settings-row {
     display: grid;
@@ -7714,7 +7714,7 @@ button:disabled {
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 .settings-row label:first-child {
-    font-size: 13px; color: #CCC; font-weight: 500;
+    font-size: 13px; color: var(--text-secondary); font-weight: 500;
 }
 .settings-row .required { color: var(--accent); }
 .settings-row input[type="text"],
@@ -7726,14 +7726,14 @@ button:disabled {
     background: var(--bg-base);
     border: 1px solid var(--border-default);
     border-radius: 8px;
-    color: #FFF; font-size: 14px;
+    color: var(--text-primary); font-size: 14px;
     font-family: inherit; outline: none;
     transition: border-color 0.2s;
     width: 100%;
 }
 .settings-row input:focus { border-color: var(--accent); }
 .settings-row input:disabled { opacity: 0.4; cursor: not-allowed; }
-.settings-hint { font-size: 12px; color: #666; }
+.settings-hint { font-size: 12px; color: var(--text-tertiary); }
 
 /* 토글 스위치 */
 .settings-toggle {
@@ -7764,7 +7764,7 @@ button:disabled {
 /* 체크박스 */
 .settings-checkbox {
     display: inline-flex; align-items: center; gap: 6px;
-    cursor: pointer; font-size: 13px; color: #CCC;
+    cursor: pointer; font-size: 13px; color: var(--text-secondary);
 }
 .settings-checkbox input[type="checkbox"] {
     width: 16px; height: 16px;
@@ -7788,7 +7788,7 @@ button:disabled {
 }
 .settings-hours-table th,
 .settings-membership-table th {
-    text-align: left; color: #888; font-weight: 600;
+    text-align: left; color: var(--text-tertiary); font-weight: 600;
     background: rgba(255, 255, 255, 0.02);
 }
 .settings-hours-table td input,
@@ -7797,7 +7797,7 @@ button:disabled {
     background: var(--bg-base);
     border: 1px solid var(--border-default);
     border-radius: 6px;
-    color: #FFF; font-size: 13px;
+    color: var(--text-primary); font-size: 13px;
     font-family: inherit; outline: none;
     width: 100%; max-width: 180px;
 }
@@ -7831,7 +7831,7 @@ button:disabled {
     border-radius: 10px;
 }
 .preview-title {
-    font-size: 12px; color: #888; margin-bottom: 8px;
+    font-size: 12px; color: var(--text-tertiary); margin-bottom: 8px;
 }
 .preview-monitor {
     font-size: 28px; font-weight: 800;
@@ -7885,7 +7885,7 @@ button:disabled {
     justify-content: center;
     background: var(--grad-accent);
     border-radius: var(--radius-md);
-    color: #FFF;
+    color: var(--text-primary);
     box-shadow: 0 4px 12px var(--accent-glow);
 }
 
@@ -7968,7 +7968,7 @@ button:disabled {
     height: 18px;
     padding: 0 5px;
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     border-radius: 999px;
     font-size: 10px;
     font-weight: 700;
@@ -8000,7 +8000,7 @@ button:disabled {
     height: 32px;
     border-radius: 50%;
     background: var(--grad-accent);
-    color: #FFF;
+    color: var(--text-primary);
     font-size: 13px;
     font-weight: 700;
     display: inline-flex;
@@ -8272,7 +8272,7 @@ button:disabled {
 }
 .dash-back-today-btn:hover {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* Bento 그리드 */
@@ -8875,7 +8875,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     gap: 8px;
     padding: 10px 18px;
     background: var(--grad-accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 13px;
@@ -8958,7 +8958,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 }
 .lj2-today-btn:hover {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .lj2-cal-grid {
@@ -9004,7 +9004,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 }
 .lj2-cal-day.today .lj2-day-num {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
 }
 .lj2-cal-day.has-lesson::before {
     content: '';
@@ -9130,7 +9130,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     gap: 4px;
     padding: 8px 14px;
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 12px;
@@ -9184,7 +9184,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 }
 .lj2-empty-btn:hover {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .lj2-lesson-card {
@@ -9210,7 +9210,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 .lj2-lesson-badge {
     display: inline-block;
     padding: 3px 10px;
-    color: #FFF;
+    color: var(--text-primary);
     border-radius: 999px;
     font-size: 11px;
     font-weight: 700;
@@ -9250,7 +9250,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 }
 .lj2-icon-btn.danger { color: var(--danger); }
 .lj2-icon-btn.danger:hover { background: var(--danger-soft); }
-.lj2-icon-btn.confirm { background: var(--danger); color: #FFF; border-color: var(--danger); }
+.lj2-icon-btn.confirm { background: var(--danger); color: var(--text-primary); border-color: var(--danger); }
 
 .lj2-lesson-content {
     color: var(--text-primary);
@@ -9409,7 +9409,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     gap: 6px;
     padding: 10px 22px;
     background: var(--grad-accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 13px;
@@ -9485,7 +9485,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     gap: 6px;
     padding: 10px 18px;
     background: var(--grad-accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 13px;
@@ -9827,7 +9827,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 .nm2-priority-badge {
     display: inline-block;
     padding: 4px 12px;
-    color: #FFF;
+    color: var(--text-primary);
     border-radius: 999px;
     font-size: 11px;
     font-weight: 700;
@@ -9917,7 +9917,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 .nm2-btn-delete {
     padding: 8px 16px;
     background: var(--danger);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 12px;
@@ -9942,7 +9942,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     gap: 6px;
     padding: 10px 22px;
     background: var(--grad-accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 13px;
@@ -10111,7 +10111,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    color: #FFF;
+    color: var(--text-primary);
     font-size: 16px;
     font-weight: 700;
     display: flex;
@@ -10185,7 +10185,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     gap: 6px;
     padding: 12px 16px;
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 13px;
@@ -10336,7 +10336,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    color: #FFF;
+    color: var(--text-primary);
     font-weight: 700;
     font-size: 14px;
     display: flex;
@@ -10553,7 +10553,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 }
 .date-popover-day.selected {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     font-weight: 700;
 }
 .date-popover-footer {
@@ -10580,12 +10580,12 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 }
 .date-popover-footer button.primary {
     background: var(--accent);
-    color: #FFF;
+    color: var(--text-primary);
     border-color: var(--accent);
 }
 .date-popover-footer button.primary:hover {
     background: var(--accent-hover);
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* ============================================
@@ -10664,7 +10664,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     grid-template-columns: 1.4fr 1fr;
     background: #000;
     overflow: hidden;
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 /* === 좌측: 시네마틱 비주얼 === */
@@ -10769,7 +10769,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 .login-brand-name {
     font-size: 20px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
     line-height: 1;
 }
@@ -10835,7 +10835,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.04em;
-    color: #FFF;
+    color: var(--text-primary);
     margin-bottom: 16px;
     text-shadow: 0 4px 24px rgba(0,0,0,0.5);
 }
@@ -10867,7 +10867,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 .login-slide-num {
     font-size: 20px;
     font-weight: 800;
-    color: #FFF;
+    color: var(--text-primary);
     font-variant-numeric: tabular-nums;
     letter-spacing: -0.02em;
 }
@@ -11210,7 +11210,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
 }
 
 .login-check {
-    color: #FFF;
+    color: var(--text-primary);
     font-size: 12px;
     font-weight: 800;
 }
@@ -11224,7 +11224,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     gap: 8px;
     padding: 16px 24px;
     background: var(--grad-accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: 12px;
     font-size: 15px;
@@ -11556,7 +11556,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    color: #FFF;
+    color: var(--text-primary);
     font-weight: 700;
     font-size: 16px;
     display: flex;
@@ -11660,7 +11660,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     width: 100%;
     padding: 12px 16px;
     background: var(--grad-accent);
-    color: #FFF;
+    color: var(--text-primary);
     border: none;
     border-radius: var(--radius-md);
     font-size: 13px;
@@ -11756,7 +11756,7 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    color: #FFF;
+    color: var(--text-primary);
     font-size: 28px;
     font-weight: 800;
     display: flex;
