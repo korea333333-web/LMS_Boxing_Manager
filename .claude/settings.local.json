@@ -15,7 +15,14 @@
       "WebSearch",
       "WebFetch(domain:apps.apple.com)",
       "WebFetch(domain:github.com)",
-      "Read(//tmp/boxing_members_check/**)"
+      "Read(//tmp/boxing_members_check/**)",
+      "mcp__4edde990-e5a8-4f29-bfc1-6d272a9b9990__list_projects",
+      "mcp__4edde990-e5a8-4f29-bfc1-6d272a9b9990__list_tables",
+      "mcp__4edde990-e5a8-4f29-bfc1-6d272a9b9990__execute_sql",
+      "mcp__4edde990-e5a8-4f29-bfc1-6d272a9b9990__apply_migration",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

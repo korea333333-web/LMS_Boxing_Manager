@@ -1,0 +1,172 @@
+/* ============================================
+   PunchTrack — 모던 테마 시스템 (2025)
+   다크 / 라이트 / 아이보리
+   Linear + Vercel + Apple 스타일
+   ============================================ */
+
+/* === 다크 모드 (기본) === */
+:root,
+[data-theme='dark'] {
+    /* 배경 */
+    --bg-base: #0E1217;
+    --bg-surface: #161B22;
+    --bg-elevated: #1E242E;
+    --bg-glass: rgba(30, 36, 46, 0.7);
+    --bg-hover: rgba(255, 255, 255, 0.04);
+    --bg-active: rgba(255, 255, 255, 0.08);
+
+    /* 보더 */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-default: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.16);
+
+    /* 텍스트 */
+    --text-primary: #F5F5F7;
+    --text-secondary: #A8B0BC;
+    --text-tertiary: #6B7280;
+    --text-disabled: #4B5563;
+    --text-inverse: #0E1217;
+
+    /* 강조색 */
+    --accent: #FF3B47;
+    --accent-hover: #FF5560;
+    --accent-pressed: #E0303B;
+    --accent-soft: rgba(255, 59, 71, 0.12);
+    --accent-glow: rgba(255, 59, 71, 0.4);
+    --accent-text: #FFFFFF;
+
+    /* 시맨틱 */
+    --success: #30D158;
+    --success-soft: rgba(48, 209, 88, 0.12);
+    --warning: #FFD60A;
+    --warning-soft: rgba(255, 214, 10, 0.12);
+    --danger: #FF453A;
+    --danger-soft: rgba(255, 69, 58, 0.12);
+    --info: #0A84FF;
+    --info-soft: rgba(10, 132, 255, 0.12);
+
+    /* 그라데이션 */
+    --grad-accent: linear-gradient(135deg, #FF3B47 0%, #FF6B35 100%);
+    --grad-glow: radial-gradient(circle at top right, rgba(255, 59, 71, 0.15) 0%, transparent 60%);
+    --grad-card: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+
+    /* 그림자 */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 32px var(--accent-glow);
+
+    /* 차트 색 */
+    --chart-1: #FF3B47;
+    --chart-2: #0A84FF;
+    --chart-3: #FFD60A;
+    --chart-4: #30D158;
+    --chart-5: #BF5AF2;
+}
+
+/* === 라이트 모드 (아이보리) === */
+[data-theme='light'] {
+    --bg-base: #F9F6F0;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #FAF8F2;
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --bg-hover: rgba(0, 0, 0, 0.03);
+    --bg-active: rgba(0, 0, 0, 0.06);
+
+    --border-subtle: rgba(0, 0, 0, 0.05);
+    --border-default: rgba(0, 0, 0, 0.1);
+    --border-strong: rgba(0, 0, 0, 0.15);
+
+    --text-primary: #1A1A1A;
+    --text-secondary: #5E5E5E;
+    --text-tertiary: #9E9E9E;
+    --text-disabled: #C4C4C4;
+    --text-inverse: #FFFFFF;
+
+    --accent: #E11D2A;
+    --accent-hover: #C4131F;
+    --accent-pressed: #A30E18;
+    --accent-soft: rgba(225, 29, 42, 0.08);
+    --accent-glow: rgba(225, 29, 42, 0.25);
+    --accent-text: #FFFFFF;
+
+    --success: #16A34A;
+    --success-soft: rgba(22, 163, 74, 0.1);
+    --warning: #EA580C;
+    --warning-soft: rgba(234, 88, 12, 0.1);
+    --danger: #DC2626;
+    --danger-soft: rgba(220, 38, 38, 0.1);
+    --info: #0066CC;
+    --info-soft: rgba(0, 102, 204, 0.1);
+
+    --grad-accent: linear-gradient(135deg, #E11D2A 0%, #FF6B35 100%);
+    --grad-glow: radial-gradient(circle at top right, rgba(225, 29, 42, 0.08) 0%, transparent 60%);
+    --grad-card: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0) 100%);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 32px var(--accent-glow);
+
+    --chart-1: #E11D2A;
+    --chart-2: #0066CC;
+    --chart-3: #EA580C;
+    --chart-4: #16A34A;
+    --chart-5: #9333EA;
+}
+
+/* === 모션 토큰 === */
+:root {
+    --motion-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* 라운드 */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-2xl: 28px;
+    --radius-full: 999px;
+
+    /* 간격 (8px 그리드) */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+}
+
+/* === 부드러운 테마 전환 === */
+*,
+*::before,
+*::after {
+    transition: background-color var(--motion-base),
+                border-color var(--motion-base),
+                color var(--motion-base);
+}
+
+/* === 모던 스크롤바 === */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-default);
+    border-radius: 999px;
+    border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-strong);
+}

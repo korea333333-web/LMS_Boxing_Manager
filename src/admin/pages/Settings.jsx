@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useSettings, updateSettings, fetchSettings } from '../../lib/useSettings'
+import { useTheme } from '../../lib/useTheme'
 import {
     Settings as SettingsIcon, Save, CheckCircle, AlertCircle,
-    Building, FileText, Clock, CreditCard, Lock, Bell, Tv,
+    Building, FileText, Clock, CreditCard, Lock, Bell, Tv, Palette,
 } from 'lucide-react'
 
 const TABS = [
     { key: 'basic', label: '기본 정보', icon: Building },
+    { key: 'theme', label: '테마', icon: Palette },
     { key: 'business', label: '사업자 정보', icon: FileText },
     { key: 'hours', label: '운영 시간', icon: Clock },
     { key: 'membership', label: '회원권', icon: CreditCard },
@@ -27,6 +29,7 @@ const DAYS = [
 
 export default function Settings() {
     const { settings: initialSettings, loading } = useSettings()
+    const { theme, setTheme } = useTheme()
     const [tab, setTab] = useState('basic')
     const [form, setForm] = useState(initialSettings)
     const [saving, setSaving] = useState(false)
@@ -190,6 +193,42 @@ export default function Settings() {
                                 <div className="preview-monitor">
                                     {form.gym_logo_emoji} {form.gym_name || '체육관 이름'}
                                 </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {tab === 'theme' && (
+                        <div className="settings-section">
+                            <h2>🎨 테마</h2>
+                            <p className="section-desc">관리자 화면의 색상 모드를 선택하세요. 즉시 반영됩니다.</p>
+
+                            <div className="theme-toggle-group">
+                                <button
+                                    type="button"
+                                    className={`theme-toggle-card ${theme === 'dark' ? 'active' : ''}`}
+                                    onClick={() => setTheme('dark')}
+                                >
+                                    <div className="theme-toggle-preview dark" />
+                                    <div className="theme-toggle-label">🌙 다크 모드</div>
+                                    <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 4 }}>
+                                        딥 차콜 + 따뜻함
+                                    </div>
+                                </button>
+                                <button
+                                    type="button"
+                                    className={`theme-toggle-card ${theme === 'light' ? 'active' : ''}`}
+                                    onClick={() => setTheme('light')}
+                                >
+                                    <div className="theme-toggle-preview light" />
+                                    <div className="theme-toggle-label">🌅 라이트 모드</div>
+                                    <div style={{ fontSize: 11, color: 'var(--text-tertiary)', marginTop: 4 }}>
+                                        아이보리 베이스
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div style={{ marginTop: 24, padding: 16, background: 'var(--bg-elevated)', borderRadius: 'var(--radius-md)', fontSize: 13, color: 'var(--text-secondary)' }}>
+                                💡 테마 설정은 이 브라우저에만 저장됩니다. 다른 기기/브라우저에서는 다시 설정해야 해요.
                             </div>
                         </div>
                     )}
