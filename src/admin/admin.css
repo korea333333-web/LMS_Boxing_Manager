@@ -8507,6 +8507,37 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     padding: 12px 16px;
 }
 
+.dash-popup-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-elevated);
+}
+.dash-popup-tabs button {
+    flex: 1;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--motion-fast);
+}
+.dash-popup-tabs button:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+.dash-popup-tabs button.active {
+    background: var(--bg-surface);
+    color: var(--accent);
+    border-color: var(--accent-soft);
+    box-shadow: var(--shadow-sm);
+}
+
 .dash-popup-empty {
     padding: 60px 20px;
     text-align: center;

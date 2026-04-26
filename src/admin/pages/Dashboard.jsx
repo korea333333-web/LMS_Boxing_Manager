@@ -48,8 +48,9 @@ export default function Dashboard() {
     const isToday = isSameDay(selectedDate, today)
 
     // 카드 클릭 팝업
-    const [popupType, setPopupType] = useState(null) // 'working' | 'calorie' | null
-    const [popupData, setPopupData] = useState([])
+    const [popupType, setPopupType] = useState(null) // 'working' | 'calorie' | 'duration' | 'champion'
+    const [durationSort, setDurationSort] = useState('time')  // 'time' (운동시간순) | 'entry' (입장순)
+    const [championPeriod, setChampionPeriod] = useState('today') // 'today' | 'week'
 
     const [stats, setStats] = useState({
         totalMembers: 0,
@@ -61,7 +62,10 @@ export default function Dashboard() {
         caloriesGrowth: 0,
         durationGrowth: 0,
         workingMembers: [],
-        topCalorieMembers: [],
+        topCalorieMembers: [],   // 오늘
+        weekCalorieMembers: [],  // 이번 주
+        monthCalorieMembers: [], // 이번 달
+        todayDurationMembers: [], // 오늘 운동한 회원 + 시간 + 입장시각
     })
     const [hourlyData, setHourlyData] = useState([])
     const [feedData, setFeedData] = useState([])
@@ -82,7 +86,12 @@ export default function Dashboard() {
             .on('postgres_changes', { event: '*', schema: 'public', table: 'payments' }, fetchDashboardData)
             .on('postgres_changes', { event: '*', schema: 'public', table: 'members' }, fetchDashboardData)
             .subscribe()
-        return () => { supabase.removeChannel(channel) }
+        // 자동 리셋: 5분마다 fetch (자정 / 월요일 / 1일 자동 반영)
+        const intervalId = setInterval(fetchDashboardData, 5 * 60 * 1000)
+        return () => {
+            supabase.removeChannel(channel)
+            clearInterval(intervalId)
+        }
     }, [selectedDate])
 
     async function fetchDashboardData() {
@@ -154,7 +163,18 @@ export default function Dashboard() {
             })
             const workingGrowth = pctChange(entryToday.size, yesterdayEntries.size)
 
-            const [{ data: todayWorkouts }, { data: yesterdayWorkouts }] = await Promise.all([
+            // 이번주 시작 (선택 날짜 기준 월요일)
+            const weekStart = new Date(todayStart)
+            const day = weekStart.getDay()
+            const diff = day === 0 ? -6 : 1 - day  // 일요일이면 -6, 월~토는 1-day
+            weekStart.setDate(weekStart.getDate() + diff)
+            const weekStartISO = weekStart.toISOString()
+
+            // 이번 달 시작 (선택 날짜 기준 1일)
+            const monthStart = new Date(todayStart.getFullYear(), todayStart.getMonth(), 1)
+            const monthStartISO = monthStart.toISOString()
+
+            const [{ data: todayWorkouts }, { data: yesterdayWorkouts }, { data: weekWorkouts }, { data: monthWorkouts }] = await Promise.all([
                 supabase.from('workout_records')
                     .select('*, members(name, created_at)')
                     .gte('recorded_at', todayISO)
@@ -163,6 +183,14 @@ export default function Dashboard() {
                     .select('total_calories, duration_minutes')
                     .gte('recorded_at', yesterdayISO)
                     .lt('recorded_at', todayISO),
+                supabase.from('workout_records')
+                    .select('member_id, total_calories, duration_minutes, members(name)')
+                    .gte('recorded_at', weekStartISO)
+                    .lt('recorded_at', dayEndISO),
+                supabase.from('workout_records')
+                    .select('member_id, total_calories, duration_minutes, members(name)')
+                    .gte('recorded_at', monthStartISO)
+                    .lt('recorded_at', dayEndISO),
             ])
 
             const totalCalories = todayWorkouts?.reduce((s, w) => s + (w.total_calories || 0), 0) || 0
@@ -253,6 +281,69 @@ export default function Dashboard() {
                 .sort((a, b) => b.totalCal - a.totalCal)
                 .slice(0, 10)
 
+            // 칼로리 TOP 10 (이번 주: 월~오늘)
+            const weekCalByMember = {}
+            weekWorkouts?.forEach(w => {
+                if (!weekCalByMember[w.member_id]) {
+                    weekCalByMember[w.member_id] = {
+                        id: w.member_id,
+                        name: w.members?.name || '회원',
+                        totalCal: 0,
+                        sessions: 0,
+                    }
+                }
+                weekCalByMember[w.member_id].totalCal += w.total_calories || 0
+                weekCalByMember[w.member_id].sessions += 1
+            })
+            const weekCalorieMembers = Object.values(weekCalByMember)
+                .sort((a, b) => b.totalCal - a.totalCal)
+                .slice(0, 10)
+
+            // 칼로리 TOP 10 (이번 달: 1일~오늘)
+            const monthCalByMember = {}
+            monthWorkouts?.forEach(w => {
+                if (!monthCalByMember[w.member_id]) {
+                    monthCalByMember[w.member_id] = {
+                        id: w.member_id,
+                        name: w.members?.name || '회원',
+                        totalCal: 0,
+                        sessions: 0,
+                    }
+                }
+                monthCalByMember[w.member_id].totalCal += w.total_calories || 0
+                monthCalByMember[w.member_id].sessions += 1
+            })
+            const monthCalorieMembers = Object.values(monthCalByMember)
+                .sort((a, b) => b.totalCal - a.totalCal)
+                .slice(0, 10)
+
+            // 오늘 운동한 회원 (시간/입장시각 - 평균 운동시간 팝업용)
+            const durByMember = {}
+            todayWorkouts?.forEach(w => {
+                if (!durByMember[w.member_id]) {
+                    durByMember[w.member_id] = {
+                        id: w.member_id,
+                        name: w.members?.name || '회원',
+                        totalMin: 0,
+                        totalCal: 0,
+                        firstEntry: memberLastEntry[w.member_id]?.checked_at || w.recorded_at,
+                    }
+                }
+                durByMember[w.member_id].totalMin += w.duration_minutes || 0
+                durByMember[w.member_id].totalCal += w.total_calories || 0
+            })
+            // memberLastEntry에 있는데 운동기록 없는 회원도 추가 (입장만 한 회원)
+            Object.values(memberLastEntry).forEach(m => {
+                if (!durByMember[m.id]) {
+                    durByMember[m.id] = {
+                        id: m.id, name: m.name,
+                        totalMin: 0, totalCal: 0,
+                        firstEntry: m.checked_at,
+                    }
+                }
+            })
+            const todayDurationMembers = Object.values(durByMember)
+
             setStats({
                 totalMembers: totalMembers || 0,
                 currentlyWorking,
@@ -261,6 +352,9 @@ export default function Dashboard() {
                 membersGrowth, workingGrowth, caloriesGrowth, durationGrowth,
                 workingMembers: workingMembersList,
                 topCalorieMembers,
+                weekCalorieMembers,
+                monthCalorieMembers,
+                todayDurationMembers,
             })
             setHourlyData(chartData)
             setFeedData(feed)
@@ -390,7 +484,11 @@ export default function Dashboard() {
                     )}
                 </button>
 
-                <div className="bento-card stat-card bento-3">
+                <button
+                    className="bento-card stat-card bento-3 stat-card-clickable"
+                    onClick={() => stats.todayDurationMembers.length > 0 && setPopupType('duration')}
+                    disabled={stats.todayDurationMembers.length === 0}
+                >
                     <div className="stat-card-header">
                         <span className="stat-card-label">평균 운동시간</span>
                         <div className="stat-card-icon success"><Clock size={18} /></div>
@@ -399,7 +497,12 @@ export default function Dashboard() {
                         {stats.avgDuration}<span className="stat-card-value-unit">분</span>
                     </div>
                     {renderTrend(stats.durationGrowth, '어제 대비')}
-                </div>
+                    {stats.todayDurationMembers.length > 0 && (
+                        <div className="stat-card-action">
+                            오늘 운동 회원 보기 <ChevronRight size={12} />
+                        </div>
+                    )}
+                </button>
 
                 <div className="bento-card chart-card bento-8">
                     <div className="chart-card-header">
@@ -441,7 +544,11 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-                <div className="bento-card champion-card bento-4 bento-row-2">
+                <button
+                    className={`bento-card champion-card bento-4 bento-row-2 stat-card-clickable ${calorieKing ? '' : 'no-action'}`}
+                    onClick={() => calorieKing && setPopupType('champion')}
+                    disabled={!calorieKing}
+                >
                     <div className="champion-card-content">
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12, padding: '4px 10px', background: 'var(--accent-soft)', color: 'var(--accent)', borderRadius: 999, fontSize: 11, fontWeight: 600 }}>
                             <Trophy size={12} /> 오늘의 챔피언
@@ -470,8 +577,13 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         )}
+                        {calorieKing && (
+                            <div className="stat-card-action" style={{ borderTopColor: 'rgba(255,255,255,0.1)', marginTop: 'auto' }}>
+                                전체 랭킹 보기 <ChevronRight size={12} />
+                            </div>
+                        )}
                     </div>
-                </div>
+                </button>
 
                 <div className="bento-card intensity-card bento-4">
                     <div className="chart-card-header">
@@ -563,16 +675,53 @@ export default function Dashboard() {
                                     {popupType === 'calorie' && (
                                         <>🔥 오늘 칼로리 랭킹 <span className="dash-popup-count">TOP {stats.topCalorieMembers.length}</span></>
                                     )}
+                                    {popupType === 'duration' && (
+                                        <>⏱ 오늘 운동 회원 <span className="dash-popup-count">{stats.todayDurationMembers.length}명</span></>
+                                    )}
+                                    {popupType === 'champion' && (
+                                        <>🏆 칼로리 챔피언</>
+                                    )}
                                 </div>
                                 <div className="dash-popup-subtitle">
                                     {popupType === 'working' && '실시간 입장 회원 목록'}
                                     {popupType === 'calorie' && '오늘 칼로리 많이 태운 순서'}
+                                    {popupType === 'duration' && (durationSort === 'time' ? '운동 시간 긴 순서' : '먼저 입장한 순서')}
+                                    {popupType === 'champion' && (
+                                        championPeriod === 'today' ? '오늘 가장 많이 태운 회원'
+                                        : championPeriod === 'week' ? '이번 주 (월요일~오늘) 누적'
+                                        : '이번 달 (1일~오늘) 누적'
+                                    )}
                                 </div>
                             </div>
                             <button className="dash-popup-close" onClick={() => setPopupType(null)}>
                                 <X size={18} />
                             </button>
                         </div>
+
+                        {/* 탭 (duration / champion만) */}
+                        {popupType === 'duration' && (
+                            <div className="dash-popup-tabs">
+                                <button className={durationSort === 'time' ? 'active' : ''} onClick={() => setDurationSort('time')}>
+                                    ⏱ 운동시간 순
+                                </button>
+                                <button className={durationSort === 'entry' ? 'active' : ''} onClick={() => setDurationSort('entry')}>
+                                    🚪 입장 시간 순
+                                </button>
+                            </div>
+                        )}
+                        {popupType === 'champion' && (
+                            <div className="dash-popup-tabs">
+                                <button className={championPeriod === 'today' ? 'active' : ''} onClick={() => setChampionPeriod('today')}>
+                                    오늘
+                                </button>
+                                <button className={championPeriod === 'week' ? 'active' : ''} onClick={() => setChampionPeriod('week')}>
+                                    이번 주
+                                </button>
+                                <button className={championPeriod === 'month' ? 'active' : ''} onClick={() => setChampionPeriod('month')}>
+                                    이번 달
+                                </button>
+                            </div>
+                        )}
 
                         <div className="dash-popup-body">
                             {popupType === 'working' && (
@@ -631,6 +780,76 @@ export default function Dashboard() {
                                     })
                                 )
                             )}
+
+                            {/* 평균 운동시간 팝업 */}
+                            {popupType === 'duration' && (() => {
+                                const sorted = [...stats.todayDurationMembers].sort((a, b) =>
+                                    durationSort === 'time'
+                                        ? b.totalMin - a.totalMin
+                                        : new Date(a.firstEntry) - new Date(b.firstEntry)
+                                )
+                                if (sorted.length === 0) {
+                                    return <div className="dash-popup-empty">오늘 방문한 회원이 없어요</div>
+                                }
+                                return sorted.map((m, idx) => {
+                                    const entry = new Date(m.firstEntry)
+                                    const timeStr = entry.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false })
+                                    return (
+                                        <div key={m.id} className={`dash-popup-item ${idx < 3 && durationSort === 'time' ? 'top' : ''}`}>
+                                            <div className="dash-popup-rank">{idx + 1}</div>
+                                            <div className="dash-popup-avatar" style={{ background: getAvatarColor(m.name) }}>
+                                                {m.name.charAt(0)}
+                                            </div>
+                                            <div className="dash-popup-info">
+                                                <div className="dash-popup-name">{m.name}</div>
+                                                <div className="dash-popup-meta">
+                                                    {durationSort === 'time'
+                                                        ? `🕐 ${timeStr} 입장 · 🔥 ${m.totalCal.toLocaleString()}kcal`
+                                                        : `⏱ ${m.totalMin}분 운동 · 🔥 ${m.totalCal.toLocaleString()}kcal`
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div className="dash-popup-cal">
+                                                {durationSort === 'time'
+                                                    ? <>{m.totalMin}<span>분</span></>
+                                                    : <>{timeStr}</>
+                                                }
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            })()}
+
+                            {/* 챔피언 팝업 (오늘/이번주/이번달) */}
+                            {popupType === 'champion' && (() => {
+                                const list = championPeriod === 'today' ? stats.topCalorieMembers
+                                    : championPeriod === 'week' ? stats.weekCalorieMembers
+                                    : stats.monthCalorieMembers
+                                const periodLabel = championPeriod === 'today' ? '오늘'
+                                    : championPeriod === 'week' ? '이번 주'
+                                    : '이번 달'
+                                if (list.length === 0) {
+                                    return <div className="dash-popup-empty">{periodLabel} 운동 기록이 없어요</div>
+                                }
+                                return list.map((m, idx) => {
+                                    const medals = ['🥇', '🥈', '🥉']
+                                    return (
+                                        <div key={m.id} className={`dash-popup-item ${idx < 3 ? 'top' : ''}`}>
+                                            <div className="dash-popup-rank">{medals[idx] || idx + 1}</div>
+                                            <div className="dash-popup-avatar" style={{ background: getAvatarColor(m.name) }}>
+                                                {m.name.charAt(0)}
+                                            </div>
+                                            <div className="dash-popup-info">
+                                                <div className="dash-popup-name">{m.name}</div>
+                                                <div className="dash-popup-meta">{m.sessions}회 운동</div>
+                                            </div>
+                                            <div className="dash-popup-cal">
+                                                {m.totalCal.toLocaleString()}<span>kcal</span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            })()}
                         </div>
 
                         {popupType === 'working' && stats.workingMembers.length > 0 && (
