@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext, useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 import { useSettings } from '../../lib/useSettings'
 import {
@@ -8,6 +8,7 @@ import {
 import {
     Users, Activity, Flame, Clock, TrendingUp, TrendingDown,
     Trophy, Sparkles, ArrowUpRight, Heart, CalendarDays, RotateCcw,
+    X, ChevronRight, Smartphone,
 } from 'lucide-react'
 
 const AVATAR_COLORS = ['#FF3B47', '#0A84FF', '#30D158', '#FFD60A', '#BF5AF2', '#FF9500']
@@ -37,6 +38,7 @@ function isSameDay(a, b) {
 }
 
 export default function Dashboard() {
+    const navigate = useNavigate()
     const { settings } = useSettings()
     const ctx = useOutletContext() || {}
     const selectedDate = ctx.selectedDate || new Date()
@@ -44,6 +46,10 @@ export default function Dashboard() {
 
     const today = new Date()
     const isToday = isSameDay(selectedDate, today)
+
+    // 카드 클릭 팝업
+    const [popupType, setPopupType] = useState(null) // 'working' | 'calorie' | null
+    const [popupData, setPopupData] = useState([])
 
     const [stats, setStats] = useState({
         totalMembers: 0,
@@ -54,6 +60,8 @@ export default function Dashboard() {
         workingGrowth: 0,
         caloriesGrowth: 0,
         durationGrowth: 0,
+        workingMembers: [],
+        topCalorieMembers: [],
     })
     const [hourlyData, setHourlyData] = useState([])
     const [feedData, setFeedData] = useState([])
@@ -116,11 +124,29 @@ export default function Dashboard() {
 
             const entryToday = new Set()
             const exitToday = new Set()
+            const memberLastEntry = {} // member_id → 마지막 입장 시각 + 이름
             todayAttendance?.forEach(r => {
-                if (r.qr_data?.startsWith('exit-')) exitToday.add(r.member_id)
-                else entryToday.add(r.member_id)
+                if (r.qr_data?.startsWith('exit-')) {
+                    exitToday.add(r.member_id)
+                } else {
+                    entryToday.add(r.member_id)
+                    if (!memberLastEntry[r.member_id]) {
+                        memberLastEntry[r.member_id] = {
+                            id: r.member_id,
+                            name: r.members?.name || '회원',
+                            checked_at: r.checked_at,
+                        }
+                    }
+                }
             })
-            const currentlyWorking = [...entryToday].filter(id => !exitToday.has(id)).length
+            const workingMemberIds = [...entryToday].filter(id => !exitToday.has(id))
+            const currentlyWorking = workingMemberIds.length
+
+            // 운동 중 회원 상세 (팝업용)
+            const workingMembersList = workingMemberIds
+                .map(id => memberLastEntry[id])
+                .filter(Boolean)
+                .sort((a, b) => new Date(a.checked_at) - new Date(b.checked_at))
 
             const yesterdayEntries = new Set()
             yesterdayAttendance?.forEach(r => {
@@ -209,12 +235,32 @@ export default function Dashboard() {
                 king = Object.values(calBy).sort((a, b) => b.totalCal - a.totalCal)[0]
             }
 
+            // 칼로리 TOP 10 (오늘)
+            const calByMemberAll = {}
+            todayWorkouts?.forEach(w => {
+                if (!calByMemberAll[w.member_id]) {
+                    calByMemberAll[w.member_id] = {
+                        id: w.member_id,
+                        name: w.members?.name || '회원',
+                        totalCal: 0,
+                        sessions: 0,
+                    }
+                }
+                calByMemberAll[w.member_id].totalCal += w.total_calories || 0
+                calByMemberAll[w.member_id].sessions += 1
+            })
+            const topCalorieMembers = Object.values(calByMemberAll)
+                .sort((a, b) => b.totalCal - a.totalCal)
+                .slice(0, 10)
+
             setStats({
                 totalMembers: totalMembers || 0,
                 currentlyWorking,
                 totalCalories,
                 avgDuration,
                 membersGrowth, workingGrowth, caloriesGrowth, durationGrowth,
+                workingMembers: workingMembersList,
+                topCalorieMembers,
             })
             setHourlyData(chartData)
             setFeedData(feed)
@@ -290,7 +336,7 @@ export default function Dashboard() {
             </div>
 
             <div className="bento-grid">
-                <div className="bento-card stat-card bento-3">
+                <button className="bento-card stat-card bento-3 stat-card-clickable" onClick={() => navigate('/admin/members')}>
                     <div className="stat-card-header">
                         <span className="stat-card-label">전체 회원수</span>
                         <div className="stat-card-icon accent"><Users size={18} /></div>
@@ -299,9 +345,16 @@ export default function Dashboard() {
                         {formatNumber(stats.totalMembers)}<span className="stat-card-value-unit">명</span>
                     </div>
                     {renderTrend(stats.membersGrowth, '지난달 대비')}
-                </div>
+                    <div className="stat-card-action">
+                        회원 관리 보기 <ChevronRight size={12} />
+                    </div>
+                </button>
 
-                <div className="bento-card stat-card bento-3">
+                <button
+                    className="bento-card stat-card bento-3 stat-card-clickable"
+                    onClick={() => stats.currentlyWorking > 0 && setPopupType('working')}
+                    disabled={stats.currentlyWorking === 0}
+                >
                     <div className="stat-card-header">
                         <span className="stat-card-label">현재 운동 중</span>
                         <div className="stat-card-icon info"><Activity size={18} /></div>
@@ -310,9 +363,18 @@ export default function Dashboard() {
                         {stats.currentlyWorking}<span className="stat-card-value-unit">명</span>
                     </div>
                     {renderTrend(stats.workingGrowth, '어제 대비')}
-                </div>
+                    {stats.currentlyWorking > 0 && (
+                        <div className="stat-card-action">
+                            운동 중인 회원 보기 <ChevronRight size={12} />
+                        </div>
+                    )}
+                </button>
 
-                <div className="bento-card stat-card bento-3">
+                <button
+                    className="bento-card stat-card bento-3 stat-card-clickable"
+                    onClick={() => stats.topCalorieMembers.length > 0 && setPopupType('calorie')}
+                    disabled={stats.topCalorieMembers.length === 0}
+                >
                     <div className="stat-card-header">
                         <span className="stat-card-label">오늘 총 칼로리</span>
                         <div className="stat-card-icon warning"><Flame size={18} /></div>
@@ -321,7 +383,12 @@ export default function Dashboard() {
                         {formatNumber(stats.totalCalories)}<span className="stat-card-value-unit">kcal</span>
                     </div>
                     {renderTrend(stats.caloriesGrowth, '어제 대비')}
-                </div>
+                    {stats.topCalorieMembers.length > 0 && (
+                        <div className="stat-card-action">
+                            랭킹 보기 <ChevronRight size={12} />
+                        </div>
+                    )}
+                </button>
 
                 <div className="bento-card stat-card bento-3">
                     <div className="stat-card-header">
@@ -481,6 +548,101 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+
+            {/* === 팝업: 운동 중 회원 / 칼로리 랭킹 === */}
+            {popupType && (
+                <>
+                    <div className="dash-popup-overlay" onClick={() => setPopupType(null)} />
+                    <div className="dash-popup">
+                        <div className="dash-popup-header">
+                            <div>
+                                <div className="dash-popup-title">
+                                    {popupType === 'working' && (
+                                        <>🟢 지금 운동 중인 회원 <span className="dash-popup-count">{stats.workingMembers.length}명</span></>
+                                    )}
+                                    {popupType === 'calorie' && (
+                                        <>🔥 오늘 칼로리 랭킹 <span className="dash-popup-count">TOP {stats.topCalorieMembers.length}</span></>
+                                    )}
+                                </div>
+                                <div className="dash-popup-subtitle">
+                                    {popupType === 'working' && '실시간 입장 회원 목록'}
+                                    {popupType === 'calorie' && '오늘 칼로리 많이 태운 순서'}
+                                </div>
+                            </div>
+                            <button className="dash-popup-close" onClick={() => setPopupType(null)}>
+                                <X size={18} />
+                            </button>
+                        </div>
+
+                        <div className="dash-popup-body">
+                            {popupType === 'working' && (
+                                stats.workingMembers.length === 0 ? (
+                                    <div className="dash-popup-empty">현재 운동 중인 회원이 없어요</div>
+                                ) : (
+                                    stats.workingMembers.map((m, idx) => {
+                                        const enterTime = new Date(m.checked_at)
+                                        const minutesAgo = Math.floor((new Date() - enterTime) / 60000)
+                                        const timeStr = enterTime.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false })
+                                        return (
+                                            <div key={m.id} className="dash-popup-item">
+                                                <div className="dash-popup-avatar" style={{ background: getAvatarColor(m.name) }}>
+                                                    {m.name.charAt(0)}
+                                                </div>
+                                                <div className="dash-popup-info">
+                                                    <div className="dash-popup-name">{m.name}</div>
+                                                    <div className="dash-popup-meta">
+                                                        🕐 {timeStr} 입장 · {minutesAgo}분째 운동 중
+                                                    </div>
+                                                </div>
+                                                <div className="dash-popup-status live">
+                                                    <span className="dash-popup-dot" /> LIVE
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                )
+                            )}
+
+                            {popupType === 'calorie' && (
+                                stats.topCalorieMembers.length === 0 ? (
+                                    <div className="dash-popup-empty">오늘 운동 기록이 없어요</div>
+                                ) : (
+                                    stats.topCalorieMembers.map((m, idx) => {
+                                        const medals = ['🥇', '🥈', '🥉']
+                                        return (
+                                            <div key={m.id} className={`dash-popup-item ${idx < 3 ? 'top' : ''}`}>
+                                                <div className="dash-popup-rank">
+                                                    {medals[idx] || `${idx + 1}`}
+                                                </div>
+                                                <div className="dash-popup-avatar" style={{ background: getAvatarColor(m.name) }}>
+                                                    {m.name.charAt(0)}
+                                                </div>
+                                                <div className="dash-popup-info">
+                                                    <div className="dash-popup-name">{m.name}</div>
+                                                    <div className="dash-popup-meta">
+                                                        {m.sessions}회 운동
+                                                    </div>
+                                                </div>
+                                                <div className="dash-popup-cal">
+                                                    {m.totalCal.toLocaleString()}<span>kcal</span>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                )
+                            )}
+                        </div>
+
+                        {popupType === 'working' && stats.workingMembers.length > 0 && (
+                            <div className="dash-popup-footer">
+                                <button className="dash-popup-action" onClick={() => { setPopupType(null); navigate('/admin/members') }}>
+                                    전체 회원 관리에서 보기 <ChevronRight size={14} />
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </>
+            )}
         </div>
     )
 }
