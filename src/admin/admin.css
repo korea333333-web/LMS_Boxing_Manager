@@ -8538,6 +8538,80 @@ button.stat-card-clickable:hover:not(:disabled) .stat-card-action {
     box-shadow: var(--shadow-sm);
 }
 
+/* === 챔피언 카드 - 오늘/주/달 한 번에 표시 === */
+.champion-main {
+    text-align: center;
+    padding: 8px 0 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 12px;
+}
+.champion-period-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+.champion-main .champion-trophy {
+    font-size: 38px !important;
+    margin-bottom: 4px !important;
+}
+.champion-main .champion-name {
+    font-size: 20px !important;
+    margin-bottom: 4px !important;
+}
+.champion-main .champion-cal-value {
+    font-size: 28px !important;
+    margin-top: 0 !important;
+}
+
+.champion-small-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+.champion-small {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 10px;
+    text-align: center;
+}
+.champion-small-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+}
+.champion-small-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.champion-small-cal {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+.champion-small-cal span {
+    font-size: 9px;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    margin-left: 2px;
+}
+.champion-small-empty {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    padding: 8px 0;
+}
+
 .dash-popup-empty {
     padding: 60px 20px;
     text-align: center;

@@ -572,22 +572,60 @@ export default function Dashboard() {
                 >
                     <div className="champion-card-content">
                         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12, padding: '4px 10px', background: 'var(--accent-soft)', color: 'var(--accent)', borderRadius: 999, fontSize: 11, fontWeight: 600 }}>
-                            <Trophy size={12} /> 오늘의 챔피언
+                            <Trophy size={12} /> 칼로리 챔피언
                         </div>
 
                         {calorieKing ? (
                             <>
-                                <div className="champion-trophy">🏆</div>
-                                <div className="champion-name">{calorieKing.name}</div>
-                                <div className="champion-since">
-                                    {calorieKing.since ? `${calorieKing.since}년부터 함께` : '오늘 가장 열심히'}
-                                </div>
-                                <div style={{ marginTop: 24 }}>
-                                    <div className="champion-cal-label">CALORIES</div>
+                                {/* 오늘의 챔피언 (메인) */}
+                                <div className="champion-main">
+                                    <div className="champion-period-label">🥇 오늘</div>
+                                    <div className="champion-trophy">🏆</div>
+                                    <div className="champion-name">{calorieKing.name}</div>
                                     <div className="champion-cal-value">
                                         {calorieKing.totalCal.toLocaleString()}
-                                        <span style={{ fontSize: 18, marginLeft: 6, color: 'var(--text-tertiary)', fontWeight: 600 }}>kcal</span>
+                                        <span style={{ fontSize: 16, marginLeft: 4, color: 'var(--text-tertiary)', fontWeight: 600 }}>kcal</span>
                                     </div>
+                                </div>
+
+                                {/* 이번 주/달 챔피언 (작은 영역) */}
+                                <div className="champion-small-grid">
+                                    {(() => {
+                                        const weekTop = stats.weekCalorieMembers[0]
+                                        const monthTop = stats.monthCalorieMembers[0]
+                                        return (
+                                            <>
+                                                <div className="champion-small">
+                                                    <div className="champion-small-label">📅 이번 주</div>
+                                                    {weekTop ? (
+                                                        <>
+                                                            <div className="champion-small-name">{weekTop.name}</div>
+                                                            <div className="champion-small-cal">
+                                                                {weekTop.totalCal.toLocaleString()}
+                                                                <span>kcal</span>
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <div className="champion-small-empty">기록 없음</div>
+                                                    )}
+                                                </div>
+                                                <div className="champion-small">
+                                                    <div className="champion-small-label">🗓 이번 달</div>
+                                                    {monthTop ? (
+                                                        <>
+                                                            <div className="champion-small-name">{monthTop.name}</div>
+                                                            <div className="champion-small-cal">
+                                                                {monthTop.totalCal.toLocaleString()}
+                                                                <span>kcal</span>
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <div className="champion-small-empty">기록 없음</div>
+                                                    )}
+                                                </div>
+                                            </>
+                                        )
+                                    })()}
                                 </div>
                             </>
                         ) : (
